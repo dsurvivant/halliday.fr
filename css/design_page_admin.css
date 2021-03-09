@@ -1,0 +1,243 @@
+
+/*****			**/
+/**	GENERALE	**/
+/*****			**/
+
+.bouton
+{
+    cursor: pointer;
+}
+
+.effacer_colonne {display: none;}
+
+.entete
+{
+    text-align: center;
+    font-family: arial;
+    background-color: #494646;
+    color: white;
+    border: solid 2px #494646;
+    border-radius: 10px 10px 0 0;
+}
+
+#gestion_album
+{
+    display: none;
+}
+/*****                          **/
+/** BARRE ONGLETS SUPERIEURE    **/
+/*****                          **/
+#barre_onglets
+{
+    margin-bottom: 10px;
+}
+
+/*****				    **/
+/**	section_centrale	**/
+/*****				    **/
+/**                     **/
+
+/***                    ***  
+/*** fichealbum_inc.php ***
+/***                    ***/
+    
+    #fichealbum
+    { 
+        border: solid 1px #BBB6B6;
+        border-radius: 10px;
+        /**max-height: calc(100vh - 320px);
+        overflow: auto;**/
+        background-color: aliceblue;
+        margin-bottom: 10px;
+    }
+
+    #fichealbum #noAlbum {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    #fichealbum #detailAlbum #confirmer_suppression {color:red; }
+
+    #fichealbum #jaquettes img
+    {
+        width: 100%;
+        padding: 5px;
+    }
+
+    #fichealbum #divers{ text-align: center; }
+
+    #fichealbum #boutons_fiche_album
+    {
+        margin: 0 15px;
+        padding: 15px;
+    }
+
+
+/***                    ***  
+/*** fichetitre_inc.php ***
+/***                    ***/
+
+    #fichetitre 
+    { 
+        border: solid 1px #BBB6B6;
+        border-radius: 10px;
+        height: calc(100vh - 290px);
+        margin-bottom: 10px;
+        background-color: aliceblue;
+    }
+
+    #fichetitre #contenu_ficheTitre { height: calc(100% - 50px);}
+
+    #fichetitre #section_detailsTitre {height: 100%;}
+
+    #fichetitre #texteTitre:hover { cursor: pointer;}
+
+    #fichetitre em { text-decoration: underline;}
+
+    #fichetitre hr {width: 95%;}
+
+    #fichetitre h3 {margin-top: 0; padding: 4px;}
+
+    #fichetitre img
+    {
+        float: left;
+        width: 70px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    #fichetitre .clear
+    {
+        clear:both;
+        height: 0;
+        font-size: 1px;
+        line-height: 0px;
+    }
+
+    #fichetitre strong
+    {
+        font-size: 20px;
+    }
+
+    #fichetitre #infostitre
+    {
+        height: 110px;
+        border: 1px solid #494646;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    #fichetitre #modifierinfostitres:hover {cursor: pointer;}
+    #fichetitre #modifierparolestitres:hover {cursor: pointer;}
+
+    #fichetitre #albumstitre
+    {
+        height: calc(100% - 130px);
+        border: 1px solid #494646;
+        margin-bottom: 10px; 
+        padding: 10px;
+        border-radius: 10px;
+        overflow: auto;
+    }
+
+    #fichetitre #section_parolesTitre
+    {
+        height: calc(100% - 10px);
+        border: 1px solid #494646;
+        border-radius: 10px;
+        padding: 0px;
+        overflow: auto;
+    }
+
+    #formparolestitre /* fenetre modale */
+    {
+        height: 60vh;
+    }
+    #textareaparoles /* fenetre modale */
+    {
+        width: 100%;
+        height: 90%;
+        background-color: aliceblue;
+        resize: none;
+        padding: 10px;
+    }
+
+    #fichetitre h5
+    {
+        background-color: #494646;
+        color: white;
+        margin: 0;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    #fichetitre #contenutexteTitre
+    {
+        margin:10px;
+        font-style: italic;
+    }
+
+/*****                                   *****/
+/**      AJOUT MODIF D'UN ALBUM / TITRE    **/
+/*****                                 *****/
+
+    #ficheajoutalbum, #fichemodifalbum
+    { 
+        border: solid 1px #BBB6B6;
+        border-radius: 10px;
+    }
+
+    #ficheajoutalbum #blocJaquettes {float: left;}
+    #fichemodifalbum #blocJaquettes {float: left;}
+
+    #ficheajoutalbum #blocJaquettes img {cursor: pointer; margin: 10px;}
+    #fichemodifalbum #blocJaquettes img {cursor: pointer; margin: 10px;}
+
+    #ficheajoutalbum #blocalbum {padding-top: 20px;}
+    #fichemodifalbum #blocalbum {padding-top: 20px;}
+
+    #ficheajoutalbum #blocalbum label {width: 100px;}
+    #fichemodifalbum #blocalbum label {width: 100px;}
+
+    #blocalbum input {margin: 0.2em; width: 300px;}
+
+    #blocalbum select {margin: 0.2em;}
+
+    #bloctitres .onglettitre
+        {
+            display: inline-block;
+            padding: 1px;
+            margin-right: 2px;
+            color: black;
+            cursor: pointer;
+        }
+        
+    /* tableau des titres*/
+    #formAlbum .bouton_plus_titre, #formAlbum .bouton_moins_titre {margin: 0;cursor: pointer;}
+
+/*****				**/
+/**	section_gauche	**/
+/*****				**/
+
+
+     /** cadre liste des albums, liste des titres**/
+    #section_gauche #divlisteAlbums, #section_gauche_titres #divlisteTitres
+    {
+        border: solid 0.1em #BBB6B6;
+        /**border-radius: 10px;**/
+        height: calc(100vh - 300px);
+        overflow: scroll;
+    }
+
+    #section_gauche #tablelisteAlbums tr:hover, #section_gauche_titres #divlisteTitres span { cursor: pointer; }
+
+    #section_gauche_titres .entetetitre:hover
+    {
+        cursor: pointer;
+        color: white;
+        background-color: grey;
+    }
+
+    #section_gauche_titres #divlisteTitres .surligne {= background-color: #e4970c; }
+
+    #section_gauche .boutons_album:hover { cursor: pointer; }

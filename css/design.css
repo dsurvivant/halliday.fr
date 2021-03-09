@@ -1,0 +1,221 @@
+
+html
+{
+    overflow-x: hidden;
+}
+
+/*****                      *****/
+/** ENTETE ET PIED DE PAGE     **/
+/*****                      *****/
+    header
+    {
+        height:60px;
+        background-color: #2c2c2c;
+    }
+
+    header h1
+    {
+        text-align: center;
+        /**font-family: courier;**/
+        font-size: 20px;
+        color: white;
+    }
+
+    #titre_principal:hover
+    {
+        cursor: pointer;
+    }
+
+    footer
+    {
+        margin: 0;
+        padding: 0;
+        background-color: #2c2c2c;
+        color: white;
+    }
+
+    footer a
+    {
+        color: white;
+    }
+
+    footer a:hover
+    {
+        color: white;
+        text-decoration: underline;
+    }
+
+    footer a:visited
+    {
+        color: white;
+    }
+
+    footer img
+    {
+        margin: 10px;
+    }
+
+    #image_menu
+    {
+        padding:10px;
+    }
+  
+/*****                  *****/
+/** barre de navigation   **/
+/*****                *****/
+    #barre_navigation
+    {
+        margin: 0;
+    }
+
+    #barre_navigation a:hover
+    {
+        cursor: pointer;
+    }
+
+    #formrecherche
+    {
+        display: none;
+    }
+
+/*****              *****/
+/** accueil_inc.php   **/
+/*****            *****/
+
+    #accueil #diaporama
+    {
+        padding-top:10px;
+    }
+
+    #accueil #diaporama img
+    {
+
+        margin-bottom: 50px;
+    }
+
+    #accueil .johnny69, #accueil .parcdesceaux, #accueil .bercy2003
+    {
+        margin-top: 0.6em;
+        margin-bottom: 0.6em;
+        font-family: text;
+    }
+
+    #accueil h2
+    {
+        text-align: center;
+    }
+    
+    #accueil .johnny69 .contenu
+    {
+        display: none;
+    }
+    
+/*****              *****/
+/** form_connexion_inc.php   **/
+/*****            *****/
+    #form_connexion .help-block
+    {
+        visibility: hidden;
+    }
+    
+    #erreur_saisis
+    {
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 20px;
+        border-radius: 15px;
+        background-color: #ffdead;
+        border: solid 1px orange;
+        margin-bottom: 20px;
+        visibility: hidden;
+    }
+
+    #pseudo_membre
+    { 
+        color: white;
+    }
+
+/*****                      *****/
+/** form_inscription_inc.php   **/
+/*****                      *****/
+    #form_inscription .help-block
+    {
+        visibility: hidden;
+        color: red;
+    }
+/*****                                       *****/
+/**     liste_albums_inc.php - DISCOGRAPHIE    **/
+/*****                                      *****/
+
+    .entete_cadre_album
+    {
+        text-align: center;
+        background-color: #494646;
+        padding: 3px;
+        margin-bottom: 5px;
+        color: snow;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .pied_cadre_album
+    {
+        text-align: center;
+        padding: 3px;
+        color: snow;
+        background-color: #494646;
+        border-radius: 0 0 15px 15px;
+    }
+
+    .jaquette_album img
+        {
+            width: 80px;
+            height: 80px;
+        }
+    .liste_titres p
+    {
+        margin: 0;
+        margin-bottom: .3em;
+        padding: .2em;
+        background-color: white;
+        border-radius: 0.2em;
+    }
+
+    /** ONGLETS DISQUES **/
+    .liste_titres ul
+    {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+    .liste_titres li
+    {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 2px 10px;
+        margin:1px;
+        border-radius: 5px;
+        background-color: #494646;
+    }
+
+    .liste_titres li:first-child
+    {
+        background-color: steelblue;
+    }
+
+    .liste_titres li:hover
+    {
+        cursor: pointer;
+    }
+
+    .detail_disque
+    {
+        display:none;
+    }
+
+    #detail_disque1
+    {
+        display: block;
+    }

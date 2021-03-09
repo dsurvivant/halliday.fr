@@ -1,0 +1,9 @@
+#tableutilisateurs tr:hover {background-color: lightblue; cursor: pointer;}
+
+.selection {background-color: lightblue;}
+
+.titre 
+{
+	font-size: 20px; 
+	text-decoration: underline;
+}

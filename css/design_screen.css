@@ -1,0 +1,161 @@
+/* design en complement de design_mobile.css */
+@media screen and (min-width: 768px)
+{
+
+/*****
+/** PIED DE PAGE
+/*****         *******/
+/**footer { height: 150px; }
+/*****                   *****/
+/** MENU DE NAVIGATION     **/
+/*****                 *****/
+
+    #barre_navigation input { width: 300px; }
+
+    #barre_navigation { height: 52px; }
+
+/*****                   *****/
+/** PAGE CENTRALE          **/
+/*****                 *****/
+    #page_principale, #page_membre, #gestion_album
+    {
+        margin: 0;
+        padding: 0;
+        min-height: calc(100vh - 262px);
+    }
+
+/*****
+/** accueil
+/*****              **/
+    #accueil #son_reve_americain
+        {
+            margin:10px;
+            padding-top: 10px;
+            font-size:20px;
+        }
+
+    #accueil #son_reve_americain img{ width: 50%; }
+    #accueil .son_reve_americain
+    {
+        width: 40%;
+        margin: auto;
+    }
+
+    #accueil .johnny69, #accueil .parcdesceaux, #accueil .bercy2003 { text-align: center; }
+
+    #accueil .johnny69 img, #accueil .parcdesceaux img, #accueil .bercy2003 img { width:250px; }
+
+    #accueil .johnny69 h3, #accueil .parcdesceaux h3, #accueil .bercy2003 h3 { font-size: 1.5em; }
+
+    #accueil .johnny69 h4, #accueil .parcdesceaux h4, #accueil .bercy2003 h4 { font-size: 1em; }
+
+/*****
+/** fiche album
+/*****              **/
+
+    #fiche_album .chevron_droite { display: none; }
+
+    #fiche_album
+    {
+        position: relative;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 1.2em;
+        padding: 0;
+    }
+
+    #fiche_album .chevron_bas, #fiche_album .chevron_droite
+    {
+        position: absolute;
+        right: 10px;
+    }
+
+    #fiche_album h3
+    {
+        background-color: #2c2c2c;
+        color: white;
+        height:50px;
+        line-height: 50px;
+        padding-left: 10px;
+        margin-top:0;
+    }
+
+    #fiche_album h4
+    {
+        background-color: grey;
+        color: white;
+        text-align: center;
+    }
+    #fiche_album h6
+    {
+        display: inline-block;
+        background-color: #2c2c2c;
+        color: white;
+        padding: 5px;
+    }
+
+    #fiche_album ol { font-size: 1.2em; }
+
+    #fiche_album ol span { font-size: .8em; }
+
+    .pop {text-decoration: underline;}
+
+    #fiche_album em 
+    {
+        font-weight: bold;
+    }
+/*****                                      *****/
+/** liste_albums_inc.php - DISCOGRAPHIE       **/
+/*****                                    *****/
+
+    #cadre_principal
+    {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+
+    .cadre_album
+    {
+        width: 300px;
+        min-height: 550px;
+        /**font-family: Arial;**/
+        font-size: 12px;
+        background-color: gainsboro;
+        border: solid #494646;
+        border-radius: 20px;
+        margin-top: 5px;
+        position: relative;
+    }
+
+    .pied_cadre_album
+    {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .jaquette_album
+    {
+        float: left;
+        margin-left: 5px;
+    }
+    
+    .liste_titres
+    {
+        margin-left: 90px;
+        margin-right: 5px;
+    }
+
+    .infos_album
+    {
+        margin-top: 15px;
+        margin-left: 5px;
+        padding-bottom: 10px
+    }
+
+} /*fin media queries
+
+

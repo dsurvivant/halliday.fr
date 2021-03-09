@@ -1,0 +1,243 @@
+body
+{ 
+    margin: auto;
+    background: snow;
+    width: 90%;
+}
+
+#cadre_principal /* contient section_gauche, section_centrale */
+{
+	/** flex **/
+	display: flex;
+	flex-wrap: nowrap;
+    justify-content: center;
+	/**/
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+/*****			**/
+/**	GENERALE	**/
+/*****			**/
+
+a{text-decoration: none;}
+
+.bouton
+{
+    cursor: pointer;
+}
+
+.effacer_colonne {display: none;}
+
+/*****		**/
+/**	header	**/
+/*****		**/
+    header
+    {
+        display: flex;
+        justify-content: space-between;
+        background-image: linear-gradient(to top right, #A5A4A4, #0E0D0D);
+        margin: 0.5em;
+        padding: 0.2em;
+        color: white;
+    }
+
+    header:nth-of-type(1) /** identifiant **/
+    {
+    	align-items: flex-end;
+    }
+
+    #logo { width: 150px; }
+
+    #identifiant { width: 150px; font-size: 0.8em; }
+
+    #identifiant a { color: white; }
+
+    #identifiant a:hover { color:grey; }
+
+/*****      **/
+/** footer  **/
+/*****      **/
+
+    footer
+    {
+        background-image: linear-gradient(to top right, #A5A4A4, #0E0D0D);
+        margin: 0.5em;
+        padding: 0.2em;
+        color: white;
+        text-align: center;
+    }
+
+/*****				    **/
+/**	section_centrale	**/
+/*****				    **/
+    #section_centrale
+    {
+        flex-grow: 1;
+        padding: 0.5em;
+        margin-left: 0.5em;
+        border: solid 0.1em #BBB6B6;
+        border-radius: 10px;
+        background-color: #DFDADA;
+    }
+
+/***                    ***  
+/*** fichealbum_inc.php ***
+/***                    ***/
+
+    #fichealbum 
+    { 
+        display: flex;
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    #fichealbum #detailAlbum h3
+    {
+        text-align: center;
+    }
+
+    #fichealbum #detailAlbum #confirmer_suppression
+    {
+        color:red;
+    }
+
+    #fichealbum #tableauxtitres
+    {
+        padding: 0 1em 0 1em;
+    }
+
+    #fichealbum #noAlbum {visibility: hidden;}
+
+    
+    /** #fichealbum #noAlbum {visibility: hidden;} **/
+
+    #jaquettes {display: flex;}
+
+    #jaquettes img {margin: 0.5em; height: 200px; width: 200px;}
+
+    #colonneTitres { width: auto; }
+
+/*****                     *****/
+/**      AJOUT D'UN ALBUM     **/
+/*****                     *****/
+
+    #blocJaquettes .input-file {position: absolute; visibility: hidden;}
+
+    #blocJaquettes {float: left;  background-color: #D8D8D8;}
+
+    #blocalbum label {display: block; width: 80px;float: left;}
+
+    #blocalbum input {margin: 0.2em;}
+
+    #blocalbum select {margin: 0.2em;}
+
+    #bloctitres .onglettitre
+        {
+            display: inline-block;
+            padding: 1px;
+            margin-right: 2px;
+            color: black;
+            cursor: pointer;
+        }
+
+    /* tableau form ajout album*/
+    #formAlbum table { border-collapse:collapse;}
+
+    #formAlbum h3 {text-align: center; text-decoration: underline; font-weight: normal;}
+
+    #formAlbum thead { background-color:#D0E3FA; cursor: pointer;}
+
+    #formAlbum tbody {background-color:#FFFFFF; border:1px solid #6495ed;}
+
+    #formAlbum th {font-family:monospace;border:1px solid #6495ed;padding:5px;width: 5em;text-align: center;}
+
+    #formAlbum td {font-family:sans-serif;font-size:80%;border:1px solid #6495ed;padding:5px;text-align: center}
+
+    #formAlbum caption {font-family:sans-serif;}
+
+    #formAlbum .bouton_plus_titre, #formAlbum .bouton_moins_titre {margin: 0;cursor: pointer;}
+
+    #formAlbum #blocJaquettes img {cursor: pointer;}
+
+    #formAlbum .modifier_titre { width: 200px; border: none;} 
+
+    #formAlbum .modifier_duree { border:none; width: 50px;}
+
+    #formAlbum #suppressionTableau {margin:0; }
+
+    #formAlbum #suppressionTableau:hover {cursor: pointer;}
+
+/*****				**/
+/**	section_gauche	**/
+/*****				**/
+    #section_gauche
+    {
+        /* rétricement interdit */
+        flex-shrink: 0;
+        border: solid 0.1em #BBB6B6;
+        border-radius: 10px;
+        background-color: #DFDADA;
+        padding: 10px;
+    }
+
+     /** cadre liste des albums **/
+    #section_gauche #divlisteAlbums
+    {
+        margin-bottom: 20px;
+    }
+    /** cadre liste des albums **/
+    #section_gauche #divlisteAlbums #tablelisteAlbums
+    {
+        border-collapse: collapse;
+        display:block;
+        text-align: center;
+        margin: auto;
+        background-color: white;
+    }
+
+    #section_gauche #tablelisteAlbums thead
+    {
+        display: block;
+    }
+
+    #section_gauche #tablelisteAlbums caption
+    {
+        display: inline;
+    }
+
+    #section_gauche #tablelisteAlbums tbody
+    {
+        height: 300px;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    #section_gauche #tablelisteAlbums th
+    {
+        border:solid #BBB6B6 1px;
+        text-align: center;
+        background-color:#A5A4A4;
+    }
+
+    #section_gauche #tablelisteAlbums td
+    {
+        border:solid #BBB6B6 1px;
+        text-align: center;
+    }
+
+    #section_gauche #tablelisteAlbums tr:hover
+    {
+        cursor: pointer;
+    }
+
+    .surlignement { background-color: #e4970c; }
+
+/***********************/
+
+    #section_gauche form { text-align: center; }
+    #section_gauche select { overflow: auto; width: 95%;}
+
+    #section_gauche select option { padding-left: 1em; }

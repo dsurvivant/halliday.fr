@@ -1,0 +1,140 @@
+@media screen and (max-width: 767px)
+{
+
+    html
+    {
+        overflow-y: none;
+    }
+
+    #barre_navigation
+    {
+        position: absolute;
+        right: 0;
+        width: 60%;
+        height: 100vh;
+        z-index: 10000;
+        visibility: hidden;
+        overflow: auto;
+    }
+
+    /*****
+    /** accueil
+    /*****              **/
+    #accueil #son_reve_americain
+    {
+        font-size:10px;
+    }
+
+    #accueil #son_reve_americain img
+    {
+        width: 100%;
+    }
+    #accueil .johnny69, #accueil .parcdesceaux, #accueil .bercy2003
+    {
+        border: solid #2c2c2c;
+        border-radius: 15px;
+    }
+    /*****                    *****/
+    /** fiche_album_inc.php     **/
+    /*****                    *****/
+
+      #fiche_album
+    {
+        position: relative;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 0.8em;
+        padding: 0;
+    }
+
+     #fiche_album .contenu, #fiche_album .chevron_bas
+     {
+        display: none;
+     }
+
+     #fiche_album .chevron_bas, #fiche_album .chevron_droite
+    {
+        position: absolute;
+        right: 10px;
+    }
+
+     #fiche_album ol
+    {
+        /**font-family: text;**/
+        
+    }
+
+    #fiche_album h3
+    {
+        background-color: #2c2c2c;
+        color: white;
+        height:30px;
+        line-height: 30px;
+        padding-left: 10px;
+        margin-bottom:0;
+        margin-left: -15px;
+        margin-right: -15px;
+        font-size: 1.2em;
+    }
+
+    #fiche_album h4
+    {
+        background-color: grey;
+        color: white;
+        text-align: center;
+    }
+
+    #fiche_album em 
+    {
+        font-weight: bold;
+    }
+
+    /*****                    *****/
+    /** liste_albums_inc.php     **/
+    /*****                    *****/
+
+        .cadre_album
+        {
+            /**font-family: Arial;**/
+            font-size: 12px;
+            background-color: gainsboro;
+            border: solid #494646;
+            border-radius: 20px;
+            margin-top: 5px;
+        }
+
+        .jaquette_album
+        {
+            margin:0 .5em;
+            padding:0;
+        }
+
+        /** ONGLETS DISQUES **/
+        .liste_titres ul
+        {
+            padding: 0;
+        }
+
+        .liste_titres li
+        {
+            color: white;
+            /**font-family: Arial;**/
+            font-size: 10px;
+            text-align: center;
+            padding: 2px 10px;
+            margin:1px;
+            border-radius: 5px;
+            background-color: #494646;
+
+        }
+
+        .liste_titres
+        {
+            flex: 1;
+        }
+
+        .liste_titres p
+        {
+            margin: 0;
+            margin-bottom: 0.1em;
+        }
+}

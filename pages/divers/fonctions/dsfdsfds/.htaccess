@@ -1,0 +1,4 @@
+AuthName "Page d'administration protégée"
+AuthType Basic
+AuthUserFile "C:\Users\jmten\Dropbox\informatique\Site JH\htdocs\jh\pages\divers\.htpasswd"
+Require valid-user  
