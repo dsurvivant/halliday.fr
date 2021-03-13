@@ -23,6 +23,11 @@ $(function()
 		    /** TRI PAR NOM DE TITRE **/
 			if ($(this).text()=="Titre")
 		    {
+			    //case à cocher modifierparolestitres
+			    if($('#section_gauche_titres #checkParolesTitres')){ check_modifierparolestitres=1; }
+				else { check_modifierparolestitres=0; };
+
+				alert($('#section_gauche_titres #checkParolesTitres').val());
 			    //determination de l'ordre de l'album
 			    if (ordreTitre=="croissant") {ordreTitre="decroissant"}
 			    else {ordreTitre="croissant"}
@@ -35,6 +40,8 @@ $(function()
 				    data: {
 				        	ajax: "yes",
 				        	ordreTitre: ordreTitre,
+				        	droits_modifierparolestitre : $('#droits_modifierparolestitres').text(),
+				        	check_modifierparolestitres : check_modifierparolestitres,
 				        	},
 				    success: function(data)
 				    {
@@ -85,7 +92,7 @@ $(function()
 		});
 		    
 	/**
-	 * 
+	 * CLICK SUR UNE LIGNE DU TABLEAU
 	 */
 		$('#section_gauche_titres').on('click', '.lignetitre',function()
 	 	{
@@ -96,6 +103,22 @@ $(function()
 		    noTitre = $(this).find('span:nth-child(1)').text();
 		    fiche_titre(noTitre);
 		});
+
+	/**
+	 * CHECKBOX SANS TEXTES
+	 */
+		$('#section_gauche_titres #checkParolesTitres').change(function(event) {
+			if(this.checked) 
+			{alert("on");
+			}
+			else 
+			{alert("off");}
+			});
+
+
+	/**
+	 * FONCTIONS
+	 */
 
 	function fiche_titre(numero)
 		{

@@ -145,9 +145,9 @@ $texteTitre = $titre->getTexteTitre();
 
 
 <!--
-/**
- * FENETRES MODALES
- */
+/**************************************
+ * 				FENETRES MODALES
+ **************************************/
 -->
 
 <!-- Infos générales du titres -->

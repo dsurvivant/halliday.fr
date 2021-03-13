@@ -87,7 +87,6 @@ $bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO
                     <!--cadre destiné à l'ajout ou suppression -->
                 </div>
         <?php
-        dd($_SESSION);
         }
     else
         //acces direct à la page admin non autorisé
