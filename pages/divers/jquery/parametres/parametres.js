@@ -1,6 +1,14 @@
 $(function()
 {
-	//effacement des messages d'erreur et des couleurs d'alerte
+	function verifEmail($mail) 
+    {
+        console.log("mail: " + $mail);
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test($mail))
+        { return (true); }
+        return (false);
+    }
+
+    //effacement des messages d'erreur et des couleurs d'alerte
     $('#parametres .help-block').css('visibility','hidden');
     $('#parametres input').each(function()
     {
@@ -34,7 +42,7 @@ $(function()
         });
 
         var email = $('#form_parametres #email').val().trim();
-        if(!ValidateEmail(email))
+        if(!verifEmail(email))
         {
         	$('#form_parametres #email').css('border', 'solid 1px red');
         	$('#form_parametres #email').closest('div').next('span').css('visibility','visible');

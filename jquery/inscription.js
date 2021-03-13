@@ -1,5 +1,19 @@
 $(function()
 {
+    function verifEmail($mail) 
+    {
+        console.log("mail: " + $mail);
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test($mail))
+        { return (true); }
+        return (false);
+    }
+
+    function validationmotdepasse($motdepasse)
+    {
+        if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test($motdepasse))
+        { return (true); }
+        return (false);
+    }
 
     //** menu d'inscription
     //** Vérification des champs de saisis
@@ -32,7 +46,7 @@ $(function()
         });
 
         var email = $('#email_inscription').val().trim();
-        if(!ValidateEmail(email))
+        if(!verifEmail(email))
         {
         	$('#email_inscription').css('border', 'solid 1px red');
         	$('#email_inscription').next('span').css('visibility','visible');
