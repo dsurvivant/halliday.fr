@@ -13,8 +13,8 @@
 $(function()
 {//début jQuery
 	//console.log("ajoutmodifTitre.js lancé");
-	
-	//*****
+
+    //*****
 	//**	GESTION DE LA MODIFICATION DES PAROLES DE LA CHANSON
 	//*****
 

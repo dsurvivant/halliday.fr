@@ -238,6 +238,6 @@
         background-color: grey;
     }
 
-    #section_gauche_titres #divlisteTitres .surligne {= background-color: #e4970c; }
+    #section_gauche_titres .surligne { background-color: #e4970c; }
 
     #section_gauche .boutons_album:hover { cursor: pointer; }

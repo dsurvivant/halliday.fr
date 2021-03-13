@@ -195,7 +195,7 @@ $texteTitre = $titre->getTexteTitre();
 					<textarea id="textareaparoles" placeholder="Saisir le texte ici"><?php echo strip_tags($texteTitre); ?></textarea>
 
 					<div class="pull-right">
-						<button id="validertexteTitre" class="btn btn-primary" type="submit">Valider</button>
+						<button id="validertexteTitre" class="btn btn-primary">Valider</button>
 						<button class="btn btn-primary annulermodal" >Annuler</button>
 					</div>
 				</form>

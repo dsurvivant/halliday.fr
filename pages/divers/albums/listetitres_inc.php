@@ -13,17 +13,14 @@ if (isset($_POST['ajax']))
     require_once '../login/login.php'; //parametres de connexion et connexion à la bdd
     require_once '../classes/Titre.class.php';
     require_once '../classes/TitresManager.class.php';
-
-    $droits_modifierparolestitre = $_POST['droits_modifierparolestitre'];
-    $check_modifierparolestitres = $_POST['check_modifierparolestitres'];
-}
-else
-{
-     $check_modifierparolestitres = 0;
-     $droits_modifierparolestitre = $_SESSION['modifierparolestitre'];
+    require_once '../fonctions/fonctions.php';
+    $checkparolestitres = $_POST['checkparolestitres'];
+    echo $checkparolestitres;
 }
 
-if(isset($_SESSION['modifierparolestitre'])) { $droits_modifierparolestitre = $_SESSION['modifierparolestitre'];}
+if(!isset($checkparolestitres)){$checkparolestitres= false;}
+
+$titres = array();
 //connexion à la base de donnees
 $bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
 //recherche du nombre total d'album
@@ -33,9 +30,10 @@ $nombreTitres = $manager->getnombreTitres();
 //*****
 //***** DETERMINATION DE L'ORDRE DES INFOS DANS LE TABLEAU ****
 //*****
-
+   
     /** TRI PAR DEFAUT **/
     $titres = $manager->getList();
+
     /**************************/
     /** TRI PAR NOM DE TITRE **/
     /**************************/
@@ -57,35 +55,12 @@ $nombreTitres = $manager->getnombreTitres();
             else
             {$titres = $manager->getListNoDesc();}
         }
-
-    /******************************/
-    /** TRI PAR ANNEE DU TITRE  **/
-    /****************************/
-
-        
 //*****
 //***** AFFICHAGE DE LA LISTE DE TITRES ****
 //*****
 ?>
 
     <div class="container-fluid" style="background-color: aliceblue";>
-
-        <div id="droits_modifierparolestitres"><?=$droits_modifierparolestitre ?></div> <!-- pour js -->
-
-
-        <?php 
-        /**
-        echo $droits_modifierparolestitre . "<br>";
-        echo $check_modifierparolestitres;
-        exit;**/
-        if($droits_modifierparolestitre==1): ?>
-            <div id="filtre_liste_titres" class="col-lg12">
-                <form>
-                    <label for="checkParolesTitres">Sans textes</label>
-                    <input id="checkParolesTitres" type="checkbox" name="checkParolesTitres">
-                </form>
-            </div>
-        <?php endif; ?>
         
         <!--------------------->
         <!-- ENTETE DE LISTE -->
@@ -103,22 +78,26 @@ $nombreTitres = $manager->getnombreTitres();
             <div id="divlisteTitres" class="row container-fluid" style="font-size: 16px;">
                 <?php
                     $i=0;
+
                     foreach ($titres as $titre)
                     {
-                        $i++;
-                        ?>
-                        <div class="row lignetitre" style="border-bottom: 0.1em solid lightgrey;height: 30px;line-height: 30px;">
-                            <span class="col-lg-1" style="border-right: solid lightgrey; display: none;"><?php echo($titre->getNoTitre()); ?></span>
-                            <span class="col-lg-9" style="border-right: solid lightgrey;" title="Titre no <?php echo($titre->getNoTitre()); ?>"><?php echo($titre->getNomTitre()); ?></span>
-                            <span class="col-lg-2">xxxx</span>
-
-                            <?php 
-                                if($i==1) { $_SESSION['notitre'] = $titre->getNoTitre();}
+                        if (($checkparolestitres==true and $titre->getTexteTitre()==null) or ($checkparolestitres == false))
+                        {
+                            $i++;
                             ?>
-                        </div>
-                <?php
+                            <div class="row lignetitre" style="border-bottom: 0.1em solid lightgrey;height: 30px;line-height: 30px;">
+                                <span class="col-lg-1" style="border-right: solid lightgrey; display: none;"><?php echo($titre->getNoTitre()); ?></span>
+                                <span class="col-lg-9" style="border-right: solid lightgrey;" title="Titre no <?php echo($titre->getNoTitre()); ?>"><?php echo($titre->getNomTitre()); ?></span>
+                                <span class="col-lg-2">xxxx</span>
+
+                                <?php 
+                                    if($i==1) { $_SESSION['notitre'] = $titre->getNoTitre();}
+                                ?>
+                            </div>
+
+                <?php }
                     }?>
             </div>
 
-        <strong>total: <?php echo $nombreTitres; ?></strong>
+        <strong>total: <?php echo $i; ?></strong>
     </div>

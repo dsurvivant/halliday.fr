@@ -24,10 +24,9 @@ $(function()
 			if ($(this).text()=="Titre")
 		    {
 			    //case à cocher modifierparolestitres
-			    if($('#section_gauche_titres #checkParolesTitres')){ check_modifierparolestitres=1; }
+			    if($('#checkParolesTitres').prop('checked')){ check_modifierparolestitres=1; }
 				else { check_modifierparolestitres=0; };
 
-				alert($('#section_gauche_titres #checkParolesTitres').val());
 			    //determination de l'ordre de l'album
 			    if (ordreTitre=="croissant") {ordreTitre="decroissant"}
 			    else {ordreTitre="croissant"}
@@ -40,8 +39,7 @@ $(function()
 				    data: {
 				        	ajax: "yes",
 				        	ordreTitre: ordreTitre,
-				        	droits_modifierparolestitre : $('#droits_modifierparolestitres').text(),
-				        	check_modifierparolestitres : check_modifierparolestitres,
+				        	checkparolestitres : $('#checkParolesTitres').prop('checked'),
 				        	},
 				    success: function(data)
 				    {
@@ -58,37 +56,7 @@ $(function()
 				    error: function(){alert("erreur ajax titre");}
 				});
 			}
-
-		    /** TRI PAR NO DE TITRE **/
-		        	
-
-		    if ($(this).text()=="No")
-		    {
-			    //determination de l'ordre de l'album
-			    if (ordreNo=="croissant"){ordreNo="decroissant"}
-			    else{ordreNo="croissant"}
-
-			    $.ajax
-				({
-				    type: 'POST',
-				    url: 'pages/divers/albums/listetitres_inc.php',
-				    dataType: 'html',
-				    data: {
-				        	ajax: "yes",
-				        	ordreNo: ordreNof,
-				        	},
-				    success: function(data){$('#section_gauche_titres').html(data);},
-				    complete: function()
-				    {
-				        //surlignement du 1er titre de la liste
-	    				$('#divlisteTitres .lignetitre:first').css('backgroundColor', '#e4970c');
-	    				noTitre=$('#divlisteTitres .lignetitre:first').find('span:nth-child(1)').text();
-	    				fiche_titre(noTitre);
-				    },
-				    error: function(){alert("erreur ajax titre");}
-
-				});
-			}
+		
 		});
 		    
 	/**
@@ -107,13 +75,10 @@ $(function()
 	/**
 	 * CHECKBOX SANS TEXTES
 	 */
-		$('#section_gauche_titres #checkParolesTitres').change(function(event) {
-			if(this.checked) 
-			{alert("on");
-			}
-			else 
-			{alert("off");}
-			});
+		$('#checkParolesTitres').change(function() 
+		{
+			$('#formfiltres').submit();
+		});
 
 
 	/**
