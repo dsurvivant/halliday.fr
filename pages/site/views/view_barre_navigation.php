@@ -17,29 +17,47 @@
 	<!-- LIENS -->
 		<div id="menu" class="collapse navbar-collapse">
 			<ul class="navbar-nav">
-				<li class="nav-item active"> <a class="nav-link" href="index.php"> Accueil</a> </li>
 
-	        	<li class="nav-item">
-	            	<a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-music"> Discographie</span> <b class="caret"></b></a>
-					<ul id="liste_decennie" class="dropdown-menu">
-						<li><a href="index.php?decennie=1960"><span class="glyphicon glyphicon-cd"> 1960 - 1969</span></a></li>
-						<li><a href="index.php?decennie=1970"><span class="glyphicon glyphicon-cd"> 1970 - 1979</span></a></li>
-						<li><a href="index.php?decennie=1980"><span class="glyphicon glyphicon-cd"> 1980 - 1989</span></a></li>
-						<li><a href="index.php?decennie=1990"><span class="glyphicon glyphicon-cd"> 1990 - 1999</span></a></li>
-						<li><a href="index.php?decennie=2000"><span class="glyphicon glyphicon-cd"> 2000 - 2009</span></a></li>
-						<li><a href="index.php?decennie=2010"><span class="glyphicon glyphicon-cd"> 2010 - 2018</span></a></li>
-						<li class="divider"></li>
-						<li><a href="index.php?decennie=tous"><span class="glyphicon glyphicon-cd"> Tous</span></a></li>
-					</ul>
+			<!-- CHOIX MENU ACCUEIL -->
+				<li class="nav-item active"> 
+					<a class="nav-link" href="index.php"> Accueil</a> 
+				</li>
+			<!-- CHOIX MENU DISCOGRAPHIE -->
+	        	<li  class="nav-item dropdown">
+	            	<a id="menuDiscographie" class="nav-link dropdown-toggle"  href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Discographie
+	            	</a>
+
+					<div id="liste_decennie" class="dropdown-menu">
+						<a class="dropdown-item" href="index.php?decennie=1960"> 1960 - 1969</a>
+						<a class="dropdown-item" href="index.php?decennie=1970"> 1970 - 1979</a>
+						<a class="dropdown-item" href="index.php?decennie=1980"> 1980 - 1989</a>
+						<a class="dropdown-item" href="index.php?decennie=1990"> 1990 - 1999</a>
+						<a class="dropdown-item" href="index.php?decennie=2000"> 2000 - 2009</a>
+						<a class="dropdown-item" href="index.php?decennie=2010"> 2010 - 2018</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="index.php?decennie=tous"> Tous</span></a>
+					</div>
 	        	</li>
+	        <!-- CHOIX MENU Fiches Albums-->
+	           <li  class="nav-item dropdown">
+	            	<a id="menuDiscographie" class="nav-link dropdown-toggle"  href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Fiches Albums
+	            	</a>
 
-	           <li class="nav-item">
-	             <a href="#" class="nav-link">Contact</a>
-	           </li>
+					<div id="liste_decennie" class="dropdown-menu">
+						<a class="dropdown-item" href="index.php?decennie=1960"> 1960 - 1969</a>
+						<a class="dropdown-item" href="index.php?decennie=1970"> 1970 - 1979</a>
+						<a class="dropdown-item" href="index.php?decennie=1980"> 1980 - 1989</a>
+						<a class="dropdown-item" href="index.php?decennie=1990"> 1990 - 1999</a>
+						<a class="dropdown-item" href="index.php?decennie=2000"> 2000 - 2009</a>
+						<a class="dropdown-item" href="index.php?decennie=2010"> 2010 - 2018</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="index.php?decennie=tous"> Tous</span></a>
+					</div>
+	        	</li>
 	         </ul>
 		</div>
 	<!-- FORMULAIRE DE RECHERCHE -->
-	<!--
+		<!--
 		<form class="form-inline">
 	         <input class="form-control mr-sm-2" type="search" placeholder="Search">
 	      <button class="btn btn-primary" type="submit">Recherche</button>       
