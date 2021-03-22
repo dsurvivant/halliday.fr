@@ -40,7 +40,7 @@
 						</div>
 		        	</li>
 		        <!-- CHOIX MENU Fiches Albums-->
-		           <li  class="nav-item dropdown">
+		           	<li  class="nav-item dropdown">
 		            	<a id="menuFichesAlbums" class="nav-link dropdown-toggle"  href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Fiches Albums
 		            	</a>
 
@@ -81,17 +81,46 @@
 			         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 			      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Recherche</button>       
 			    </form>
-			<!-- BOUTON DE CONNEXION -->
+			<!-- BOUTON DE CONNEXION / MENU DU COMPTE -->
+				<?php
+				if (isset($_SESSION['noutil'])) //déjà connecté
+				{?>
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown">
+							<a  class="nav-link dropdown-toggle"  href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							 <?= $_SESSION['pseudo']; ?>
+		            		</a>
 
-				<div class="text-right">
-					<a href="index.php?demandeconnexion">
-						<button class="btn btn-outline-info ml-1 my-2 my-sm-0">Connexion</button>
-					</a>
-				</div>
+		            		<div id="liste_decennie" class="dropdown-menu">
+		            			<!-- 1ere OPTION -->
+		            			<?php if ($page=="acces_membre"): ?>
+		            				<a class="dropdown-item" href="index.php?accueil">Retour au site</a>
+		            			<?php else: ?>
+		            				<a class="dropdown-item" href="index.php?acces_membre">Acces Membres</a>
+		            			<?php endif; ?>
 
+		            			<!-- 2ème OPTION - uniquement administrateur -->
+		            			<?php if ($_SESSION['administrateur']==1): ?>
+									<a class="dropdown-item" href="index.php?gestionsite">Gestion du site</a>
+								<?php endif; ?>
 
+								<!-- 3ème OPTION -->
+								<a class="dropdown-item" href="index.php?parametres">Paramètres</a>
+								<!-- 4ème OPTION -->
+								<a class="dropdown-item" href="index.php?deconnexion">Déconnexion</a>
+							</div>
+						</li>
+					</ul>
+				<?php
+				}
+				else // non connecté
+				{?>
+					<div class="text-right">
+						<a href="index.php?demandeconnexion">
+							<button class="btn btn-outline-info ml-1 my-2 my-sm-0">Connexion</button>
+						</a>
+					</div>
+				<?php
+				}?>
 		</div>
-	
-
-	<!-- FORMULAIRE DE CONNEXION -->
 </nav>
