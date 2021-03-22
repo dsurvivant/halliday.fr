@@ -15,7 +15,6 @@ if (isset($_POST['ajax']))
     require_once '../classes/TitresManager.class.php';
     require_once '../fonctions/fonctions.php';
     $checkparolestitres = $_POST['checkparolestitres'];
-    echo $checkparolestitres;
 }
 
 if(!isset($checkparolestitres)){$checkparolestitres= false;}
@@ -66,10 +65,9 @@ $nombreTitres = $manager->getnombreTitres();
         <!-- ENTETE DE LISTE -->
         <!--------------------->
 
-            <div class="row entete">
-                <span class="col-lg-1 entetetitre text-center" style="border-right: solid lightgrey;display: none;">No</span>
-                <span class="col-lg-9 entetetitre" style="border-right: solid lightgrey;">Titre</span>
-                <span class="col-lg-2 entetetitre" >Année</span>
+            <div class="row entete text-center">
+                <span class="entetetitre text-center" style="border-right: solid lightgrey;display: none;">No</span>
+                <span class="col-lg-12 entetetitre">Titres</span>
             </div>
 
         <!--------------------->
@@ -87,8 +85,7 @@ $nombreTitres = $manager->getnombreTitres();
                             ?>
                             <div class="row lignetitre" style="border-bottom: 0.1em solid lightgrey;height: 30px;line-height: 30px;">
                                 <span class="col-lg-1" style="border-right: solid lightgrey; display: none;"><?php echo($titre->getNoTitre()); ?></span>
-                                <span class="col-lg-9" style="border-right: solid lightgrey;" title="Titre no <?php echo($titre->getNoTitre()); ?>"><?php echo($titre->getNomTitre()); ?></span>
-                                <span class="col-lg-2">xxxx</span>
+                                <span class="col-lg-9" title="Titre no <?php echo($titre->getNoTitre()); ?>"><?php echo($titre->getNomTitre()); ?></span>
 
                                 <?php 
                                     if($i==1) { $_SESSION['notitre'] = $titre->getNoTitre();}

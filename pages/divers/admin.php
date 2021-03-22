@@ -71,7 +71,7 @@ else { $onglet = 'Albums'; }
                                 if($droits_modifierparolestitre==1): ?>
                                     <div id="filtre_liste_titres" class="col-lg12">
                                         <form id="formfiltres" method="post" action="index.php?acces_membre&onglet=Titres">
-                                            <label for="checkParolesTitres"> Afficher que les titres qui manquent les paroles</label>
+                                            <label for="checkParolesTitres"> Afficher titres sans paroles</label>
                                             <input id="checkParolesTitres" type="checkbox" name="checkParolesTitres" <?php if($checkparolestitres==true) { echo "checked ";} ?> > 
 
                                         </form>

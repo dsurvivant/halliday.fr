@@ -21,7 +21,7 @@ $(function()
 		$('#section_gauche_titres').on('click', '.entetetitre', function()
 		{
 		    /** TRI PAR NOM DE TITRE **/
-			if ($(this).text()=="Titre")
+			if ($(this).text()=="Titres")
 		    {
 			    //case à cocher modifierparolestitres
 			    if($('#checkParolesTitres').prop('checked')){ check_modifierparolestitres=1; }
