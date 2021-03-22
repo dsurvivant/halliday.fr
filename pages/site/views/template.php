@@ -14,7 +14,7 @@
             <link rel="stylesheet" href="css/design_screen.css">
             <link rel="stylesheet" href="css/design_page_admin.css">
             <link rel="stylesheet" href="css/design_gestionsite.css">
-            <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/Assets/css/bootstrap.min.css" >
+            <link rel="stylesheet" href="css/bootstrap4/bootstrap.min.css" >
             <!--<link rel="stylesheet" href="css/bootstrap4/bootstrap.min.css" >-->
             <link rel="stylesheet" href="jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css">
             <link rel="stylesheet" href="jquery/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css">
@@ -26,19 +26,19 @@
 	
 	<body class="container-fluid">
 		
-		<header class="row">
-			<h1 class="col-xs-8 col-xs-offset-2">JOHNNY HALLYDAY</h1>    
-			<p class="col-xs-2 visible-xs"><img id="image_menu" src="pages/site/images/boutons/boutonmenu.png" alt="bouton_menu" title="menu"/></p>
+		<header class="row bg-dark">
+			<div class="col text-center">
+				<h1 class="pt-4" >JOHNNY HALLYDAY</h1> 
+			</div>
+			<!--<p class="col-xs-2 visible-xs"><img id="image_menu" src="pages/site/images/boutons/boutonmenu.png" alt="bouton_menu" title="menu"/></p>-->
 		</header>
 
-		<section class="row">
-			<!-- Menu	-->
-				<nav id="barre_navigation" class="navbar navbar-inverse">
-					<div class="container-fluid">
-						<?= $menu ?>
-				</div>
-				    </nav>
+		<section id="barrenavigation" class="row">
+			<!--<?= $menu ?>-->
+			<?php require("pages/site/views/view_barre_navigation.php"); ?>
+		</section>
 
+		<section>
 			<!-- PAGE PRINCIPALE	-->
 				<div id="page_principale" class="col-lg-12">
 					<?= $corpspage  ?>
@@ -106,7 +106,7 @@
 	        <script src="jquery/inscription.js"></script>
 	        <script src="jquery/discographie.js"></script>
 	        <script src="jquery/fiche_album.js"></script>
-	        <script src="bootstrap-3.3.7-dist/Assets/js/bootstrap.min.js"></script>
+	        <script src="jquery/bootstrap4/bootstrap.min.js"></script>
 
 	        <!-- ADMINISTRATION -->
 		    <script src="pages/divers/jquery/albums/listeAlbum.js"></script>

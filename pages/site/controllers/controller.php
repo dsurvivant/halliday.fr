@@ -520,7 +520,7 @@
 				break;
 		}
 
-		$menu = afficherMenu($page);
+		//$menu = afficherMenu($page);
 		require ('pages/site/views/template.php');
 	}
 	

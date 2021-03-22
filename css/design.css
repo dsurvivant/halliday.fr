@@ -7,16 +7,11 @@ html
 /*****                      *****/
 /** ENTETE ET PIED DE PAGE     **/
 /*****                      *****/
-    header
-    {
-        height:60px;
-        background-color: #2c2c2c;
-    }
+    header { height:60px; }
 
     header h1
     {
         text-align: center;
-        /**font-family: courier;**/
         font-size: 20px;
         color: white;
     }
@@ -63,20 +58,7 @@ html
 /*****                  *****/
 /** barre de navigation   **/
 /*****                *****/
-    #barre_navigation
-    {
-        margin: 0;
-    }
-
-    #barre_navigation a:hover
-    {
-        cursor: pointer;
-    }
-
-    #formrecherche
-    {
-        display: none;
-    }
+    
 
 /*****              *****/
 /** accueil_inc.php   **/

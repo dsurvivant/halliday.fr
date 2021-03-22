@@ -6,17 +6,6 @@
         overflow-y: none;
     }
 
-    #barre_navigation
-    {
-        position: absolute;
-        right: 0;
-        width: 60%;
-        height: 100vh;
-        z-index: 10000;
-        visibility: hidden;
-        overflow: auto;
-    }
-
     /*****
     /** accueil
     /*****              **/
