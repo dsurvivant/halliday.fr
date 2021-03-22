@@ -60,7 +60,10 @@
 		</div>
 	</div>
 
-	<div class="row text-center"><input form="form_parametres" type="submit" id="modifierprofil" class="btn btn-primary btn-sm" name="modifierprofil" value="Modifier"></div>
+	<div class="row text-center">
+		<input form="form_parametres" type="submit" id="modifierprofil" class="btn btn-primary btn-sm" name="modifierprofil" value="Modifier">
+		<input formaction="index.php" form="form_parametres" type="submit" id="Annulermodif" class="btn btn-primary btn-sm" name="annulermodif" value="Annuler">
+	</div>
 	
 
 </div>
