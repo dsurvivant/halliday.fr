@@ -71,7 +71,6 @@
 							<a class="dropdown-item" href="index.php?fiche=1989-cadillac"> 1989 - Cadillac</a>
 							<a class="dropdown-item" href="index.php?fiche=2007-le_coeur_d_un_homme"> 2007 - Le coeur d'un homme</a>
 							<a class="dropdown-item" href="index.php?fiche=2008-ca_ne_finira_jamais"> 2008 - Ca ne finira jamais</a> 
-						
 						</div>
 		        	</li>
 		         </ul>
@@ -91,7 +90,7 @@
 							 <?= $_SESSION['pseudo']; ?>
 		            		</a>
 
-		            		<div id="liste_decennie" class="dropdown-menu">
+		            		<div id="liste_decennie" class="dropdown-menu dropdown-menu-right">
 		            			<!-- 1ere OPTION -->
 		            			<?php if ($page=="acces_membre"): ?>
 		            				<a class="dropdown-item" href="index.php?accueil">Retour au site</a>
