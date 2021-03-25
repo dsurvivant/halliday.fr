@@ -49,8 +49,8 @@ $(function()
         if(!verifEmail(email))
         {
         	$('#email_inscription').css('border', 'solid 1px red');
-        	$('#email_inscription').next('span').css('visibility','visible');
-        	$('#email_inscription').next('span').text('Adresse email invalide');
+        	$('#span_email').css('visibility','visible');
+        	$('#span_email').text('Adresse email invalide');
         	$erreur = true;
         }
 
@@ -60,8 +60,8 @@ $(function()
         {
             $('#password_inscription').css('border', 'solid 1px red');
             $('#confirmpassword_inscription').css('border', 'solid 1px red');
-            $('#confirmpassword_inscription').next('span').css('visibility', 'visible');
-            $('#confirmpassword_inscription').next('span').text('Les mots de passe ne sont pas identiques');
+            $('#span_confirm_password').css('visibility', 'visible');
+            $('#span_confirm_password').text('Les mots de passe ne sont pas identiques');
             $erreur = true;
         }
         //criteres mot de passe
@@ -69,8 +69,8 @@ $(function()
         {
         	$('#password_inscription').css('border', 'solid 1px red');
             $('#confirmpassword_inscription').css('border', 'solid 1px red');
-            $('#confirmpassword_inscription').next('span').css('visibility', 'visible');
-            $('#confirmpassword_inscription').next('span').text('Les mots de passe ne respectent pas les critères');
+            $('#span_confirm_password').css('visibility', 'visible');
+            $('#span_confirm_password').text('Les mots de passe ne respectent pas les critères');
             $erreur = true;
         }
 

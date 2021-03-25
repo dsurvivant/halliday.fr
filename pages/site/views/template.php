@@ -21,7 +21,7 @@
             <link rel="stylesheet" href="jquery/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css">
     		
 
-		<title>Johnny hallyday</title>
+		<title><?= $titre ?></title>
 	</head>
 	
 	<body class="container-fluid">

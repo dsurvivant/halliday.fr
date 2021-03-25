@@ -7,6 +7,7 @@
 	{
 		
 		require('pages/site/controllers/controller.php');
+		require('pages/site/controllers/controller_connexion.php');
 		
 		//contient la description de la page à afficher
 		$page='accueil';
@@ -26,19 +27,45 @@
 			//fiche album
 			if (isset($_GET['fiche'])) { template('fiche'); }
 			elseif (isset($_GET['decennie'])) { template('decennie'); }
-			elseif (isset($_GET['demandeconnexion'])) { template('demandeconnexion');}
+			elseif (isset($_GET['demandeconnexion'])) 
+				{ 
+					$_SESSION['current_page'] = 'demandeconnexion'; 
+					demandeConnexion();
+				}
 			elseif (isset($_GET['acces_membre'])) { template('acces_membre'); }
-			elseif (isset($_GET['deconnexion'])) { template('deconnexion'); }
-			elseif (isset($_GET['inscription'])) { template('inscription'); }
+			elseif (isset($_GET['deconnexion'])) 
+				{ 
+					$_SESSION = array();
+					$_SESSION['current_page'] = 'accueil';
+					$corpspage = afficherAccueil(); 
+				}
+			elseif (isset($_GET['inscription'])) 
+				{ 
+					$_SESSION['current_page'] = 'inscription'; 
+					afficherInscription(); 
+				}
 			elseif (isset($_GET['gestionsite'])) { template('gestionsite'); }
 			elseif (isset($_GET['parametres'])) { template('parametres'); }
-			elseif (isset($_GET['activation'])) { template('activation'); }
-			else{template('accueil');}
+			elseif (isset($_GET['activation'])) 
+				{ 
+					$_SESSION['current_page'] = 'activation';
+					$titre = "Activation";
+					$corpspage = activation(); 
+					include ("pages/site/views/template.php");
+				}
+			else
+				{
+					$_SESSION['current_page'] = 'accueil';
+					afficherAccueil();
+				}
 
 	} 
 	catch (Exception $e) 
 	{
-		template('error');
+		$_SESSION['current_page'] = 'error';
+		$titre = "Erreur";
+		$corpspage = afficherErreur($e);
+		include ("pages/site/views/template.php");
 	}
 
 	
