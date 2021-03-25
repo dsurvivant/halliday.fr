@@ -29,7 +29,7 @@
 	function afficherDecennie($bdd)
 	{
 		ob_start();
-			 require("pages/site/albums/liste_albums.php");
+			 require("pages/site/views/albums/liste_albums.php");
 		return ob_get_clean();
 	}
 

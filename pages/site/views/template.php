@@ -38,57 +38,54 @@
 			<?php require("pages/site/views/view_barre_navigation.php"); ?>
 		</section>
 
-		<section>
-			<!-- PAGE PRINCIPALE	-->
-				<div id="page_principale" class="col-lg-12">
-					<?= $corpspage  ?>
-				</div>		
+		<section id="page_principale" class="row">
+			<?= $corpspage  ?>
 		</section>
 
 		<footer class="row">
-				<div class="container">
-					<section class="row">
-						<div class="text-center">
-							<img  alt="logo_philips" title="philips" src="pages/site/images/logos/philips.jpg">
-							<img  alt="logo_universal" title="universal" src="pages/site/images/logos/universal.png">
-							<img alt="logo_warner" title="warner" src="pages/site/images/logos/warner.png">
-						</div>
-					</section>
+			<div class="container">
+				<section class="row">
+					<div class="text-center">
+						<img  alt="logo_philips" title="philips" src="pages/site/images/logos/philips.jpg">
+						<img  alt="logo_universal" title="universal" src="pages/site/images/logos/universal.png">
+						<img alt="logo_warner" title="warner" src="pages/site/images/logos/warner.png">
+					</div>
+				</section>
 
-					<section class="row">
-						Références: 
-						<a href="https://johnnyhallyday.store/" target="_blank">Store Johnny</a> - 
-						<a href="http://www.hallyday.com/" target="_blank">Johnny Hallyday le web</a> - 
-						<a href="https://fr.wikipedia.org/wiki/Johnny_Hallyday" target="_blank">Wikipedia Johnny Hallyday</a> - 
-						<a href="https://inoubliablejohnnyhallyday.wordpress.com/" target="_blank">Blog Inoubliable Johnny Hallyday</a>
-					</section>
+				<section class="row">
+					Références: 
+					<a href="https://johnnyhallyday.store/" target="_blank">Store Johnny</a> - 
+					<a href="http://www.hallyday.com/" target="_blank">Johnny Hallyday le web</a> - 
+					<a href="https://fr.wikipedia.org/wiki/Johnny_Hallyday" target="_blank">Wikipedia Johnny Hallyday</a> - 
+					<a href="https://inoubliablejohnnyhallyday.wordpress.com/" target="_blank">Blog Inoubliable Johnny Hallyday</a>
+				</section>
 
-					<section class="row text-center">
-						<a href="mailto:halliday.fr@yahoo.com"> ----- Contact -----</a>
-					</section>
+				<section class="row text-center">
+					<a href="mailto:halliday.fr@yahoo.com"> ----- Contact -----</a>
+				</section>
 
-					<section class="row">
-						<img src="pages/site/images/logos/youtube.png" alt="youtube" title="youtube" width="30px">
-						<a href="https://www.youtube.com/channel/UC9wvnHwKWvE_unCTf1eLKHw" target="_blank">Chaine Officielle</a>
-					</section>
+				<section class="row">
+					<img src="pages/site/images/logos/youtube.png" alt="youtube" title="youtube" width="30px">
+					<a href="https://www.youtube.com/channel/UC9wvnHwKWvE_unCTf1eLKHw" target="_blank">Chaine Officielle</a>
+				</section>
 
-					<section class="row" style="color:white">
-						<?php 
-							if(isset($_SESSION['noutil'])) //déjà connecté
-							{
-								$utilisateur = "<span id='pseudo'>" . $_SESSION['nomutil'] . " </span>";
-								$utilisateur = $utilisateur . "<span id='nomutil'>" . $_SESSION['prenomutil'] . " </span>";
-								/** ATTENTION LE NOUTIL UTILISE POUR D'AUTRE PAGES (JQUERY AJAX)  **/
-								$utilisateur = $utilisateur . "<span id='noutil' style='visibility: hidden;'>" . $_SESSION['noutil'] . "</span>";
-							}
-							else
-							{
-								$utilisateur="Non connecté";
-							}
-						?>
-						<p id="utilisateur" class="text-right"><?php echo $utilisateur;?></p>
-					</section>
-				</div>
+				<section class="row" style="color:white">
+					<?php 
+						if(isset($_SESSION['noutil'])) //déjà connecté
+						{
+							$utilisateur = "<span id='pseudo'>" . $_SESSION['nomutil'] . " </span>";
+							$utilisateur = $utilisateur . "<span id='nomutil'>" . $_SESSION['prenomutil'] . " </span>";
+							/** ATTENTION LE NOUTIL UTILISE POUR D'AUTRE PAGES (JQUERY AJAX)  **/
+							$utilisateur = $utilisateur . "<span id='noutil' style='visibility: hidden;'>" . $_SESSION['noutil'] . "</span>";
+						}
+						else
+						{
+							$utilisateur="Non connecté";
+						}
+					?>
+					<p id="utilisateur" class="text-right"><?php echo $utilisateur;?></p>
+				</section>
+			</div>
 		</footer>
 
 		<!--			-->

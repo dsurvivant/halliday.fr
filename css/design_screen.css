@@ -2,15 +2,6 @@
 @media screen and (min-width: 768px)
 {
 
-/*****
-/** PIED DE PAGE
-/*****         *******/
-/**footer { height: 150px; }
-/*****                   *****/
-/** MENU DE NAVIGATION     **/
-/*****                 *****/
-
-
 /*****                   *****/
 /** PAGE CENTRALE          **/
 /*****                 *****/
@@ -20,31 +11,6 @@
         padding: 0;
         min-height: calc(100vh - 262px);
     }
-
-/*****
-/** accueil
-/*****              **/
-    #accueil #son_reve_americain
-        {
-            margin:10px;
-            padding-top: 10px;
-            font-size:20px;
-        }
-
-    #accueil #son_reve_americain img{ width: 50%; }
-    #accueil .son_reve_americain
-    {
-        width: 40%;
-        margin: auto;
-    }
-
-    #accueil .johnny69, #accueil .parcdesceaux, #accueil .bercy2003 { text-align: center; }
-
-    #accueil .johnny69 img, #accueil .parcdesceaux img, #accueil .bercy2003 img { width:250px; }
-
-    #accueil .johnny69 h3, #accueil .parcdesceaux h3, #accueil .bercy2003 h3 { font-size: 1.5em; }
-
-    #accueil .johnny69 h4, #accueil .parcdesceaux h4, #accueil .bercy2003 h4 { font-size: 1em; }
 
 /*****
 /** fiche album

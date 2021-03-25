@@ -6,34 +6,17 @@
         overflow-y: none;
     }
 
-    /*****
-    /** accueil
-    /*****              **/
-    #accueil #son_reve_americain
-    {
-        font-size:10px;
-    }
-
-    #accueil #son_reve_americain img
-    {
-        width: 100%;
-    }
-    #accueil .johnny69, #accueil .parcdesceaux, #accueil .bercy2003
-    {
-        border: solid #2c2c2c;
-        border-radius: 15px;
-    }
     /*****                    *****/
     /** fiche_album_inc.php     **/
     /*****                    *****/
 
       #fiche_album
-    {
+      {
         position: relative;
         font-family: 'Times New Roman', Times, serif;
         font-size: 0.8em;
         padding: 0;
-    }
+      }
 
      #fiche_album .contenu, #fiche_album .chevron_bas
      {

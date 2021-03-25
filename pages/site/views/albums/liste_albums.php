@@ -1,37 +1,8 @@
 <?php
 
-// appelée en incude par index.php ou
-// appelée par ajax par jquery/listeAlbum.js
-//
 // page qui affiche une liste d'albums par décennie
 // affiche par défaut la décennie des années 60
-// mis à jour par ajax lors des changements des critères d'affichage 
-
-/**
-if (isset($_GET['ajax']))
-{
-    include_once '../../divers/login/login.php';
-    include_once '../../divers/fonctions/fonctions.php'; //fonction de sécurité des saisies
-
-    include_once '../../divers/classes/Album.class.php';
-    include_once '../../divers/classes/AlbumManager.class.php';
-
-    include_once '../../divers/classes/Titre.class.php';
-    include_once '../../divers/classes/TitreManager.class.php';
-    include_once '../../divers/classes/LiaisonAlbumsTitres.class.php';
-    include_once '../../divers/classes/LiaisonAlbumsTitresManager.class.php';
-}
-**/
-
-//connexion à la base de donnees
-//$bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
-//=====
-//== CADRE LISTE DES ALBUMS : #liste_albums-->contient la liste des albums. Un cadre par album
-//=====          
-?> 
-
-	<?php
-	
+     
 	//recherche du nombre total d'album
     $manager = new AlbumsManager($bdd);
     $nombreAlbums = $manager->getnombreAlbums();

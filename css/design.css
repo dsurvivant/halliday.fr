@@ -59,39 +59,6 @@ html
 /** barre de navigation   **/
 /*****                *****/
     
-
-/*****              *****/
-/** accueil_inc.php   **/
-/*****            *****/
-
-    #accueil #diaporama
-    {
-        padding-top:10px;
-    }
-
-    #accueil #diaporama img
-    {
-
-        margin-bottom: 50px;
-    }
-
-    #accueil .johnny69, #accueil .parcdesceaux, #accueil .bercy2003
-    {
-        margin-top: 0.6em;
-        margin-bottom: 0.6em;
-        font-family: text;
-    }
-
-    #accueil h2
-    {
-        text-align: center;
-    }
-    
-    #accueil .johnny69 .contenu
-    {
-        display: none;
-    }
-    
 /*****              *****/
 /** form_connexion_inc.php   **/
 /*****            *****/
