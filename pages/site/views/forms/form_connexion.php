@@ -33,6 +33,4 @@ $corpspage = ob_get_clean();
 
 $titre="Connexion"; 
 include ("pages/site/views/template.php");
-
-
 ?>

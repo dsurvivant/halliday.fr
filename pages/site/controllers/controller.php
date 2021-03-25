@@ -10,13 +10,14 @@
 	{
 		$fiche = $_GET['fiche'];
 		ob_start();
-			if (file_exists("pages/site/albums/fiches_albums/" . $fiche . ".php"))
-			{ require("pages/site/albums/fiches_albums/" . $fiche . ".php");}
+			if (file_exists("pages/site/views/albums/fiches_albums/" . $fiche . ".php"))
+			{ require("pages/site/views/albums/fiches_albums/" . $fiche . ".php");}
 			else
-			{ require("pages/site/albums/fiches_albums/fiche_inconnue.php");}
-		return ob_get_clean();
+			{ require("pages/site/views/albums/fiches_albums/fiche_inconnue.php");}
+		$corpspage =  ob_get_clean();
 
-		return $corpspage;
+		$titre="Connexion"; 
+		include ("pages/site/views/template.php");
 	}
 
 	function afficherAccueil()
@@ -49,13 +50,6 @@
 		    {
 		    	throw new Exception("Merci de passer par le formulaire pour vous identifier");
 		    }
-		return ob_get_clean();
-	}
-
-	function afficherErreur($e)
-	{
-		ob_start();
-			echo "<h3>" . $e->getMessage() ."</h3>";
 		return ob_get_clean();
 	}
 
@@ -229,10 +223,6 @@
 		
 		switch ($page) 
 		{
-			case 'fiche':
-				$_SESSION['current_page'] = 'fiche';
-				$corpspage = afficherFiche();
-				break;
 			case 'decennie':
 				$_SESSION['current_page'] = 'decennie';
 				$corpspage = afficherDecennie($bdd);

@@ -25,7 +25,11 @@
 			if(isset($_POST['oldpassword'])) {verifierpassword($_POST['oldpassword']);exit;}
 
 			//fiche album
-			if (isset($_GET['fiche'])) { template('fiche'); }
+			if (isset($_GET['fiche'])) 
+				{ 
+					$_SESSION['current_page'] = 'fiche';
+					afficherFiche();
+				}
 			elseif (isset($_GET['decennie'])) { template('decennie'); }
 			elseif (isset($_GET['demandeconnexion'])) 
 				{ 
@@ -64,7 +68,8 @@
 	{
 		$_SESSION['current_page'] = 'error';
 		$titre = "Erreur";
-		$corpspage = afficherErreur($e);
+
+		$corpspage = "<h3>" . $e->getMessage() ."</h3>";
 		include ("pages/site/views/template.php");
 	}
 
