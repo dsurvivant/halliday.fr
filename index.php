@@ -12,7 +12,7 @@
 		//contient la description de la page à afficher
 		$page='accueil';
 		//données de connection membre
-		$pseudo='';
+		$email='';
 		$password='';
 		//page courante
 		$_SESSION['current_page'] = 'accueil';

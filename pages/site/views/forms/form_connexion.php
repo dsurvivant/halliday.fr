@@ -1,15 +1,23 @@
 
 <?php 
+if (!isset($email)) { $email='';}
+if (!isset($password)) { $password=''; }
+if (isset($_SESSION['message'])){ $message=$_SESSION['message'];}
+else { $message=''; }
+
 ob_start();
 ?>
 <div class="container-fluid">
 	<div class="row">
+		<h5 class="col text-center text-danger"><?= $message ?></h5>
+	</div>
+	<div class="row">
 		<form class="mx-auto mt-4 p-2 border border-info"  id="form_connexion" action="index.php?demandeconnexion" method="post">
-			<legend class="text-center border border-info text-info">Connexion</legend>
+			<legend class="text-center text-info">Connexion</legend>
 
 			<div class="input-group mb-1">
-				<div class="input-group-prepend"><span class="input-group-text">Pseudo</span></div>
-				<input id="pseudo" type="text" class="form-control" name="pseudo" value='<?php echo $pseudo;?>' required>
+				<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
+				<input id="email" type="text" class="form-control" name="email" value='<?php echo $email;?>' required>
 			</div>
 			<span id="span-pseudo" class="help-block">Corrigez l'erreur s'il vous plait</span>
 

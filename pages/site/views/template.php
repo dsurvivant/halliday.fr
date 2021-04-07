@@ -99,7 +99,7 @@
 
 	        <!-- SITE -->
 	        <script src="jQuery/fonctions.js"></script>
-	        <script src="jquery/menu.js"></script>
+	        <script src="jquery/connexion.js"></script>
 	        <script src="jquery/inscription.js"></script>
 	        <script src="jquery/discographie.js"></script>
 	        <script src="jquery/fiche_album.js"></script>

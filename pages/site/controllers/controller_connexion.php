@@ -86,18 +86,18 @@ require_once ('pages/site/model/model.php');
 		
 	}
 
-	function demandeConnexion($pseudo='', $password='')
+	function demandeConnexion($email='', $password='')
 	{
+		
 		if (isset($_SESSION['noutil'])) 
 		{
 			?>
 			<p class="jumbotron">Mais.. Dites moi.. Vous êtes déjà connecté !</p>
 			<?php
 		}
-		else if (isset($_POST['pseudo']) and isset($_POST['motdepasse'])) //retour formulaire de connexion utilisateur
+		else if (isset($_POST['email']) and isset($_POST['motdepasse'])) //retour formulaire de connexion utilisateur
 		{
-		    
-		    $connection = connexionUtilisateur($_POST['pseudo'],$_POST['motdepasse']);
+		    $connection = connexionUtilisateur($_POST['email'],$_POST['motdepasse']);
 
 		    if ($connection) 
 		    {
@@ -116,8 +116,8 @@ require_once ('pages/site/model/model.php');
 		    //les paramètres de connexion ne sont pas valables
 		    else 
 		    {
-		    	?> <h3>Identifiants non valables</h3><?php
-		    	$pseudo = $_POST['pseudo'];
+		    	$_SESSION['message'] = "Identifiants non valables";
+		    	$email = $_POST['email'];
 		    	$password = $_POST['motdepasse'];
 
 		    	require ('pages/site/views/forms/form_connexion.php');
