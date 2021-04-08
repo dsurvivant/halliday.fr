@@ -109,7 +109,7 @@
         }
         
         //=====
-        //== RECHERCHER UN UTILISATEUR A PARTIR DU NUMERO
+        //== INSTANCIE UN UTILISATEUR A PARTIR DU NUMERO
         //=====
         
         public function findNoUtilisateur(Utilisateur $perso)
@@ -158,7 +158,7 @@
         }
 
         //=====
-        //== RECHERCHE SI LE PSEUDO EXISTE
+        //== RECHERCHE SI LE MAIL EXISTE ET INSTANCIE L UTILISATEUR
         //=====
         public function findEmailUtilisateur(Utilisateur $perso)
         {
@@ -168,6 +168,7 @@
             $q->execute();
             if ($donnees = $q->fetch())
             {
+                $perso->hydrate($donnees);
                 return true; //l'utilisateur existe
             }
             else //le membre n'existe pas

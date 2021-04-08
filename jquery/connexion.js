@@ -12,9 +12,9 @@
 $(function() 
 {//début jquery
 
-    var decennie; //decennie déterminé par clic dans le menu
-    var memodecennie=$('#liste_decennie li:first()').attr('class'); //memorisation de la decennie avant changement suite à clic sur menu
-    var taille_ecran
+    //var decennie; //decennie déterminé par clic dans le menu
+    //var memodecennie=$('#liste_decennie li:first()').attr('class'); //memorisation de la decennie avant changement suite à clic sur menu
+    //var taille_ecran
     
     //***************** 
     //  menu de connexion
@@ -26,24 +26,24 @@ $(function()
                 e.preventDefault();
                 //effacement des messages d'erreur et des couleurs d'alerte
                 $('#form_connexion .help-block').css('visibility','hidden');
-                $('#group-pseudo').removeClass('has-error');
-                $('#group-motdepasse').removeClass('has-error');
+                //$('#group-pseudo').removeClass('has-error');
+                //$('#group-motdepasse').removeClass('has-error');
 
                 //vérification des champs
-                $pseudo = $.trim($("#pseudo").val());
+                $email = $.trim($("#email").val());
                 $motdepasse = $.trim($("#motdepasse").val());
-                if (($pseudo == '') || ($motdepasse == ''))
+                if (($email == '') || ($motdepasse == ''))
                 {
-                    if($pseudo == '')
+                    if($email == '')
                     {
-                        $('#group-pseudo').addClass('has-error');
+                        //$('#group-pseudo').addClass('has-error');
                         //$('#span-pseudo').css('visibility','visible');
                         $('#span-pseudo').css('visibility','visible');
                     }
 
                     if($motdepasse == '')
                     {
-                        $('#group-motdepasse').addClass('has-error');
+                        //$('#group-motdepasse').addClass('has-error');
                         $('#span-motdepasse').css('visibility','visible');
                     }
                 }

@@ -16,20 +16,20 @@ $bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO
 /*** 			 		   ***/
 /** CONNEXION UTILISATEUR  **/
 /***		  			 ***/
-	function connexionUtilisateur($pseudo, $password)
+	function connexionUtilisateur($email, $password)
 	{
 	    global $bdd;
-	   
+
 	    //=== SECURISATION DES CHAMPS
-	    $pseudo = trim(sanitizeString($pseudo));
+	    $email = trim(sanitizeString($email));
 	    $motdepasse = trim(sanitizeString($password));
 
 	    //instanciation de l'utilisateur avec le pseudo saisi
-	    $util = new Utilisateur(['pseudo'=>$pseudo]);
+	    $util = new Utilisateur(['email'=>$email]);
 	    $manager = new UtilisateursManager($bdd);
 	                                                    
-	    $utilisateur = $manager->findPseudoUtilisateur($util);
-	                                                    
+	    $utilisateur = $manager->findEmailUtilisateur($util);
+	                                   
 	    if ($utilisateur)
 	    {
 	    	// VERIFICATION DE LA VALIDITE DU MOT DE PASSE
