@@ -4,6 +4,7 @@ html
     overflow-x: hidden;
 }
 
+
 /*****                      *****/
 /** ENTETE ET PIED DE PAGE     **/
 /*****                      *****/
@@ -168,3 +169,9 @@ html
     {
         display: block;
     }
+
+/**
+ * fiches album
+ */
+#navigation_ancres .nav-link { color: white; }
+#navigation_ancres .nav-link:hover { color: lightgray; }

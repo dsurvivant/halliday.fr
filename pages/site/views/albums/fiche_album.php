@@ -1,7 +1,37 @@
+<?php 
+
+/**
+ * CREE PAR JMT AVRIL 2021	
+ */
+
+foreach ($_SESSION['albums'] as $album) {
+	if($noalbum == $album->getNoAlbum() ) 
+		{
+			$nomalbum = $album->getNomAlbum();
+			//date de sortie
+				$datesortiealbum = new DateTime($album->getdatesortieAlbum());
+			//Age de johnny à la sortie
+				$naissancejohnny = new DateTime('1943-06-15');
+				$agedejohnny = date_diff($naissancejohnny,$datesortiealbum);
+			//
+			$type = $album->getTypeAlbum();
+			$format = $album->getFormatAlbum();
+			$producteur = $album->getProducteurAlbum();
+			$reference = $album->getReferenceAlbum();
+			$label = $album->getLabelAlbum();
+			$description1 = $album->getDescription1Album();
+			$description2 = $album->getDescription2Album();
+			$pochette = $album->getPochetteAlbum();
+		}
+}
+
+$mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "novembre", "Décembre"];
+?>
+
 <div id="fiche_album" class="container" >
 
 	<div class="row">
-		<h1 class="col-12 mt-2 text-center border border-secondary text-secondary">Hello Johnny</h1>
+		<h1 class="col-12 mt-2 text-center border border-secondary text-secondary"><?= $nomalbum; ?></h1>
 	</div>
 
 	
@@ -25,9 +55,9 @@
 		</div>
 
 		<div class="col-md-9 col-sm-8 col-xs-12">
-			<h2>1960</h2>
-			<p>Sorti le 31 octobre 1960 (Johnny avait 17 ans)</p>
-			<p>1er 33 tours 25cm de Johnny</p>
+			<h2><?= $datesortiealbum->format('Y'); ?></h2>
+			<p>Sorti le <?=  $datesortiealbum->format('d'). " " . $mois[$datesortiealbum->format('m')-1] . " " . $datesortiealbum->format('Y');  ?> (Johnny avait <?= $agedejohnny->format('%Y ans'); ?>)</p>
+			<p><?= $description1 ?></p>
 		</div>
 	</div>
 

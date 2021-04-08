@@ -44,6 +44,7 @@
 		            	<a id="menuFichesAlbums" class="nav-link dropdown-toggle"  href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Fiches Albums
 		            	</a>
 
+		            	<!--
 						<div id="liste_fiches_albums" class="dropdown-menu">
 							<a class="dropdown-item" href="index.php?fiche=1960-hello_johnny"> 1960 - Hello Johnny</a>
 							<a class="dropdown-item" href="index.php?fiche=1961-nous_les_gars_nous_les_filles"> 1961 - Nous les gars, nous les filles</a>
@@ -71,6 +72,17 @@
 							<a class="dropdown-item" href="index.php?fiche=1989-cadillac"> 1989 - Cadillac</a>
 							<a class="dropdown-item" href="index.php?fiche=2007-le_coeur_d_un_homme"> 2007 - Le coeur d'un homme</a>
 							<a class="dropdown-item" href="index.php?fiche=2008-ca_ne_finira_jamais"> 2008 - Ca ne finira jamais</a> 
+						</div>
+					-->
+						<div id="liste_fiches_albums" class="dropdown-menu" style="height: 400px; overflow: auto;">
+							<?php foreach ($_SESSION['albums'] as $album): 
+								$datesortie = new DateTime( $album->getdatesortieAlbum() );
+								$anneesortie = $datesortie->format('Y');
+								$nomalbum = $album->getNomAlbum();
+								$noalbum = $album->getNoAlbum();
+							?>
+								<a class="dropdown-item" href="index.php?fiche&noalbum=<?= $noalbum ?>"> <?= $anneesortie . " - " . $nomalbum; ?></a>
+							<?php endforeach; ?>
 						</div>
 		        	</li>
 		         </ul>

@@ -17,6 +17,9 @@
 		//page courante
 		$_SESSION['current_page'] = 'accueil';
 
+		//initialisation des donnees (albums, titres, liaisons)
+		initdonnees();
+
 		/*** 				 		  ***/
 		/** CHOIX DE PAGE - ENTREES   **/
 		/***						***/
@@ -28,7 +31,9 @@
 			if (isset($_GET['fiche'])) 
 				{ 
 					$_SESSION['current_page'] = 'fiche';
-					afficherFiche();
+					$corpspage = afficherFiche();
+					$titre="Connexion"; 
+					include ("pages/site/views/template.php");
 				}
 			elseif (isset($_GET['decennie'])) { template('decennie'); }
 			elseif (isset($_GET['demandeconnexion'])) 
