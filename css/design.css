@@ -5,6 +5,12 @@ html
 }
 
 /*****                      *****/
+/**         CONNEXION          **/
+/*****                      *****/
+#forgetpassword { font-size:0.8em; }
+#forgetpassword:hover { text-decoration: underline; cursor: pointer; }
+
+/*****                      *****/
 /** ENTETE ET PIED DE PAGE     **/
 /*****                      *****/
     header { height:60px; }
