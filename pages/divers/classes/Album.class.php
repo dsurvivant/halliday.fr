@@ -13,6 +13,9 @@
         private $_datesaisieAlbum;
         private $_formatAlbum;
         private $_labelAlbum;
+        private $_description1Album;
+        private $_description2Album;
+        private $_pochetteAlbum;
         
         public function __construct($donnees)
         {
@@ -40,10 +43,7 @@
         //== SETTERS (MUTATEURS)
         //========================
         
-        public function setNoAlbum($noAlbum)
-        {
-            $this->_noAlbum = $noAlbum;
-        }
+        public function setNoAlbum($noAlbum){$this->_noAlbum = $noAlbum;}
 
         public function setNomAlbum($nomAlbum)
         {
@@ -54,94 +54,31 @@
             }
         }
 
-        public function setdatesortieAlbum($datesortieAlbum)
-        {
-            $this->_datesortieAlbum = $datesortieAlbum;
-        }
-        
-        public function setTypeAlbum($typeAlbum)
-        {
-            $this->_typeAlbum = $typeAlbum;
-        }
-        
-        public function setNoutil($noutil)
-        {
-            $this->_noutil = $noutil;
-        }
-        
-        public function setDatesaisieAlbum($datesaisieAlbum)
-        {
-            $this->_datesaisieAlbum = $datesaisieAlbum;
-        }
-        
-        public function setFormatAlbum($formatAlbum)
-        {
-            $this->_formatAlbum = $formatAlbum;
-        }
-
-        public function setProducteurAlbum($producteurAlbum)
-        {
-            $this->_producteurAlbum = $producteurAlbum;
-        }
-
-        public function setReferenceAlbum($referenceAlbum)
-        {
-            $this->_referenceAlbum = $referenceAlbum;
-        }
-
-        public function setlabelAlbum($labelAlbum)
-        {
-            $this->_labelAlbum = $labelAlbum;
-        }
+        public function setdatesortieAlbum($datesortieAlbum){$this->_datesortieAlbum = $datesortieAlbum;}
+        public function setTypeAlbum($typeAlbum){$this->_typeAlbum = $typeAlbum;}
+        public function setNoutil($noutil){$this->_noutil = $noutil;}
+        public function setDatesaisieAlbum($datesaisieAlbum){$this->_datesaisieAlbum = $datesaisieAlbum; }
+        public function setFormatAlbum($formatAlbum){$this->_formatAlbum = $formatAlbum;}
+        public function setProducteurAlbum($producteurAlbum){$this->_producteurAlbum = $producteurAlbum;}
+        public function setReferenceAlbum($referenceAlbum){$this->_referenceAlbum = $referenceAlbum;}
+        public function setlabelAlbum($labelAlbum){$this->_labelAlbum = $labelAlbum;}
+        public function setDescription1Album($description1Album){$this->_description1Album = $description1Album;}
+        public function setDescription2Album($description2Album){ $this->_description2Album = $description2Album;}
+        public function setPochetteAlbum($pochetteAlbum) {$this->_pochetteAlbum = $pochetteAlbum;}
         //========================
         //== GETTERS (ACCESSEURS)
         //========================
-        public function getNoAlbum()
-        {
-            return $this->_noAlbum;
-        }
-        public function getNomAlbum()
-        {
-            return $this->_nomAlbum;
-        }
-
-        public function getdatesortieAlbum()
-        {
-            return $this->_datesortieAlbum;
-        }
-        
-        public function getTypeAlbum()
-        {
-            return $this->_typeAlbum;
-        }
-        
-        public function getNoutil()
-        {
-            return $this->_noutil;
-        }
-        
-        public function getDatesaisieAlbum()
-        {
-            return $this->_datesaisieAlbum;
-        }
-        
-        public function getFormatAlbum()
-        {
-            return $this->_formatAlbum;
-        }
-        
-        public function getProducteurAlbum()
-        {
-            return $this->_producteurAlbum;
-        }
-
-        public function getReferenceAlbum()
-        {
-            return $this->_referenceAlbum;
-        }
-
-        public function getlabelAlbum()
-        {
-            return $this->_labelAlbum;
-        }
+        public function getNoAlbum(){return $this->_noAlbum;}
+        public function getNomAlbum(){return $this->_nomAlbum;}
+        public function getdatesortieAlbum(){ return $this->_datesortieAlbum;}
+        public function getTypeAlbum(){ return $this->_typeAlbum;}
+        public function getNoutil(){return $this->_noutil;}
+        public function getDatesaisieAlbum(){return $this->_datesaisieAlbum;}
+        public function getFormatAlbum(){ return $this->_formatAlbum;}
+        public function getProducteurAlbum(){ return $this->_producteurAlbum;}
+        public function getReferenceAlbum(){ return $this->_referenceAlbum;}
+        public function getlabelAlbum(){ return $this->_labelAlbum;}
+        public function getDescription1Album(){ return $this->_description1Album;}
+        public function getDescription2Album(){ return $this->_description2Album;}
+        public function getPochetteAlbum(){ return $this->_pochetteAlbum;}
     }

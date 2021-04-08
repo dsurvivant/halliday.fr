@@ -1,23 +1,33 @@
 <?php
 	
-	require_once ('pages/site/model/model.php');
+	require_once ('pages/site/model/modelUtilisateurs.php');
+	require_once ('pages/site/model/modelAlbums.php');
+	require_once ('pages/site/model/modelTitres.php');
 	
+	/**
+	 * initialisation des donnees retourne un tableau contenant
+	 * les objets albums par annees et les titres
+	 * @return [array] (objetsalbums, objetstitres)
+	 */
+	function initdonnees()
+	{
+		$reponse = array();
+
+		$_SESSION['albums'] = rechercheAlbumsByDate();
+		$_SESSION['titres'] = rechercheTitres();
+		$_SESSION['liaisonAlbumsTitres'] = rechercheLiaisonTitresAlbums();
+	}
+
 	/**
 	 * [affichageMenu description]
 	 * @return [type] [description]
 	 */
 	function afficherFiche()
 	{
-		$fiche = $_GET['fiche'];
+		$noalbum = $_GET['noalbum'];
 		ob_start();
-			if (file_exists("pages/site/views/albums/fiches_albums/" . $fiche . ".php"))
-			{ require("pages/site/views/albums/fiches_albums/" . $fiche . ".php");}
-			else
-			{ require("pages/site/views/albums/fiches_albums/fiche_inconnue.php");}
-		$corpspage =  ob_get_clean();
-
-		$titre="Connexion"; 
-		include ("pages/site/views/template.php");
+			require("pages/site/views/albums/fiche_album.php");
+		return  ob_get_clean();
 	}
 
 	function afficherAccueil()

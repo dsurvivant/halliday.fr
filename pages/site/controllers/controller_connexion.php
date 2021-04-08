@@ -4,7 +4,7 @@
  *
  * controlleur de connexion, deconnexion, inscription, activation du compte
  */
-require_once ('pages/site/model/model.php');
+require_once ('pages/site/model/modelUtilisateurs.php');
 
 /**
 	 * afficherInscription()

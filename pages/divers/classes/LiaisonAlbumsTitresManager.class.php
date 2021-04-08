@@ -32,33 +32,51 @@
 /*****              **/
  /** Ajout/modif   **/
  /*****           **/       
-        //=====
-        //== AJOUTER
-        //=====
-        public function add(LiaisonAlbumsTitres $liaisonalbumstitres)
-        {
-            $q = $this->_db->prepare('INSERT INTO liaisonalbumstitres(noAlbum, noTitre, dureeTitre, noPiste, noDisque)  VALUES(:noAlbum, :noTitre, :dureeTitre, :noPiste, :noDisque)');
+    //=====
+    //== AJOUTER
+    //=====
+    public function add(LiaisonAlbumsTitres $liaisonalbumstitres)
+    {
+        $q = $this->_db->prepare('INSERT INTO liaisonalbumstitres(noAlbum, noTitre, dureeTitre, noPiste, noDisque)  VALUES(:noAlbum, :noTitre, :dureeTitre, :noPiste, :noDisque)');
                 
-                $q->bindValue(':noAlbum', $liaisonalbumstitres->getNoAlbum());
-                $q->bindValue(':noTitre', $liaisonalbumstitres->getNoTitre());
-                $q->bindValue(':dureeTitre', $liaisonalbumstitres->getDureeTitre());
-                $q->bindValue(':noPiste', $liaisonalbumstitres->getNoPiste());
-                $q->bindValue(':noDisque', $liaisonalbumstitres->getNoDisque());
+        $q->bindValue(':noAlbum', $liaisonalbumstitres->getNoAlbum());
+        $q->bindValue(':noTitre', $liaisonalbumstitres->getNoTitre());
+        $q->bindValue(':dureeTitre', $liaisonalbumstitres->getDureeTitre());
+        $q->bindValue(':noPiste', $liaisonalbumstitres->getNoPiste());
+        $q->bindValue(':noDisque', $liaisonalbumstitres->getNoDisque());
                 
-                $q->execute();
-        }
+        $q->execute();
+    }
 
-        //=====
-        //== SUPPRIMER: suppression d'un album dans la table de liaison
-        //=====
-        public function delete(Album $album)
-        {
-           $q = $this->_db->prepare('DELETE FROM liaisonalbumstitres WHERE noAlbum=:noAlbum');
+    //=====
+    //== SUPPRIMER: suppression d'un album dans la table de liaison
+    //=====
+    public function delete(Album $album)
+    {
+        $q = $this->_db->prepare('DELETE FROM liaisonalbumstitres WHERE noAlbum=:noAlbum');
 
-           $q->bindValue(':noAlbum', $album->getNoAlbum());
+        $q->bindValue(':noAlbum', $album->getNoAlbum());
 
-           $q->execute();
-        }
+        $q->execute();
+    }
+
+/*****            **/
+ /** LISTES   **/
+ /*****          **/
+
+    public function getListLiaisonTitresAlbums() //retourne la liste des albums classé par no d'album
+            {
+                $liaisonalbumstitres = [];
+
+                $q = $this->_db->query('SELECT * FROM liaisonalbumstitres ORDER BY noAlbum ASC');
+
+                while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+                {
+                  $liaisonalbumstitres[] = new LiaisonAlbumsTitres($donnees);
+                }
+
+                return $liaisonalbumstitres;
+            }
 /*****            **/
  /** RECHERCHES   **/
  /*****          **/
