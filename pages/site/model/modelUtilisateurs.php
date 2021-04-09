@@ -127,6 +127,27 @@ $bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO
 		$manager = new UtilisateursManager($bdd);
 		$manager->activer($util);
 	}
+
+/**
+ * METTRE CLE UTILISATEUR A JOUR 
+ */
+	function updatecle($utilisateur)
+	{
+		global $bdd;
+		$manager = new UtilisateursManager($bdd);
+		$manager->updateCleUtilsateur($utilisateur);
+	}
+
+/**
+ *  METTRE A JOUR MOT DE PASSE A PARTIR DU MAIL
+ */
+	function updatepassworduser($utilisateur)
+	{
+		global $bdd;
+		$manager = new UtilisateursManager($bdd);
+		$manager-> updatePassword($utilisateur);
+	}
+
 /*** 			 		   ***/
 /** RECHERCHE SI LE PSEUDO UTILISATEUR EXISTE DEJA: retourne true ou false  **/
 /***		  			 ***/
@@ -151,15 +172,10 @@ $bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO
 /*** 			 		   ***/
 /** RECHERCHE SI L'email UTILISATEUR EXISTE DEJA: retourne true ou false  **/
 /***		  			 ***/
-	function findEmail($email)
+	function findEmail($util)
 	{
 	    global $bdd;
-	   
-	    //=== SECURISATION DES CHAMPS
-	    $email = trim(sanitizeString($email));
-
-	    //instanciation de l'utilisateur avec le pseudo saisi
-	    $util = new Utilisateur(['email'=>$email]);
+	    
 	    $manager = new UtilisateursManager($bdd);
 	                                                    
 	    $utilisateur = $manager->findEmailUtilisateur($util);
@@ -259,6 +275,8 @@ $bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO
 		$manager = new DroitsManager($bdd);
 		$manager->update($droits);
 	}
+
+
 
 
 /***						***/

@@ -62,6 +62,13 @@
 					$corpspage = activation(); 
 					include ("pages/site/views/template.php");
 				}
+			elseif (isset($_GET['forgetpassword'])) 
+			{
+				$_SESSION['current_page'] = "forgetpassword";
+				$titre = "Oublie mot de passe";
+				$corpspage = forgetpassword();
+				include ("pages/site/views/template.php");
+			}
 			else
 				{
 					$_SESSION['current_page'] = 'accueil';

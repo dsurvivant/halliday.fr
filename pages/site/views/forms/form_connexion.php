@@ -43,22 +43,26 @@ $corpspage = ob_get_clean();
 
 $titre="Connexion"; 
 include ("pages/site/views/template.php");
-?>
 
-
+/**
+/* FENETRE MODALE OUBLIE MOT DE PASSE
+ */ ?>
 <div class="modal fade" id="modalforgetpassword" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Titre</h5>
+              <h5 class="modal-title lead mx-auto"> Réinitialisation du mot de passe</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
             </div>
             <div class="modal-body">
-              <p>Texte du modal + choix et actions...</p>
+              <form id="formforgetpassword" method="post" action="index.php?forgetpassword">
+              	<input type="email" class="form-control" name="inputforgetpassword" required>
+
+              	<div class="text-weigth-light pt-2">Saisir l'adresse mail de ton compte afin de recevoir un lien de réinitialisation du mot de passe.</div>
+              </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-              <button type="button" class="btn btn-primary">Enregistrer</button>
+              <input form="formforgetpassword" type="submit" class="btn btn-primary mx-auto" value="Envoyer">
             </div>
           </div>
         </div>

@@ -77,6 +77,34 @@
             
                 $q->execute();       
         }
+
+        //=====
+        //== METTRE A JOUR MOT DE PASSE UTILISATEUR
+        //=====
+        public function updatePassword(Utilisateur $perso)
+        {
+            $q = $this->_db->prepare('UPDATE utilisateurs SET motdepasse=:motdepasse, cle=:cle WHERE email=:email');
+                
+                $q->bindValue(':motdepasse', $perso->getMotdepasse());
+                $q->bindValue(':cle', $perso->getCle());
+                $q->bindValue(':email', $perso->getEmail());
+            
+                $q->execute();       
+        }
+
+        //=====
+        //== METTRE A JOUR LA CLE UTILISATEUR
+        //=====
+        public function updateCleUtilsateur(Utilisateur $perso)
+        {
+           
+            $q = $this->_db->prepare('UPDATE utilisateurs SET cle=:cle WHERE noutil=:noutilisateur');
+                
+                $q->bindValue(':cle', $perso->getCle());
+                $q->bindValue(':noutilisateur', $perso->getNoutil());
+            
+                $q->execute();       
+        }
         
         //=====
         //== SUPPRIMER UN UTILISATEUR
@@ -152,7 +180,7 @@
         //=====
         function activer(Utilisateur $util)
         {
-            $q =  $this->_db->prepare("UPDATE utilisateurs SET actif = 1, cle='***Active***' WHERE pseudo like :pseudo ");
+            $q =  $this->_db->prepare("UPDATE utilisateurs SET actif = 1, cle='***' WHERE pseudo like :pseudo ");
             $q->bindValue(':pseudo', $util->getPseudo());
             $q->execute();
         }

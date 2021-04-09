@@ -50,7 +50,8 @@ require_once ('pages/site/model/modelUtilisateurs.php');
 			}
 
 			//vérification email unique
-			$exist = findEmail($email);
+			$util = new Utilisateur(['email'=>$email]);
+			$exist = findEmail($util);
 			if($exist) {throw new Exception("Cette adresse mail existe déjà");
 			}
 			//
@@ -171,6 +172,84 @@ require_once ('pages/site/model/modelUtilisateurs.php');
 		else
 		{
 			header("location:index.php");
+		}
+	}
+
+//oublie du mot de passe
+	function forgetpassword()
+	{
+		//envoi du mail
+		if (isset($_POST['inputforgetpassword']))
+		{
+			$email = sanitizeString(trim($_POST['inputforgetpassword']));
+			$util = new Utilisateur(['email'=>$email]);
+
+			if(findEmail($util)) //si mail trouvé, $util est instancié
+			{
+				$cle = $cle = md5(microtime(TRUE)*10000);
+				$util->setCle($cle);
+				//ajout de la cle à l'utilisateur
+				updatecle($util);
+
+				//envoi du mail de réinitialisation
+				$sujet = "Reinitialisation du mot de passe";
+				$entete = "From: password@halliday.fr";
+				$message = 'Afin de lancer la procédure de réinitialisation du mot de passe, veuillez cliquer sur le lien ci dessous ou copier/coller celui ci dans votre navigateur internet
+
+				https://halliday.fr/index.php?forgetpassword&log='. urlencode($email) . '&cle=' . urlencode($cle) .'
+
+
+
+				--------------------------------------------------------
+				Ceci est un mail automatique, Merci de na pas y répondre.';
+
+				mail($email, $sujet, $message, $entete);
+			}
+			ob_start();
+			require ('pages/site/views/confirm_mail_forgetpassword.php');
+			return ob_get_clean();
+		}
+
+		//retour du mail, affichage du formulaire saisi du nouveau mot de passe
+		if (isset($_GET['log']) and isset($_GET['cle']))
+		{
+			$email = $_GET['log'];
+			$cle = $_GET['cle'];
+
+			$util = new Utilisateur(['email'=>$email]);
+
+			if(findEmail($util)) //si mail trouvé, $util est instancié
+			{
+				if($util->getCle()==$cle)
+				{
+					ob_start();
+						require('pages/site/views/forms/form_new_password.php');
+					return	ob_get_clean();
+				}
+			}
+		}
+
+		//traitement formulaire nouveau mot de passe
+		if(isset($_POST['password']) and isset($_POST['confirmpassword']))
+		{
+			if (isset($_GET['email'])) { $email=$_GET['email']; }
+			else { $email=''; }
+			$email = sanitizeString(trim($email));
+			$util = new Utilisateur(['email'=>$email]);
+			$password = cryptagemotdepasse($_POST['password']);
+
+			if(findEmail($util)) //si mail trouvé, $util est instancié
+			{
+				$util->setMotdepasse($password);
+				$util->setCle('***');
+				updatepassworduser($util);
+			}
+
+			//retour
+			ob_start();
+				$_SESSION['message']="Mot de passe mis à jour avec succes";
+				header("location:index.php?demandeconnexion");
+			return ob_get_clean();
 		}
 	}
 ?>

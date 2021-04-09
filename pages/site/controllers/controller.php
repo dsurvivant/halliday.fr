@@ -185,7 +185,8 @@
 				//vérification email unique
 				if($email!=$_SESSION['email'])
 				{
-					$exist = findEmail($email);
+					$util = new Utilisateur(['email'=>$email]);
+					$exist = findEmail($util);
 					if($exist) {$error=1; $_SESSION['message']="Cette adresse mail existe déjà";}
 				}
 				
@@ -193,7 +194,7 @@
 				if ($error==0) 
 				{
 					if ($password!='') {$password = cryptagemotdepasse($password);}
-					$util = modifierUtilisateur($_SESSION['noutil'], $prenom, $nom, $pseudo, $password, $email);
+					$util = modifierUtilisateur($_SESSION['noutil'], $prenom, $nom, $pseudo, $password, $email,'1');
 					$_SESSION['message'] = "Informations mis à jour avec succes";
 
 					$_SESSION['nomutil'] = $util->getNom();
