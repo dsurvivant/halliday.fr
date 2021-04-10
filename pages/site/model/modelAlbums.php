@@ -30,4 +30,21 @@ function rechercheLiaisonTitresAlbums()
 	return  $manager->getListLiaisonTitresAlbums();
 }
 
+/**
+ * recherces des types d'albums
+ * @return $tabtype : tabeau contenant les types ('Studio', 'Live', etc..)
+ */
+function rechercheTypesAlbums()
+{
+	global $bdd;
+
+	$manager = new TypesAlbumManager($bdd);
+	$types = $manager->getList();
+	
+	$tabtype = [];
+	foreach ($types as $type) { array_push($tabtype, $type->getTypealbum()); }
+
+	return $tabtype;
+}
+
 ?>

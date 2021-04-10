@@ -8,6 +8,7 @@ foreach ($_SESSION['albums'] as $album) {
 	if($noalbum == $album->getNoAlbum() ) 
 		{
 			$nomalbum = $album->getNomAlbum();
+			$nomalbum = skip_accents($nomalbum);
 			//date de sortie
 				$datesortiealbum = new DateTime($album->getdatesortieAlbum());
 			//Age de johnny à la sortie
@@ -22,6 +23,11 @@ foreach ($_SESSION['albums'] as $album) {
 			$description1 = $album->getDescription1Album();
 			$description2 = $album->getDescription2Album();
 			$pochette = $album->getPochetteAlbum();
+
+			$libelleTypeAlbum = $_SESSION['typesalbums'][$type-1];
+			//chemin pochette
+			 $source= "pages/divers/images/" . $libelleTypeAlbum . "/" . $nomalbum . "-avant.jpg";
+
 		}
 }
 
@@ -31,7 +37,7 @@ $mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aoû
 <div id="fiche_album" class="container" >
 
 	<div class="row">
-		<h1 class="col-12 mt-2 text-center border border-secondary text-secondary"><?= $nomalbum; ?></h1>
+		<h1 class="col-12 my-4 text-center text-secondary"><?= $nomalbum; ?></h1>
 	</div>
 
 	
@@ -51,7 +57,7 @@ $mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aoû
 		
 	<div class="row border m-2 p-2" style="background-color: #ecf0f1;">
 		<div class="col-md-3 col-sm-4 col-xs-7">
-			<img alt="Johnny hallyday - Hello Johnny" title="Johnny Hallyday - Hello Johnny" src="pages/divers/images/25cm/Hello Johnny-avant.jpg" style="width: 100%">
+			<img alt="Johnny hallyday - <?= $nomalbum ?>" title="Johnny Hallyday - <?= $nomalbum ?>" src="<?= $source; ?>" style="width: 100%">
 		</div>
 
 		<div class="col-md-9 col-sm-8 col-xs-12">
