@@ -47,4 +47,16 @@ function rechercheTypesAlbums()
 	return $tabtype;
 }
 
+function rechercheFormats()
+{
+	global $bdd;
+	$manager = new FormatsAlbumsManager($bdd);
+	$formatsalbum = $manager->listFormatAlbum();
+
+	$tabformats = [];
+	foreach ($formatsalbum as $format) { array_push($tabformats, $format->getFormatalbum()); }
+
+	return $tabformats;
+}
+
 ?>

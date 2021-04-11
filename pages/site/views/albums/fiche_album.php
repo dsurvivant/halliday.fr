@@ -26,8 +26,11 @@ foreach ($_SESSION['albums'] as $album) {
 
 			$libelleTypeAlbum = $_SESSION['typesalbums'][$type-1];
 			//chemin pochette
-			 $source= "pages/divers/images/" . $libelleTypeAlbum . "/" . $nomalbum . "-avant.jpg";
-
+			$source= "pages/divers/images/" . $libelleTypeAlbum . "/" . $nomalbum . "-avant.jpg";
+			//format (33t,cd ..)
+			//dd($_SESSION['formatsalbums']);
+			
+			$libelleformat = $_SESSION['formatsalbums'][$format-1];
 		}
 }
 
@@ -69,7 +72,7 @@ $mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aoû
 
 	<div class="row border m-2 p-2" style="background-color: #ecf0f1;">
 			
-		<h3 class="col-12">33 Tours 25cm - Vogue LD521</h3>
+		<h3 class="col-12"><?= $libelleformat ;?> - Vogue LD521</h3>
 
 		<div class="col-12">
 			Face a:

@@ -17,6 +17,7 @@
 		$_SESSION['titres'] = rechercheTitres();
 		$_SESSION['liaisonAlbumsTitres'] = rechercheLiaisonTitresAlbums();
 		$_SESSION['typesalbums']= rechercheTypesAlbums();
+		$_SESSION['formatsalbums'] = rechercheFormats();
 	}
 
 	/**

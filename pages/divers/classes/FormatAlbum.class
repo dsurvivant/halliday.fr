@@ -1,0 +1,42 @@
+ <?php
+
+ class Droits
+    {
+        //variables de description de l'utilisateur
+        private $_noutil;
+        private $_ajoutalbum;
+        private $_modifieralbum;
+        private $_supprimeralbum;
+        private $_modifierinfostitre;
+        private $_modifierparolestitre;
+        private $_administrateur;
+        
+        public function __construct($donnees)
+        {
+            $this->hydrate($donnees);
+        }
+        
+        public function hydrate(array $donnees)
+        {
+            foreach ($donnees as $key => $value)
+            {
+                //on récupère le nom du setter correspondant à l'attribut
+                $method = 'set'.ucfirst($key);
+                
+                //si le setter correspondant existe
+                if (method_exists($this, $method))
+                {
+                    //on appelle le setter
+                    $this->$method($value);
+                }
+                
+            }
+        }
+        
+        //========================
+        //== SETTERS (MUTATEURS)
+        //========================
+        
+        public function setNoutil($noutil) { $this->_noutil = $noutil; }
+
+?>
