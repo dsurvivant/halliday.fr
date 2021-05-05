@@ -103,16 +103,16 @@
          */
             //create
             if ($ajouteralbum == 1):?>
-                <span id="bouton_ajout_album" title="Ajouter un album" class="boutons_album glyphicon glyphicon-plus pull-right" style="margin-right: 5px"></span>
+                <span id="bouton_ajout_album" title="Ajouter un album" class="boutons_album pull-right" style="margin-right: 5px">-A-</span>
             <?php endif; 
 
             // update
             if ($modifieralbum == 1):?>
-                <span id="bouton_modifier_album" title="Modifier un album" class="boutons_album glyphicon glyphicon-pencil pull-right" style="margin-right: 5px"></span>
+                <span id="bouton_modifier_album" title="Modifier un album" class="boutons_album pull-right" style="margin-right: 5px">-M-</span>
             <?php endif;
 
             if ($supprimeralbum == 1):?>
-                <span id="bouton_supprimer_album" title="Supprimer un album" class="boutons_album glyphicon glyphicon-remove pull-right" style="margin-right: 5px"></span>
+                <span id="bouton_supprimer_album" title="Supprimer un album" class="boutons_album  pull-right" style="margin-right: 5px">-S-</span>
             <?php endif; ?>
 </div>
 

@@ -20,9 +20,11 @@ foreach ($_SESSION['albums'] as $album) {
 			$producteur = $album->getProducteurAlbum();
 			$reference = $album->getReferenceAlbum();
 			$label = $album->getLabelAlbum();
-			$description1 = $album->getDescription1Album();
-			$description2 = $album->getDescription2Album();
+			$description = $album->getDescriptionAlbum();
 			$pochette = $album->getPochetteAlbum();
+			$certification = $album->getCertificationsAlbum();
+			$musiciens = $album->getMusiciensAlbum();
+			$enregistrement = $album->getEnregistrementAlbum();
 
 			$libelleTypeAlbum = $_SESSION['typesalbums'][$type-1];
 			//chemin pochette
@@ -48,58 +50,55 @@ $mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aoû
         <ul class="nav justify-content-center bg-dark">
           <li class="nav-item"><a class="nav-link" href="#description">Description</a></li>
           <li class="nav-item"><a class="nav-link" href="#enregistrements">Enregistrements</a></li>
-          <li class="nav-item"><a class="nav-link" href="#musiciens">Musiciens</a></li>
+          <?php if($musiciens!=''): ?><li class="nav-item"><a class="nav-link" href="#musiciens">Musiciens</a></li><?php endif ?>
           <li class="nav-item"><a class="nav-link " href="#singles">Singles</a></li>
           <li class="nav-item"><a class="nav-link " href="#reeditions">Rééditions</a></li>
-          <li class="nav-item"><a class="nav-link " href="#podcast">Podcast</a></li>
+          <?php if($musiciens!=''): ?><li class="nav-item"><a class="nav-link " href="#podcast">Podcast</a></li><?php endif ?>
           <li class="nav-item"><a class="nav-link " href="#ecoutes">Ecoutes</a></li>
-          <li class="nav-item"><a class="nav-link " href="#videos">Vidéos</a></li>
+          <?php if($musiciens!=''): ?><li class="nav-item"><a class="nav-link " href="#videos">Vidéos</a></li><?php endif ?>
         </ul>
     </nav>
     <br>
-		
+	
+	<!--			  	 -->
+	<!-- CADRE PRINCIPAL -->
+	<!--			 	 -->
 	<div class="row border m-2 p-2" style="background-color: #ecf0f1;">
 		<div class="col-md-3 col-sm-4 col-xs-7">
 			<img alt="Johnny hallyday - <?= $nomalbum ?>" title="Johnny Hallyday - <?= $nomalbum ?>" src="<?= $source; ?>" style="width: 100%">
 		</div>
 
 		<div class="col-md-9 col-sm-8 col-xs-12">
-			<h2><?= $datesortiealbum->format('Y'); ?></h2>
-			<p>Sorti le <?=  $datesortiealbum->format('d'). " " . $mois[$datesortiealbum->format('m')-1] . " " . $datesortiealbum->format('Y');  ?> (Johnny avait <?= $agedejohnny->format('%Y ans'); ?>)</p>
-			<p><?= $description1 ?></p>
-		</div>
-	</div>
-
-	<div class="row border m-2 p-2" style="background-color: #ecf0f1;">
+			<!-- ANNEE -->
+				<h2><?= $datesortiealbum->format('Y'); ?></h2>
+			<!-- FORMAT ET REFERENCE -->
+				<p><?= $libelleformat . " - " . $label . " - " . $reference; ?><br>
+			<!-- DATE DE SORTIE -->
+				Sorti le <?=  $datesortiealbum->format('d'). " " . $mois[$datesortiealbum->format('m')-1] . " " . $datesortiealbum->format('Y');  ?> (Johnny avait <?= $agedejohnny->format('%Y ans'); ?>)</p>
 			
-		<h3 class="col-12"><?= $libelleformat ;?> - Vogue LD521</h3>
-
-		<div class="col-12">
-			Face a:
-			<ol>
-				<li><em>Souvenirs, souvenirs</em><span> (Cy Coben/Fernand Bonifay)</span></li>
-				<li><em>Depuis qu'ma môme</em><span> (Johnny Hallyday/Jil et Jan)</span></li>
-				<li><em>Je cherche une fille</em><span> (Johnny Hallyday/Jil et Jan)</span></li>
-				<li><em>Pourquoi cet amour</em><span> (Johnny Hallyday/Jil et Jan)</span></li>
-				<li><em>J'suis mordu</em><span> (Aaron Schroeder - David Hill/Daniel J.White)</span></li>
-			</ol>
-
-			Face b:
-			<ol>
-				<li><em>Laisse les filles</em><span> (Johnny Hallyday/Gras)</span></li>
-				<li><em>Itsy bitsy petit bikini</em><span> (Paul Vance - Lee Pockriss/André Salvet - Lucien Morisse)</span></li>
-				<li><em>J'étais fou</em><span> (Johnny Hallyday/Gras)</span></li>
-				<li><em>Je veux me promener</em><span> (A Domino/Jil et Jan)</span></li>
-				<li><em>T'aimer follement</em><span> (Floyd Robinson/André Salvet - Jacques Plait)</span></li>
-			</ol>
+			<!-- LISTE DES TITRES -->
+				<?php 
+			foreach ($detailsalbum as $key => $value) 
+			{
+				echo $key+1 . ". ";
+				echo $value['nomTitre'] . " ( " . $value['musiqueTitre'] . " / " . $value['parolesTitre'] . " )<br>";
+			}
+			?>
 		</div>
 	</div>
+
 
 	<!--			  -->
 	<!--- DESCRIPTION -->
 	<!--			  -->
 		<h3 class="row" id="description">Description <img class="chevron_bas" alt="chevron_bas" src="pages/site/images/boutons/chevron_bas.png"><img class="chevron_droite" alt="chevron_droite" src="pages/site/images/boutons/chevron_droite.png"></h3>
 
+		<div class="row border m-2 p-2" style="background-color: #ecf0f1;">
+			label : <?= $label; ?> <br>
+			réalisation : <?= $producteur; ?> <br>
+			pochette : <?= $pochette; ?> <br>
+			certifications : <?= $certification ?>
+		</div>
 		<div class="row border m-2 p-2" style="background-color: #ecf0f1;">
 			<p class="contenu">
 				Il s'agit en fait d'une compilation des 3 premiers EP.<br>

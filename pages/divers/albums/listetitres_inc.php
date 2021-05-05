@@ -67,13 +67,13 @@ $nombreTitres = $manager->getnombreTitres();
 
             <div class="row entete text-center">
                 <span class="entetetitre text-center" style="border-right: solid lightgrey;display: none;">No</span>
-                <span class="col-lg-12 entetetitre">Titres</span>
+                <span class="col-12 entetetitre">Titres</span>
             </div>
 
         <!--------------------->
         <!-- CORPS DE LISTE  -->
         <!--------------------->
-            <div id="divlisteTitres" class="row container-fluid" style="font-size: 16px;">
+            <div id="divlisteTitres" class="row" style="font-size: 16px;">
                 <?php
                     $i=0;
 
@@ -83,10 +83,12 @@ $nombreTitres = $manager->getnombreTitres();
                         {
                             $i++;
                             ?>
-                            <div class="row lignetitre" style="border-bottom: 0.1em solid lightgrey;height: 30px;line-height: 30px;">
-                                <span class="col-lg-1" style="border-right: solid lightgrey; display: none;"><?php echo($titre->getNoTitre()); ?></span>
-                                <span class="col-lg-9" title="Titre no <?php echo($titre->getNoTitre()); ?>"><?php echo($titre->getNomTitre()); ?></span>
-
+                            <div class="lignetitre col-12" style="border-bottom: 0.1em solid lightgrey;height: 30px;line-height: 30px;">
+                                <p>
+                                    <span style="border-right: solid lightgrey; display: none;"><?php echo($titre->getNoTitre()); ?></span>
+                                    <span title="Titre no <?php echo($titre->getNoTitre()); ?>"><?php echo($titre->getNomTitre()); ?></span>
+                                    <br>
+                                </p>
                                 <?php 
                                     if($i==1) { $_SESSION['notitre'] = $titre->getNoTitre();}
                                 ?>

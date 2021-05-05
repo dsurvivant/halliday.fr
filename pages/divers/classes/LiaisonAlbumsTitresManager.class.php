@@ -11,6 +11,7 @@
 //      - RECHERCHE DES NUM TITRES A PARTIR D'UN ALBUM
 //      - RECHERCHE DES NUM ALBUMS A PARTIR D'UN TITRE
 //      - RECHERCHE DU NOMBRE DE DISQUE DE L'ALBUM (retourne le nombre de disque)
+//      - RECHERCHE D UN ALBUM ET DE SES TITRES DETAILLES
 //      
 
     class LiaisonAlbumsTitresManager
@@ -96,6 +97,28 @@
             }
 
             return $titres;
+        }
+
+        //=====
+        //== RECHERCHE DES NUM TITRES A PARTIR D'UN ALBUM
+        //=====
+        public function getdetailsalbum($album)
+        {
+            $detailsalbum = [];
+
+            $q = $this->_db->prepare('SELECT * FROM  titres AS t, liaisonalbumstitres AS l 
+                                        WHERE l.noTitre = t.noTitre 
+                                        AND noAlbum=:noAlbum 
+                                        ORDER BY nodisque ASC, noPiste ASC');
+            $q->bindValue(':noAlbum', $album->getNoAlbum());
+            $q->execute();
+            while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+            {
+              array_push($detailsalbum, $donnees);
+            }
+
+            return $detailsalbum;
+
         }
 
         //=====

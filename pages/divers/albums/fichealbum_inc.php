@@ -54,6 +54,11 @@ if(isset($_GET['noAlbum'])) {$noAlbum = $_GET['noAlbum'];}
     $producteurAlbum = $album->getproducteurAlbum();
     $referenceAlbum = $album->getreferenceAlbum();
     $labelAlbum = $album->getlabelAlbum();
+    $descriptionAlbum = $album->getDescriptionAlbum();
+    $pochetteAlbum = $album->getPochetteAlbum();
+    $certificationsAlbum = $album->getCertificationsAlbum();
+    $musiciensAlbum = $album->getMusiciensAlbum();
+    $enregistrementAlbum = $album->getEnregistrementAlbum();
 
 /** - PARTIE 2 - **/
 

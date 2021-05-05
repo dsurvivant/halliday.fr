@@ -34,64 +34,75 @@ else { $onglet = 'Albums'; }
             <div id="page_membre" class="container-fluid">
 
                 <!-- Onglets -->
-                <ul id="barre_onglets" class="nav nav-pills nav-justified">
-                    <li <?php if($onglet=="Albums"){ echo 'class="active"'; } ?> ><a href="#albums" data-toggle="tab">Albums</a></li>
-                    <li <?php if($onglet=="Titres"){ echo 'class="active"'; } ?> ><a href="#titres" data-toggle="tab">Titres</a></li>
-                    <li <?php if($onglet=="Singles"){ echo 'class="active"'; } ?> ><a href="#singles" data-toggle="tab">Singles</a></li>
-                </ul>
+                <nav class="nav nav-pills">
+                  <a class="nav-item nav-link <?php if($onglet=="Albums"){ echo 'active'; } ?> col text-center" href="#albums" data-toggle="tab">Albums</a>
+                  <a class="nav-item nav-link <?php if($onglet=="Titres"){ echo 'active'; } ?> col text-center" href="#titres" data-toggle="tab">Titres</a>
+                  <a class="nav-item nav-link <?php if($onglet=="Singles"){ echo 'active'; } ?> col text-center" href="#singles" data-toggle="tab">Singles</a>
+                </nav>
 
                 <!-- Actions des onglets bootstrap -->
-                <div class="tab-content">
+                <div class="tab-content row">
 
                     <!-------------->
                     <!-- PANNEAU 1 -->
                     <!-------------->
-                        <div class="tab-pane <?php if($onglet=="Albums"){ echo 'active'; } ?> " id="albums">
-                            <section id="section_gauche" class="col-xs-5">
-                                <!-- ** LISTE DES ALBUMS -->
-                                <?php include ('albums/listealbums_inc.php');?>
-                            </section> <!-- section_gauche -->
-                      
-                            <section id="section_centrale" class="col-xs-7">
-                                <div id="boutons_fiche_album" class="text-right">
-                                </div> <!-- #boutons_fiche_album -->
-                
-                            </section> <!-- section_centrale -->
+                        <div class="row tab-pane fade <?php if($onglet=="Albums"){ echo 'show active'; } ?> " id="albums">
+                            <div class="container mt-2">
+                                <div class="row">
+                                    <section id="section_gauche" class="col-6">
+                                        <!-- ** LISTE DES ALBUMS -->
+                                        <?php include ('albums/listealbums_inc.php');?>
+                                    </section> <!-- section_gauche -->
+                          
+                                    <section id="section_centrale" class="col-6">
+                                        <div id="boutons_fiche_album" class="text-right">
+                                        </div> <!-- #boutons_fiche_album -->
+                        
+                                    </section> <!-- section_centrale -->
+                                </div>
+                            </div>
                         </div>
 
                     <!-------------->
                     <!-- PANNEAU 2 -->
                     <!-------------->
-                            <div class="tab-pane <?php if($onglet=="Titres"){ echo 'active'; } ?> " id="titres">
-                                <?php
-                                //état du checkbox
-                                if (isset($_POST['checkParolesTitres'])) { $checkparolestitres = $_POST['checkParolesTitres']; }
-                                    else { $checkparolestitres =0;}
-                                //barre de filtres
-                                if($droits_modifierparolestitre==1): ?>
-                                    <div id="filtre_liste_titres" class="col-lg12">
-                                        <form id="formfiltres" method="post" action="index.php?acces_membre&onglet=Titres">
-                                            <label for="checkParolesTitres"> Afficher titres sans paroles</label>
-                                            <input id="checkParolesTitres" type="checkbox" name="checkParolesTitres" <?php if($checkparolestitres==true) { echo "checked ";} ?> > 
+                            <div class="row tab-pane fade <?php if($onglet=="Titres"){ echo 'show active'; } ?> " id="titres">
+                                <div class="container">
+                                    <div class="row">
+                                        <?php
+                                        //état du checkbox
+                                        if (isset($_POST['checkParolesTitres'])) { $checkparolestitres = $_POST['checkParolesTitres']; }
+                                            else { $checkparolestitres =0;}
+                                        //barre de filtres
+                                        if($droits_modifierparolestitre==1): ?>
+                                            <div id="filtre_liste_titres" class="col-lg12">
+                                                <form id="formfiltres" method="post" action="index.php?acces_membre&onglet=Titres">
+                                                    <label for="checkParolesTitres"> Afficher titres sans paroles</label>
+                                                    <input id="checkParolesTitres" type="checkbox" name="checkParolesTitres" <?php if($checkparolestitres==true) { echo "checked ";} ?> > 
 
-                                        </form>
+                                                </form>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
-                                <?php endif; ?>
-                                <section id="section_gauche_titres" class="col-sm-4">
-                                    <!-- ** LISTE DES TITRES -->
-                                    <?php include ('albums/listetitres_inc.php');?>
-                                </section> <!-- section_gauche -->
-                      
-                                <section id="section_centrale_titres" class="col-sm-8">
-                                    <?php require ('albums/fichetitre_inc.php'); ?>
-                                </section> <!-- section_centrale -->
+
+                                    <div class="row justify-content-center">
+                                        <section id="section_gauche_titres" class="col-4">
+                                            <!-- ** LISTE DES TITRES -->
+                                            <?php include ('albums/listetitres_inc.php');?>
+                                        </section> <!-- section_gauche -->
+                                
+                                        <section id="section_centrale_titres" class="col-8">
+                                            <?php require ('albums/fichetitre_inc.php'); ?>
+                                        </section> <!-- section_centrale -->
+                                    </div>
+                                </div>
                             </div>
 
                     <!-------------->
                     <!-- PANNEAU 3 -->
                     <!-------------->
 
-                            <div class="tab-pane <?php if($onglet=="Singles"){ echo 'active'; } ?> " id="singles">
+                            <div class="row tab-pane fade <?php if($onglet=="Singles"){ echo 'show active'; } ?> " id="singles">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <h2 class="col-lg-12 text-center" style="background-color: grey; color:white;">En cours de programmation</h2>
@@ -103,7 +114,7 @@ else { $onglet = 'Albums'; }
 
                 </div>
 
-                <div id="gestion_album">
+                <div id="gestion_album" class="row">
                     <!--cadre destiné à l'ajout ou suppression -->
                 </div>
         <?php

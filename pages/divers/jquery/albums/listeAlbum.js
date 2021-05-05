@@ -252,7 +252,6 @@ var typeAlbum="Tous";
 //*****
     $('#section_gauche').on('click', '#bouton_ajout_album', function()
     {
-        console.log("click plus");
         //affichage de la page de saisie du nouvel album
         $('#page_membre').css('display','none');
         $('#gestion_album').css('display','block');

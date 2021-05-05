@@ -13,9 +13,11 @@
         private $_datesaisieAlbum;
         private $_formatAlbum;
         private $_labelAlbum;
-        private $_description1Album;
-        private $_description2Album;
+        private $_descriptionAlbum;
         private $_pochetteAlbum;
+        private $_certificationsAlbum;
+        private $_musiciensAlbum;
+        private $_enregistrementAlbum;
         
         public function __construct($donnees)
         {
@@ -62,9 +64,11 @@
         public function setProducteurAlbum($producteurAlbum){$this->_producteurAlbum = $producteurAlbum;}
         public function setReferenceAlbum($referenceAlbum){$this->_referenceAlbum = $referenceAlbum;}
         public function setlabelAlbum($labelAlbum){$this->_labelAlbum = $labelAlbum;}
-        public function setDescription1Album($description1Album){$this->_description1Album = $description1Album;}
-        public function setDescription2Album($description2Album){ $this->_description2Album = $description2Album;}
+        public function setDescriptionAlbum($description1Album){$this->_description1Album = $description1Album;}
         public function setPochetteAlbum($pochetteAlbum) {$this->_pochetteAlbum = $pochetteAlbum;}
+        public function setCertificationsAlbum($certificationsAlbum) {$this->_certificationsAlbum = $certificationsAlbum;}
+        public function setMusiciensAlbum($musiciensAlbum) {$this->_musiciensAlbum = $musiciensAlbum;}
+        public function setEnregistrementAlbum($enregistrementAlbum) {$this->_enregistrementAlbum = $enregistrementAlbum;}
         //========================
         //== GETTERS (ACCESSEURS)
         //========================
@@ -78,7 +82,11 @@
         public function getProducteurAlbum(){ return $this->_producteurAlbum;}
         public function getReferenceAlbum(){ return $this->_referenceAlbum;}
         public function getlabelAlbum(){ return $this->_labelAlbum;}
-        public function getDescription1Album(){ return $this->_description1Album;}
-        public function getDescription2Album(){ return $this->_description2Album;}
+        public function getDescriptionAlbum(){ return $this->_description1Album;}
         public function getPochetteAlbum(){ return $this->_pochetteAlbum;}
+        public function getCertificationsAlbum(){ return $this->_certificationsAlbum;}
+        public function getMusiciensAlbum(){ return $this->_musiciensAlbum;}
+        public function getEnregistrementAlbum(){ return $this->_enregistrementAlbum;}
+
+        
     }

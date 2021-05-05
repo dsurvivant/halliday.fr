@@ -11,13 +11,21 @@
 	 */
 	function initdonnees()
 	{
+		global $bdd;
 		$reponse = array();
 
+		//contient les objets albums
 		$_SESSION['albums'] = rechercheAlbumsByDate();
+		//contient les objets titres
 		$_SESSION['titres'] = rechercheTitres();
-		$_SESSION['liaisonAlbumsTitres'] = rechercheLiaisonTitresAlbums();
+		//contient les objets liaisonAlbumsTitres
+		//$manager = new LiaisonAlbumsTitresManager($bdd);
+		//$_SESSION['liaisonAlbumsTitres'] = $manager->getListLiaisonTitresAlbums();
+		//tableau  des types (studio, live, compilation...)
 		$_SESSION['typesalbums']= rechercheTypesAlbums();
+		//tableau des formats (33 tours 30cm, cd , autre...)
 		$_SESSION['formatsalbums'] = rechercheFormats();
+	
 	}
 
 	/**
@@ -26,7 +34,13 @@
 	 */
 	function afficherFiche()
 	{
+		global $bdd;
 		$noalbum = $_GET['noalbum'];
+		$album = new Album(['noalbum'=>$noalbum]);
+		$manager = new LiaisonAlbumsTitresManager($bdd);
+		//tableau objets titres par nodisque et notitre, nomtitre, parolestitre, musiquetitre, textetitre
+		$detailsalbum = $manager->getdetailsalbum($album);
+
 		ob_start();
 			require("pages/site/views/albums/fiche_album.php");
 		return  ob_get_clean();

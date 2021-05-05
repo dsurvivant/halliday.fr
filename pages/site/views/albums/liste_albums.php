@@ -147,18 +147,7 @@
                                     //=====
                                     //=== Affichage des titres
                                     //=====
-                                    /**
-                                    if ($memo_no_disque!=$nodisque)
-                                    {
-                                        //Hors permier passage (dans le cas de plusieurs disques)
-                                        if ($nodisque != 1){echo ('<br/></div><div class="cadre_disque">');}
-                                        echo ("<strong class='label_disque'>disque " . $nodisque . "</strong>");
-
-                                    } 010919 **/
-                                    
                                     echo  "<p>" . $nopiste . ". " . $nomtitre . " "  . "</p>";
-
-                                    //$memo_no_disque = $nodisque;
                                 }
                                 ?>
                                 </div> <!-- .detail_disque -->

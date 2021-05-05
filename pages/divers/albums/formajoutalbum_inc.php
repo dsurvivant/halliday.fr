@@ -1,4 +1,4 @@
-<div id="ficheajoutalbum" class="container">
+<div id="ficheajoutalbum" class="container-fluid pt-2">
 <?php
 //
 // *** formulaite d'ajout pour un album ***
@@ -18,7 +18,7 @@
 ?>
 
     <div id="blocentete" class="row entete">
-        <div id="titre_entete" class="col-xs-12">AJOUTER UN ALBUM</div>
+        <div id="titre_entete" class="col-12 text-center p-2">AJOUTER UN ALBUM</div>
     </div>
 
     <div class="row">
@@ -45,18 +45,25 @@
                             <input id="fileJaquetteArrière" type="file" class="input-file" name="fileJaquetteArriere" style="position: absolute; visibility: hidden;" />
                         </div>
                     </div>
-
                 </div>
 
                 <div id="blocalbum" class="col-md-5">
-                    
-                    <!-- -->
+                    <nav class="nav nav-tabs" >
+                        <a href="#general" class="nav-item nav-link active" data-toggle="tab">Infos</a>
+                        <a href="#description" class="nav-item nav-link " data-toggle="tab">Description</a>
+                        <a href="#musiciens" class="nav-item nav-link " data-toggle="tab">Musiciens</a>
+                        <a href="#enregistrement" class="nav-item nav-link " data-toggle="tab">Enregistrement</a>
+                    </nav>
+
+                    <div class="tab-content">
+                        <div id="general" class="tab-pane active" >
+                             <!-- -->
                     <label for="nomAlbum">Nom</label><input type="text" id="nomAlbum"  name="nomAlbum" maxlength="100"/><br/>
                     <!-- -->
                     <label for="datesortieAlbum">Date de sortie</label><input type="text" id="datesortieAlbum" name="datesortieAlbum" maxlength="10" placeholder="jj/mm/yyyy"/><br/>
                     <!-- -->
                     <label for="typeAlbum">Type</label>
-                        <select id="typeAlbum" name="typeAlbum">
+                    <select id="typeAlbum" name="typeAlbum">
                             <?php
                             //remplissage du select droits
                             try
@@ -79,42 +86,59 @@
                                 die('Erreur : ' . $e->getMessage());
                             }
                             ?>
-                        </select><br/>
-                        <!-- -->
-                        <label for="Format">Format</label>
-                        <select id="formatAlbum" name="formatAlbum">
-                            <?php
-                            //remplissage du select droits
-                            try
+                    </select><br/>
+                    <!-- -->
+                    <label for="Format">Format</label>
+                    <select id="formatAlbum" name="formatAlbum">
+                        <?php
+                        //remplissage du select droits
+                        try
+                        {
+                            $i=0;
+                            $reponse = $bdd->query('SELECT * FROM formatalbum');
+
+                            while ($donnees = $reponse->fetch())
                             {
-                                $i=0;
-                                $reponse = $bdd->query('SELECT * FROM formatalbum');
-
-                                while ($donnees = $reponse->fetch())
-                                {
-                                    if ($donnees['formatAlbum']=="CD") {$focus = "selected";} else {$focus = "";}
-                                    echo ("<option value=" . $donnees['noformatAlbum'] . " " . $focus . ">" . $donnees['formatAlbum']  . "</option>");
-
-                                }
-
-                                $reponse->closeCursor(); // Termine le traitement de la requête
+                                if ($donnees['formatAlbum']=="CD") {$focus = "selected";} else {$focus = "";}
+                                echo ("<option value=" . $donnees['noformatAlbum'] . " " . $focus . ">" . $donnees['formatAlbum']  . "</option>");
 
                             }
-                                catch (Exception $e)
-                            {
+
+                            $reponse->closeCursor(); // Termine le traitement de la requête
+
+                        }
+                            catch (Exception $e)
+                        {
                                 die('Erreur : ' . $e->getMessage());
-                            }
+                        }
                                 ?>
-                        </select><br/>
-                         <!-- -->
-                         <label for="producteurAlbum">Producteur</label><input type="text" id="producteurAlbum" name="producteurAlbum" maxlength="50"/><br/>
-                         <!-- -->
-                         <label for="referenceAlbum">Reference</label><input type="text" id="referenceAlbum" name="referenceAlbum" maxlength="50"/><br/>
-                         <!-- -->
-                         <label for="labelAlbum">Label</label><input type="text" id="labelAlbum" name="labelAlbum" maxlength="50"/><br/>
-                         <!-- -->
-                         <label for="inputnoutil" style="visibility: hidden;">Utilisateur</label><input id="inputnoutil" type="text" name="noutil" value="<?php echo $noutilisateur; ?>" style="visibility: hidden;" disabled/>
+                    </select><br/>
+                    <!-- -->
+                    <label for="producteurAlbum">Producteur</label><input type="text" id="producteurAlbum" name="producteurAlbum" maxlength="50"/><br/>
+                    <!-- -->
+                    <label for="referenceAlbum">Reference</label><input type="text" id="referenceAlbum" name="referenceAlbum" maxlength="50"/><br/>
+                    <!-- -->
+                    <label for="labelAlbum">Label</label><input type="text" id="labelAlbum" name="labelAlbum" maxlength="50"/><br/>
+                    <!-- -->
+                    
+                    <!-- -->
+                    <label for="inputnoutil" style="visibility: hidden;">Utilisateur</label><input id="inputnoutil" type="text" name="noutil" value="<?php echo $noutilisateur; ?>" style="visibility: hidden;" disabled/>
+                        </div>
 
+                        <div id="description" class="tab-pane " >
+                            description
+                        </div>
+
+                        <div id="musiciens" class="tab-pane " >
+                            musiciens
+                        </div>
+
+                        <div id="enregistrement" class="tab-pane " >
+                            enregistrement
+                        </div>
+                    </div>
+                   
+                    
                 </div>
             
                 <!--=====                -->
