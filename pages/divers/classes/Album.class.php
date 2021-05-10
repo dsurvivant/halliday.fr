@@ -82,7 +82,7 @@
         public function getProducteurAlbum(){ return $this->_producteurAlbum;}
         public function getReferenceAlbum(){ return $this->_referenceAlbum;}
         public function getlabelAlbum(){ return $this->_labelAlbum;}
-        public function getDescriptionAlbum(){ return $this->_description1Album;}
+        public function getDescriptionAlbum(){ return $this->_descriptionAlbum;}
         public function getPochetteAlbum(){ return $this->_pochetteAlbum;}
         public function getCertificationsAlbum(){ return $this->_certificationsAlbum;}
         public function getMusiciensAlbum(){ return $this->_musiciensAlbum;}

@@ -61,6 +61,12 @@ $formatAlbum = $_POST['formatAlbum'];
 $producteurAlbum = trim(sanitizeString($_POST['producteurAlbum']));
 $referenceAlbum = trim(sanitizeString($_POST['referenceAlbum']));
 $labelAlbum = trim(sanitizeString($_POST['labelAlbum']));
+$descriptionAlbum ='';
+$pochetteAlbum='';
+$certificationsAlbum='';
+$musiciensAlbum='';
+$enregistrementAlbum='';
+
 if ($_POST['noutil']!="")
     {$noutil = $_POST['noutil'];}
 else{$noutil = "1";}
@@ -124,7 +130,12 @@ if ($erreur==false) //les critères sur les champs sont respectés (pas d'erreur
                     'formatAlbum' => $formatAlbum,
                     'producteurAlbum' => $producteurAlbum,
                     'referenceAlbum' => $referenceAlbum,
-                    'labelAlbum' => $labelAlbum
+                    'labelAlbum' => $labelAlbum,
+                    'descriptionAlbum' => $descriptionAlbum,
+                    'pochetteAlbum' => $pochetteAlbum,
+                    'certificationsAlbum' => $certificationsAlbum,
+                    'musiciensAlbum' => $musiciensAlbum,
+                    'enregistrementAlbum' => $enregistrementAlbum
                 ]);
                 $manager->update($album);
                 
@@ -158,7 +169,12 @@ if ($erreur==false) //les critères sur les champs sont respectés (pas d'erreur
                 'formatAlbum' => $formatAlbum,
                 'producteurAlbum' => $producteurAlbum,
                 'referenceAlbum' => $referenceAlbum,
-                'labelAlbum' => $labelAlbum
+                'labelAlbum' => $labelAlbum,
+                'descriptionAlbum' => $descriptionAlbum,
+                'pochetteAlbum' => $pochetteAlbum,
+                'certificationsAlbum' => $certificationsAlbum,
+                'musiciensAlbum' => $musiciensAlbum,
+                'enregistrementAlbum' => $enregistrementAlbum
                 ]);
 
                 $manager = new AlbumsManager($bdd);

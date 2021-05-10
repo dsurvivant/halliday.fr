@@ -468,27 +468,27 @@ $(function()
 
             //***** NOM DE L'ALBUM OBLIGATOIRE  *****
 
-            if ($nomAlbum=='')
-            {
-                $('#nomAlbum').css({color: 'black', 'background-color': 'red'});
-                $messageerreur ="Nom de l'album ne peut être vide.<br/>";
-                $erreur=true;
-            }
-            else {$('#nomAlbum').css({color: 'black', 'background-color': 'white'}) ;}
+                if ($nomAlbum=='')
+                {
+                    $('#nomAlbum').css({color: 'black', 'background-color': 'red'});
+                    $messageerreur ="Nom de l'album ne peut être vide.<br/>";
+                    $erreur=true;
+                }
+                else {$('#nomAlbum').css({color: 'black', 'background-color': 'white'}) ;}
 
 
             //***** date de sortie sous forme jj/mm/aaaa  *****
 
-            if ((/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/.test($datesortieAlbum)))
-            {
-                $('#datesortieAlbum').css({color: 'black', 'background-color': 'white'});
-            }
-            else
-            {
-                $('#datesortieAlbum').css({color: 'black', 'background-color': 'red'});
-                $messageerreur +=" La date de sortie doit être sous la forme jj/mm/aaaa ou j/m/aaaa<br/>";
-                $erreur=true;
-            }
+                if ((/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/.test($datesortieAlbum)))
+                {
+                    $('#datesortieAlbum').css({color: 'black', 'background-color': 'white'});
+                }
+                else
+                {
+                    $('#datesortieAlbum').css({color: 'black', 'background-color': 'red'});
+                    $messageerreur +=" La date de sortie doit être sous la forme jj/mm/aaaa ou j/m/aaaa<br/>";
+                    $erreur=true;
+                }
 
              /***** SUPPRESSION DE LA DERNIERE LIGNE SI LE TITRE EST VIDE **/
              $('.tableTitres').each(function(){
@@ -500,27 +500,27 @@ $(function()
 
             //***** VERIFICATION DU BON FORMAT DES DUREES *****
 
-            $('.modifier_duree').each(function()
-            {
-                if (!validationDuree($(this).val())) //controle du format duree titre 1223 ou 12:12
+                $('.modifier_duree').each(function()
                 {
-                    $(this).css('background-color', 'red');
-                    $erreur=true;
-                    $messageerreur = "Problème de format sur les durées<br/>";
-                }
+                    if (!validationDuree($(this).val())) //controle du format duree titre 1223 ou 12:12
+                    {
+                        $(this).css('background-color', 'red');
+                        $erreur=true;
+                        $messageerreur = "Problème de format sur les durées<br/>";
+                    }
 
-            });
+                });
 
-            //***** VERIFICATION QU'IL N'Y A PAS UN TITRE VIDE  *****
-            $('.modifier_titre').each(function()
-            {
-                if ($(this).val()=='')
+                //***** VERIFICATION QU'IL N'Y A PAS UN TITRE VIDE  *****
+                $('.modifier_titre').each(function()
                 {
-                    $erreur = true;
-                    $(this).css('backgroundColor', 'red');
-                    $messageerreur = "Un ou plusieurs titres sont vides.";
-                }
-            });
+                    if ($(this).val()=='')
+                    {
+                        $erreur = true;
+                        $(this).css('backgroundColor', 'red');
+                        $messageerreur = "Un ou plusieurs titres sont vides.";
+                    }
+                });
 //*******************************************************
 //*********** TRAITEMENT DES DONNEES SAISIS   ***********
 //*******************************************************
@@ -540,40 +540,40 @@ $(function()
                 dureetitres.splice(0); //effacement tableaux contenant les durees
 
                 //récupérations des valeurs titre/duree
-                //$titres contient tous les titres en linéaire ss forme tab1/titre1/titre2/tab2/titre1/etc...
-                //$durees contient toutes les durees en linéaire ss forme tab1/duree1/duree2/tab2/duree1/etc...
-                for (var i=1; i<=$('.tableTitres').length; i++) //exécution à chaque tableau titres
-                {
-                    $i++;
-                    titres.push("tab" + $i);
-                    dureetitres.push("tab" + $i);
-
-                    $('#tableTitres' + $i + ' tbody tr').each(function()
+                    //$titres contient tous les titres en linéaire ss forme tab1/titre1/titre2/tab2/titre1/etc...
+                    //$durees contient toutes les durees en linéaire ss forme tab1/duree1/duree2/tab2/duree1/etc...
+                    for (var i=1; i<=$('.tableTitres').length; i++) //exécution à chaque tableau titres
                     {
-                        // LES TITRES
-                        $(this).find('td:eq(1) input').each(function(){
-                                            titres.push($(this).val());
-                                        });
+                        $i++;
+                        titres.push("tab" + $i);
+                        dureetitres.push("tab" + $i);
 
-                        // LES DUREES
-                        $(this).find('td:eq(2) input').each(function(){
-                                            dureetitres.push($(this).val());
-                                        });
-                     });
+                        $('#tableTitres' + $i + ' tbody tr').each(function()
+                        {
+                            // LES TITRES
+                            $(this).find('td:eq(1) input').each(function(){
+                                                titres.push($(this).val());
+                                            });
 
-                    $titres = titres.join('/');
-                    $dureetitres = dureetitres.join('/');
+                            // LES DUREES
+                            $(this).find('td:eq(2) input').each(function(){
+                                                dureetitres.push($(this).val());
+                                            });
+                         });
 
-                }
+                        $titres = titres.join('/');
+                        $dureetitres = dureetitres.join('/');
 
-                var form = $('#formAlbum')[0];
-                var data = new FormData(form);
-                //ajout de champ supplementaire
+                    }
 
-                data.append("ancien_nomAlbum", $('#nomAlbum').attr("placeholder"));
-                data.append("noutil", $('#inputnoutil').val());
-                data.append("titres", $titres);
-                data.append("dureetitres", $dureetitres);
+                    var form = $('#formAlbum')[0];
+                    var data = new FormData(form);
+                    //ajout de champ supplementaire
+
+                    data.append("ancien_nomAlbum", $('#nomAlbum').attr("placeholder"));
+                    data.append("noutil", $('#inputnoutil').val());
+                    data.append("titres", $titres);
+                    data.append("dureetitres", $dureetitres);
                 //AJOUT MODIF DE L'ALBUM DANS LA BDD
                 $.ajax
                 ({

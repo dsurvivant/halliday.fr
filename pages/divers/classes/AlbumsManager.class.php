@@ -49,8 +49,8 @@
         //=====
             public function add(Album $album) //retourne l'id de l'album créé automatiquement par sql
             {
-                    $q = $this->_db->prepare('INSERT INTO albums(nomAlbum, datesortieAlbum, typeAlbum, noutil, datesaisieAlbum, formatAlbum, producteurAlbum, referenceAlbum, labelAlbum, descriptionAlbum, pochetteAlbum, certificationsAlbum, enregistrementAlbum) 
-                    VALUES(:nomAlbum, :datesortieAlbum, :typeAlbum, :noutil, :datesaisieAlbum, :formatAlbum, :producteurAlbum, :referenceAlbum, :labelAlbum, :descriptionAlbum, :pochetteAlbum, :certificationsAlbum, :enregistrementAlbum)');
+                    $q = $this->_db->prepare('INSERT INTO albums(nomAlbum, datesortieAlbum, typeAlbum, datesaisieAlbum, noutil, formatAlbum, producteurAlbum, referenceAlbum, labelAlbum, descriptionAlbum, pochetteAlbum, certificationsAlbum,musiciensAlbum, enregistrementAlbum) 
+                    VALUES(:nomAlbum, :datesortieAlbum, :typeAlbum, :datesaisieAlbum, :noutil, :formatAlbum, :producteurAlbum, :referenceAlbum, :labelAlbum, :descriptionAlbum, :pochetteAlbum, :certificationsAlbum,:musiciensAlbum, :enregistrementAlbum)');
                     
                     $q->bindValue(':nomAlbum', $album->getnomAlbum());
                     $q->bindValue(':datesortieAlbum', $album->getdatesortieAlbum());
@@ -64,6 +64,7 @@
                     $q->bindValue(':descriptionAlbum', $album->getDescriptionAlbum());
                     $q->bindValue(':pochetteAlbum', $album->getPochetteAlbum());
                     $q->bindValue(':certificationsAlbum', $album->getCertificationsAlbum());
+                    $q->bindValue(':musiciensAlbum', $album->getMusiciensAlbum());
                     $q->bindValue(':enregistrementAlbum', $album->getEnregistrementAlbum());
 
                     $q->execute();  
@@ -78,7 +79,7 @@
         //=====
             public function update(Album $album) 
             {
-                $q = $this->_db->prepare('UPDATE albums SET nomAlbum=:nomAlbum, datesortieAlbum=:datesortieAlbum, typeAlbum=:typeAlbum, datesaisieAlbum=:datesaisieAlbum, noutil=:noutil, formatAlbum=:formatAlbum, producteurAlbum=:producteurAlbum, referenceAlbum=:referenceAlbum, labelAlbum=:labelAlbum, descriptionAlbum=:descriptionAlbum, pochetteAlbum=:pochetteAlbum, certificationsAlbum=:certificationsAlbum, enregistrementAlbum=:enregistrementAlbum WHERE noAlbum=:noAlbum');
+                $q = $this->_db->prepare('UPDATE albums SET nomAlbum=:nomAlbum, datesortieAlbum=:datesortieAlbum, typeAlbum=:typeAlbum, datesaisieAlbum=:datesaisieAlbum, noutil=:noutil, formatAlbum=:formatAlbum, producteurAlbum=:producteurAlbum, referenceAlbum=:referenceAlbum, labelAlbum=:labelAlbum, descriptionAlbum=:descriptionAlbum, pochetteAlbum=:pochetteAlbum, certificationsAlbum=:certificationsAlbum, musiciensAlbum=:musiciensAlbum, enregistrementAlbum=:enregistrementAlbum WHERE noAlbum=:noAlbum');
                     
                 $q->bindValue(':nomAlbum', $album->getnomAlbum());
                 $q->bindValue(':datesortieAlbum', $album->getdatesortieAlbum());
@@ -93,6 +94,7 @@
                 $q->bindValue(':descriptionAlbum', $album->getDescriptionAlbum());
                 $q->bindValue(':pochetteAlbum', $album->getPochetteAlbum());
                 $q->bindValue(':certificationsAlbum', $album->getCertificationsAlbum());
+                $q->bindValue(':musiciensAlbum', $album->getMusiciensAlbum());
                 $q->bindValue(':enregistrementAlbum', $album->getEnregistrementAlbum());
 
                 $q->execute();

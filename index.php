@@ -1,4 +1,5 @@
 <?php
+	
 	session_start();
 /* AFFICHAGE DES ERREURS PHP */
 	error_reporting(E_ALL);
