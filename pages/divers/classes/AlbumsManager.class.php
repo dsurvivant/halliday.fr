@@ -49,29 +49,29 @@
         //=====
             public function add(Album $album) //retourne l'id de l'album créé automatiquement par sql
             {
-                    $q = $this->_db->prepare('INSERT INTO albums(nomAlbum, datesortieAlbum, typeAlbum, datesaisieAlbum, noutil, formatAlbum, producteurAlbum, referenceAlbum, labelAlbum, descriptionAlbum, pochetteAlbum, certificationsAlbum,musiciensAlbum, enregistrementAlbum) 
+                $q = $this->_db->prepare('INSERT INTO albums(nomAlbum, datesortieAlbum, typeAlbum, datesaisieAlbum, noutil, formatAlbum, producteurAlbum, referenceAlbum, labelAlbum, descriptionAlbum, pochetteAlbum, certificationsAlbum,musiciensAlbum, enregistrementAlbum) 
                     VALUES(:nomAlbum, :datesortieAlbum, :typeAlbum, :datesaisieAlbum, :noutil, :formatAlbum, :producteurAlbum, :referenceAlbum, :labelAlbum, :descriptionAlbum, :pochetteAlbum, :certificationsAlbum,:musiciensAlbum, :enregistrementAlbum)');
                     
-                    $q->bindValue(':nomAlbum', $album->getnomAlbum());
-                    $q->bindValue(':datesortieAlbum', $album->getdatesortieAlbum());
-                    $q->bindValue(':typeAlbum', $album->gettypeAlbum());
-                    $q->bindValue(':noutil', $album->getnoutil());
-                    $q->bindValue(':datesaisieAlbum', $album->getdatesaisieAlbum());
-                    $q->bindValue(':formatAlbum', $album->getformatAlbum());
-                    $q->bindValue(':producteurAlbum', $album->getproducteurAlbum());
-                    $q->bindValue(':referenceAlbum', $album->getReferenceAlbum());
-                    $q->bindValue(':labelAlbum', $album->getlabelAlbum());
-                    $q->bindValue(':descriptionAlbum', $album->getDescriptionAlbum());
-                    $q->bindValue(':pochetteAlbum', $album->getPochetteAlbum());
-                    $q->bindValue(':certificationsAlbum', $album->getCertificationsAlbum());
-                    $q->bindValue(':musiciensAlbum', $album->getMusiciensAlbum());
-                    $q->bindValue(':enregistrementAlbum', $album->getEnregistrementAlbum());
+                $q->bindValue(':nomAlbum', $album->getnomAlbum());
+                $q->bindValue(':datesortieAlbum', $album->getdatesortieAlbum());
+                $q->bindValue(':typeAlbum', $album->gettypeAlbum());
+                $q->bindValue(':noutil', $album->getnoutil());
+                $q->bindValue(':datesaisieAlbum', $album->getdatesaisieAlbum());
+                $q->bindValue(':formatAlbum', $album->getformatAlbum());
+                $q->bindValue(':producteurAlbum', $album->getproducteurAlbum());
+                $q->bindValue(':referenceAlbum', $album->getReferenceAlbum());
+                $q->bindValue(':labelAlbum', $album->getlabelAlbum());
+                $q->bindValue(':descriptionAlbum', $album->getDescriptionAlbum());
+                $q->bindValue(':pochetteAlbum', $album->getPochetteAlbum());
+                $q->bindValue(':certificationsAlbum', $album->getCertificationsAlbum());
+                $q->bindValue(':musiciensAlbum', $album->getMusiciensAlbum());
+                $q->bindValue(':enregistrementAlbum', $album->getEnregistrementAlbum());
 
-                    $q->execute();  
+                $q->execute();  
                 
-                    $bdd = $this->_db;
-                    $idAlbum = $bdd->lastInsertId();
-                    return $idAlbum; //retourne l'id créé pour l'album
+                $bdd = $this->_db;
+                $idAlbum = $bdd->lastInsertId();
+                return $idAlbum; //retourne l'id créé pour l'album
             }
         
         //=====

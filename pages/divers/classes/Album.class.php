@@ -64,7 +64,7 @@
         public function setProducteurAlbum($producteurAlbum){$this->_producteurAlbum = $producteurAlbum;}
         public function setReferenceAlbum($referenceAlbum){$this->_referenceAlbum = $referenceAlbum;}
         public function setlabelAlbum($labelAlbum){$this->_labelAlbum = $labelAlbum;}
-        public function setDescriptionAlbum($description1Album){$this->_description1Album = $description1Album;}
+        public function setDescriptionAlbum($descriptionAlbum){$this->_descriptionAlbum = $descriptionAlbum;}
         public function setPochetteAlbum($pochetteAlbum) {$this->_pochetteAlbum = $pochetteAlbum;}
         public function setCertificationsAlbum($certificationsAlbum) {$this->_certificationsAlbum = $certificationsAlbum;}
         public function setMusiciensAlbum($musiciensAlbum) {$this->_musiciensAlbum = $musiciensAlbum;}

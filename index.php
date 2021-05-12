@@ -9,7 +9,6 @@
 		
 		require('pages/site/controllers/controller.php');
 		require('pages/site/controllers/controller_connexion.php');
-		
 		//contient la description de la page à afficher
 		$page='accueil';
 		//données de connection membre

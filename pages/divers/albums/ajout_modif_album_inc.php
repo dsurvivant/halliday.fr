@@ -61,11 +61,11 @@ $formatAlbum = $_POST['formatAlbum'];
 $producteurAlbum = trim(sanitizeString($_POST['producteurAlbum']));
 $referenceAlbum = trim(sanitizeString($_POST['referenceAlbum']));
 $labelAlbum = trim(sanitizeString($_POST['labelAlbum']));
-$descriptionAlbum ='';
-$pochetteAlbum='';
-$certificationsAlbum='';
-$musiciensAlbum='';
-$enregistrementAlbum='';
+$descriptionAlbum =sanitizeString($_POST['descriptionAlbum']);
+$pochetteAlbum=trim(sanitizeString($_POST['pochetteAlbum']));
+$certificationsAlbum=trim(sanitizeString($_POST['certificationsAlbum']));
+$musiciensAlbum=sanitizeString($_POST['musiciensAlbum']);
+$enregistrementAlbum=sanitizeString($_POST['enregistrementAlbum']);
 
 if ($_POST['noutil']!="")
     {$noutil = $_POST['noutil'];}
