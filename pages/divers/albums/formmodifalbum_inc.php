@@ -32,9 +32,14 @@ require_once '../classes/Titre.class.php';
             $datesortieAlbum = $album->getdatesortieAlbum();
             $typeAlbum = $manager->libelletypeAlbum($album);
             $formatAlbum = $manager->libelleformatAlbum($album);
-            $producteurAlbum = $album->getproducteurAlbum($album);
-            $referenceAlbum = $album->getreferenceAlbum($album);
-            $labelAlbum = $album->getlabelAlbum($album);
+            $producteurAlbum = $album->getproducteurAlbum();
+            $referenceAlbum = $album->getreferenceAlbum();
+            $labelAlbum = $album->getlabelAlbum();
+            $descriptionAlbum = $album->getDescriptionAlbum();
+            $pochetteAlbum = $album->getPochetteAlbum();
+            $certificationsAlbum = $album->getCertificationsAlbum();
+            $musiciensAlbum = $album->getMusiciensAlbum();
+            $enregistrementAlbum = $album->getEnregistrementAlbum();
 
             //====== RECHERCHE DES TITRES DE L'ALBUM
             $managerliaison = new LiaisonAlbumsTitresManager($bdd);
@@ -45,12 +50,12 @@ require_once '../classes/Titre.class.php';
 
 
     <div id="blocentete" class="row entete">
-        <div id="titre_entete" class="col-xs-12">MODIFIER UN ALBUM</div>
+        <div id="titre_entete" class="col-12 text-center p-2">MODIFIER UN ALBUM</div>
     </div>
 
     <div class="row">
         <!-- FORMULAIRE DE SAISI DES ELEMENTS DE L'ALBUM -->
-        <form id="formAlbum" method="post"  enctype="multipart/form-data" onkeypress="return event.keyCode != 13;"> <!-- action géré par jQuery -->
+        <form id="formAlbum" method="post"  enctype="multipart/form-data"> <!-- action géré par jQuery -->
         <div class="container-fluid">    
                 <!--=====               -->
                 <!--== ALBUM            -->
@@ -87,77 +92,132 @@ require_once '../classes/Titre.class.php';
 
                 <!-- bloc noalbum, nomalbum, annneealbum, typealbum, formatalbum -->
                 <div id="blocalbum" class="col-md-5">
+                    <!-- ONGLETS -->
+                        <nav class="nav nav-tabs" >
+                            <a href="#general" class="nav-item nav-link active" data-toggle="tab">Infos</a>
+                            <a href="#description" class="nav-item nav-link " data-toggle="tab">Description</a>
+                            <a href="#musiciens" class="nav-item nav-link " data-toggle="tab">Musiciens</a>
+                            <a href="#enregistrement" class="nav-item nav-link " data-toggle="tab">Enregistrement</a>
+                        </nav>
                     
-                    <!-- -->
-                    <label for="noAlbum">No</label>
-                    <input type="text" id="noAlbum" name="noAlbum" value="<?php echo $noAlbum; ?>" readonly /><br/>
-                    <label for="nomAlbum">Nom</label>
-                    <input type="text" id="nomAlbum" name="nomAlbum" value="<?php echo $nomAlbum; ?>" maxlength="100" placeholder="<?php echo $nomAlbum; ?>"/><br/>
-                    <!-- -->
-                    <label for="datesortieAlbum">Date de sortie</label><input type="text" id="datesortieAlbum" name="datesortieAlbum" value="<?php echo dateconv2($datesortieAlbum); ?>" maxlength="10" placeholder="jj/mm/yyyy"/><br/>
-                    <!-- -->
-                    <label for="typeAlbum">Type</label>
-                        <select id="typeAlbum" name="typeAlbum">
-                            <?php
-                            //remplissage du select droits
-                            try
-                            {
-                                $i=0;
-                                $reponse = $bdd->query('SELECT * FROM typesalbum');
 
-                                while ($donnees = $reponse->fetch())
-                                {
-                                    if ($donnees['typeAlbum']==$typeAlbum) {$focus = "selected";} else {$focus = "";}
-                                    echo ("<option value=" . $donnees['notypeAlbum'] . " " . $focus . ">" . $donnees['typeAlbum']  . "</option>");
+                    <!-- TABLEAUX -->
+                    <div class="tab-content">
+                        <!-- ONGLET INFOS -->
+                        <div id="general" class="tab-pane active">
+                            <!-- No d'album -->
+                                <label for="noAlbum">No</label>
+                                <input type="text" id="noAlbum" name="noAlbum" value="<?php echo $noAlbum; ?>" readonly /><br/>
+                            <!-- Nom album -->
+                                <label for="nomAlbum">Nom</label>
+                                <input type="text" id="nomAlbum" name="nomAlbum" value="<?php echo $nomAlbum; ?>" maxlength="100" placeholder="<?php echo $nomAlbum; ?>"/><br/>
+                            <!-- Date de sortie -->
+                                <label for="datesortieAlbum">Date de sortie</label>
+                                <input type="text" id="datesortieAlbum" name="datesortieAlbum" value="<?php echo dateconv2($datesortieAlbum); ?>" maxlength="10" placeholder="jj/mm/yyyy">
+                                <br>
+                            <!-- Type -->
+                                <label for="typeAlbum">Type</label>
+                                <select id="typeAlbum" name="typeAlbum">
+                                    <?php
+                                    //remplissage du select droits
+                                    try
+                                    {
+                                        $i=0;
+                                        $reponse = $bdd->query('SELECT * FROM typesalbum');
 
-                                }
+                                        while ($donnees = $reponse->fetch())
+                                        {
+                                            if ($donnees['typeAlbum']==$typeAlbum) {$focus = "selected";} else {$focus = "";}
+                                            echo ("<option value=" . $donnees['notypeAlbum'] . " " . $focus . ">" . $donnees['typeAlbum']  . "</option>");
 
-                                $reponse->closeCursor(); // Termine le traitement de la requête
+                                        }
 
-                            }
-                            catch (Exception $e)
-                            {
-                                die('Erreur : ' . $e->getMessage());
-                            }
-                            ?>                         
-                        </select><br/>
-                    
-                    <!-- -->
-                    <label for="Format">Format</label>
-                        <select id="formatAlbum" name="formatAlbum">
-                            <?php
-                                //remplissage du select droits
-                            try
-                            {
-                                $i=0;
-                                $reponse = $bdd->query('SELECT * FROM formatalbum');
-                                    
-                                while ($donnees = $reponse->fetch())
-                                {
-                                    if ($donnees['formatAlbum']==$formatAlbum) {$focus = "selected";} else {$focus = "";}
-                                    echo ("<option value=" . $donnees['noformatAlbum'] . " " . $focus . ">" . $donnees['formatAlbum']  . "</option>");
-                                                
-                                }
+                                        $reponse->closeCursor(); // Termine le traitement de la requête
 
-                                $reponse->closeCursor(); // Termine le traitement de la requête
+                                    }
+                                    catch (Exception $e)
+                                    {
+                                        die('Erreur : ' . $e->getMessage());
+                                    }
+                                    ?>                         
+                                </select>
+                                <br>
+                            <!-- Format -->
+                                <label for="Format">Format</label>
+                                <select id="formatAlbum" name="formatAlbum">
+                                    <?php
+                                        //remplissage du select droits
+                                    try
+                                    {
+                                        $i=0;
+                                        $reponse = $bdd->query('SELECT * FROM formatalbum');
+                                            
+                                        while ($donnees = $reponse->fetch())
+                                        {
+                                            if ($donnees['formatAlbum']==$formatAlbum) {$focus = "selected";} else {$focus = "";}
+                                            echo ("<option value=" . $donnees['noformatAlbum'] . " " . $focus . ">" . $donnees['formatAlbum']  . "</option>");
+                                                        
+                                        }
 
-                            }
-                            catch (Exception $e)
-                            {
-                                die('Erreur : ' . $e->getMessage());
-                            }
-                            ?>                         
-                        </select><br/>
-                    <!-- -->
-                    <!-- -->
-                     <label for="producteurAlbum">Producteur</label><input type="text" id="producteurAlbum" name="producteurAlbum" value="<?php echo $producteurAlbum ?>" maxlength="50"/><br/>
-                     <!-- -->
-                     <label for="referenceAlbum">Reference</label><input type="text" id="referenceAlbum" name="referenceAlbum" value="<?php echo $referenceAlbum ?>" maxlength="50"/><br/>
-                     <!-- -->
-                     <label for="labelAlbum">Label</label><input type="text" id="labelAlbum" name="labelAlbum" value="<?php echo $labelAlbum ?>" maxlength="50"/><br/>
+                                        $reponse->closeCursor(); // Termine le traitement de la requête
 
-                    <input id="inputnoutil" type="text" name="noutil" value="<?php echo $noutilisateur; ?>" placeholder="noutilisateur" style="visibility: hidden;" disabled/>
-                     <!-- -->
+                                    }
+                                    catch (Exception $e)
+                                    {
+                                        die('Erreur : ' . $e->getMessage());
+                                    }
+                                    ?>                         
+                                </select>
+                                <br>
+                            <!-- Producteur -->
+                                <label for="producteurAlbum">Producteur</label>
+                                <input type="text" id="producteurAlbum" name="producteurAlbum" value="<?php echo $producteurAlbum ?>" maxlength="1000">
+                                <br>
+                            <!-- Reference -->
+                                <label for="referenceAlbum">Reference</label>
+                                <input type="text" id="referenceAlbum" name="referenceAlbum" value="<?php echo $referenceAlbum ?>" maxlength="50">
+                                <br>
+                            <!-- Label -->
+                                <label for="labelAlbum">Label</label>
+                                <input type="text" id="labelAlbum" name="labelAlbum" value="<?php echo $labelAlbum ?>" maxlength="50">
+                                <br>
+                            <!-- Certifications -->
+                                <label for="certificationsAlbum">Certifications</label>
+                                <input type="text" id="certificationsAlbum" name="certificationsAlbum" value="<?php echo $certificationsAlbum ?>" maxlength="255">
+                                <br>
+                            <!-- Pochette -->
+                                <label for="pochetteAlbum">Pochette</label>
+                                <input type="text" id="pochetteAlbum" name="pochetteAlbum" value="<?php echo $pochetteAlbum ?>"  maxlength="100">
+                                <br>
+                            <!-- Utilisateur connecté -->
+                            <input id="inputnoutil" type="text" name="noutil" value="<?php echo $noutilisateur; ?>" placeholder="noutilisateur" style="visibility: hidden;" disabled>
+                             <!-- -->
+                        </div>
+
+                        <!-- ONGLET DESCRIPTION -->
+                        <div id="description" class="tab-pane " >
+                             <div class="form-group">
+                               <label for="description">Description de l'album</label>
+                               <textarea class="form-control" id="description" rows="8" name="descriptionAlbum"><?= $descriptionAlbum ?></textarea>
+                             </div>
+                        </div>
+
+                        <!-- ONGLET MUSICIENS -->
+                        <div id="musiciens" class="tab-pane " >
+                            <div class="form-group">
+                               <label for="musiciens">Musiciens</label>
+                               <textarea class="form-control" id="musiciens" rows="8" name="musiciensAlbum"><?= $musiciensAlbum ?></textarea>
+                             </div>
+                        </div>
+
+                        <!-- ONGLET ENREGISTREMENT -->
+                        <div id="enregistrement" class="tab-pane " >
+                            <div class="form-group">
+                               <label for="enregistrements">Enregistrements</label>
+                               <textarea class="form-control" id="enregistrements" rows="8" name="enregistrementAlbum"><?= $enregistrementAlbum ?></textarea>
+                             </div>
+                        </div>
+                    </div>
                 </div>
      
                 <!--=====                -->
@@ -200,7 +260,9 @@ require_once '../classes/Titre.class.php';
                             ?>
                             
                             <!-- @whitespace-->
-                            <li id="ongletplus" class="onglettitre"><span id="bouton_plus_onglet" class="glyphicon glyphicon-plus bouton_plus_onglet" title="ajouter disque"></span></li>
+                            <li id="ongletplus" class="onglettitre">
+                                <img id="bouton_plus_onglet" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter disque" title="ajouter disque" width="15px">
+                            </li>
                         </ul>
                     </div>
 
@@ -215,7 +277,9 @@ require_once '../classes/Titre.class.php';
                                    <th>Titre</th>
                                    <th>Durée</th>
                                    <th></th>
-                                   <th><span class="glyphicon glyphicon-plus bouton_plus_titre_thead" title="ajouter" width="12px" height="12px"></span></th>
+                                   <th>
+                                        <img class="bouton_plus_titre_thead" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter titre" title="ajouter titre" width="15px">
+                                    </th>
                                </tr>
                            </thead>
 
@@ -248,8 +312,8 @@ require_once '../classes/Titre.class.php';
                                             //je ferme le tableau
                                             echo ("</tbody></table>");
                                             //j'ouvre le tableau suivant
-                                            echo('<table id="tableTitres' . $nodisque . '" class="table tableTitres"><caption id="disque1">Disque ' . $nodisque . '<span id="suppressionTableau" class="glyphicon glyphicon-trash"></span></caption><thead><tr><th>No</th><th>Titre</th><th>Durée</th><th></th>
-                                            <th><span class="glyphicon glyphicon-plus bouton_plus_titre_thead" title="ajouter" width="12px" height="12px"></span></th></tr></thead><tbody>');
+                                            echo('<table id="tableTitres' . $nodisque . '" class="table tableTitres"><caption id="disque1">Disque ' . $nodisque . '<img  id="suppressionTableau" src="pages/divers/images/boutons/poubelle.png" alt="supprimer tableau" title="supprimer tableau" width="15px"></caption><thead><tr><th>No</th><th>Titre</th><th>Durée</th><th></th>
+                                            <th><img class="bouton_plus_titre_thead" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter titre" title="ajouter titre" width="15px"></th></tr></thead><tbody>');
                                         }
                                     }
                                     ?>
@@ -264,8 +328,12 @@ require_once '../classes/Titre.class.php';
                                              <input class="modifier_duree form-control" type="text" name="dureetitre" value="<?php echo $dureetitre; ?>" maxlength="5" placeholder="<?php echo $dureetitre; ?>" />   
                                         </td>
 
-                                        <td><span class="glyphicon glyphicon-minus bouton_moins_titre" title="supprimer"></span></td>
-                                        <td><span class="glyphicon glyphicon-plus bouton_plus_titre" title="ajouter" width="12px" height="12px"></span></td>
+                                        <td>
+                                            <img class=" bouton_moins_titre" src="pages/divers/images/boutons/bouton-moins.png" alt="supprimer titre" title="supprimer titre" width="15px">
+                                        </td>
+                                        <td>
+                                            <img class=" bouton_plus_titre" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter titre" title="ajouter titre" width="15px">
+                                        </td>
                                    </tr> 
 
                                    <?php

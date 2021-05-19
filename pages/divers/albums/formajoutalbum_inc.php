@@ -23,7 +23,6 @@
 
     <div class="row">
         <!-- FORMULAIRE DE SAISI DES ELEMENTS DE L'ALBUM -->
-        <!--<form id="formAlbum" method="post" enctype="multipart/form-data" onkeypress="return event.keyCode != 13;"> <!-- action géré par jQuery -->
         <form id="formAlbum" method="post" enctype="multipart/form-data"> <!-- action géré par jQuery -->
 
         <div class="container-fluid">
@@ -61,7 +60,7 @@
                     <div class="tab-content">
                         <!-- ONGLET INFOS -->
                         <div id="general" class="tab-pane active">
-                             <!--Nom -->
+                            <!--Nom -->
                                 <label for="nomAlbum">Nom</label>
                                 <input type="text" id="nomAlbum"  name="nomAlbum" maxlength="100">
                                 <br>
@@ -125,7 +124,7 @@
                                 <br>
                             <!--Producteur -->
                                 <label for="producteurAlbum">Producteur</label>
-                                <input type="text" id="producteurAlbum" name="producteurAlbum" maxlength="50">
+                                <input type="text" id="producteurAlbum" name="producteurAlbum" maxlength="100">
                                 <br>
                             <!--Reference -->
                                 <label for="referenceAlbum">Reference</label>
@@ -171,9 +170,7 @@
                                <textarea class="form-control" id="enregistrements" rows="8" name="enregistrementAlbum"></textarea>
                              </div>
                         </div>
-                    </div>
-                   
-                    
+                    </div>   
                 </div>
             
                 <!--=====                -->
@@ -190,7 +187,9 @@
                         <ul id="onglettitres">
                             <li class="onglettitre">Disque 1</li>
                             <!-- @whitespace-->
-                            <li id="ongletplus" class="onglettitre"><span id="bouton_plus_onglet" class="glyphicon glyphicon-plus bouton_plus_onglet" title="ajouter disque"></span></li>
+                            <li id="ongletplus" class="onglettitre">
+                                <img id="bouton_plus_onglet" class="bouton_plus_onglet" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter disque" title="ajouter disque" width="15px">
+                            </li>
                         </ul>
                     </div>
 
@@ -206,7 +205,9 @@
                                     <th>Titre</th>
                                     <th style="width:100px;">Durée</th>
                                     <th style="width:20px;"></th>
-                                    <th style="width:20px;"><span class="glyphicon glyphicon-plus bouton_plus_titre_thead" title="ajouter"></span></th>
+                                    <th style="width:20px;">
+                                        <img class="bouton_plus_titre_thead" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter titre" title="ajouter titre" width="15px">
+                                    </th>
                                 </tr>
                             </thead>
 
@@ -215,8 +216,12 @@
                                     <td class="notitre">1</td>
                                     <td><input class="modifier_titre form-control" type="text" name="nomtitre"/></td>
                                     <td><input class="modifier_duree form-control" type="text" name="dureetitre"  maxlength="5" /></td>
-                                    <td><span class="glyphicon glyphicon-minus bouton_moins_titre" title="supprimer"></span></td>
-                                    <td><span class="glyphicon glyphicon-plus bouton_plus_titre" title="ajouter"></span></td>
+                                    <td>
+                                        <img class=" bouton_moins_titre" src="pages/divers/images/boutons/bouton-moins.png" alt="supprimer titre" title="supprimer titre" width="15px">
+                                    </td>
+                                    <td>
+                                        <img class=" bouton_plus_titre" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter titre" title="ajouter titre" width="15px">
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

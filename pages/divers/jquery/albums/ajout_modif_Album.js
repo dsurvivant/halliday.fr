@@ -175,8 +175,22 @@ $(function()
                 + $nbonglettitre
                 +'">Disque '
                 + $nbonglettitre
-                + ' <span id="suppressionTableau" class="glyphicon glyphicon-trash"></span>'
-                +'</caption><thead><tr><th>No</th><th>Titre</th><th>Durée</th><th></th><th><span class="glyphicon glyphicon-plus bouton_plus_titre_thead" title="ajouter" width="12px" height="12px"></span></th></tr></thead><tbody><tr class="ligne"><td class="notitre">1</td><td><input class="modifier_titre form-control" type="text" name="nomtitre"/></td><td><input class="modifier_duree form-control" type="text" name="dureetitre"  maxlength="5" /></td><td><span class="glyphicon glyphicon-minus bouton_moins_titre" title="supprimer"></span></td><td><span class="glyphicon glyphicon-plus bouton_plus_titre" title="ajouter"></span></td></tr></tbody></table>');
+                + '<img  id="suppressionTableau" src="pages/divers/images/boutons/poubelle.png" alt="supprimer tableau" title="supprimer tableau" width="15px">'
+                +'</caption><thead><tr>\
+                <th>No</th>\
+                <th>Titre</th>\
+                <th>Durée</th>\
+                <th></th>\
+                <th><img class="bouton_plus_titre_thead" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter titre" title="ajouter titre" width="15px"></th>\
+                </tr>\
+                </thead><tbody>\
+                <tr class="ligne">\
+                <td class="notitre">1</td>\
+                <td><input class="modifier_titre form-control" type="text" name="nomtitre"/></td>\
+                <td><input class="modifier_duree form-control" type="text" name="dureetitre"  maxlength="5" /></td>\
+                <td><img class=" bouton_moins_titre" src="pages/divers/images/boutons/bouton-moins.png" alt="supprimer titre" title="supprimer titre" width="15px"></td>\
+                <td><img class=" bouton_plus_titre" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter titre" title="ajouter titre" width="15px"></td>\
+                </tr></tbody></table>');
 
             //focus sur l'onglet et sur le tableau
             $('.onglettitre:eq(' + $ongletactiftitre + ')').click();
@@ -253,7 +267,14 @@ $(function()
         //BOUTON PLUS DE L'ENTETE DU TABLEAU DES TITRES - AJOUTER TITRE
         $('#bloctableaux').on('click','.bouton_plus_titre',function()
         {
-            $(this).closest('tr').after('<tr class="ligne"><td class="notitre"></td><td><input class="modifier_titre form-control" type="text" name="nomtitre"/></td><td><input class="modifier_duree form-control" type="text" name="dureetitre"  maxlength="5" /></td><td><span class="glyphicon glyphicon-minus bouton_moins_titre" title="supprimer"></span></td><td><span class="glyphicon glyphicon-plus bouton_plus_titre" title="ajouter"></span></td></tr>');
+            txt = ''
+            $(this).closest('tr').after('<tr class="ligne">\
+                <td class="notitre"></td>\
+                <td><input class="modifier_titre form-control" type="text" name="nomtitre"/></td>\
+                <td><input class="modifier_duree form-control" type="text" name="dureetitre"  maxlength="5" /></td>\
+                <td><img class=" bouton_moins_titre" src="pages/divers/images/boutons/bouton-moins.png" alt="supprimer titre" title="supprimer titre" width="15px"></td>\
+                <td><img class=" bouton_plus_titre" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter titre" title="ajouter titre" width="15px"></td>\
+                </tr>');
             
             //numérotation des titres
             $i=0;
@@ -272,7 +293,13 @@ $(function()
         //BOUTON PLUS DES TITRES - AJOUTER TITRE
         $('#bloctableaux').on('click','.bouton_plus_titre_thead',function()
         {
-            $(this).closest('table').find('tbody').prepend('<tr class="ligne"><td class="notitre"></td><td><input class="modifier_titre form-control" type="text" name="nomtitre"/></td><td><input class="modifier_duree form-control" type="text" name="dureetitre"  maxlength="5" /></td><td><span class="glyphicon glyphicon-minus bouton_moins_titre" title="supprimer"></span></td><td><span class="glyphicon glyphicon-plus bouton_plus_titre" title="ajouter"></span></td></tr>');
+            $(this).closest('table').find('tbody').prepend('<tr class="ligne">\
+                <td class="notitre"></td>\
+                <td><input class="modifier_titre form-control" type="text" name="nomtitre"/></td>\
+                <td><input class="modifier_duree form-control" type="text" name="dureetitre"  maxlength="5" /></td>\
+                <td><img class=" bouton_moins_titre" src="pages/divers/images/boutons/bouton-moins.png" alt="supprimer titre" title="supprimer titre" width="15px"></td>\
+                <td><img class=" bouton_plus_titre" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter titre" title="ajouter titre" width="15px"></td>\
+                </tr>');
             
             //numérotation des titres
             $i=0;
@@ -316,7 +343,7 @@ $(function()
                     $i++;
                     $(this).attr('id',"tableTitres" + $i);
                     $(this).find('caption').text('Disque ' + $i);
-                    $(this).find('caption').append(' <span id="suppressionTableau" class="glyphicon glyphicon-trash"></span>');
+                    $(this).find('caption').append('<img  id="suppressionTableau" src="pages/divers/images/boutons/poubelle.png" alt="supprimer tableau" title="supprimer tableau" width="15px">');
                 });
             }
         });
@@ -406,7 +433,13 @@ $(function()
 
             if(appui == 13)
             {
-                $(this).closest('tr').after('<tr class="ligne"><td class="notitre"></td><td><input class="modifier_titre form-control" type="text" name="nomtitre"/></td><td><input class="modifier_duree form-control" type="text" name="dureetitre"  maxlength="5" /></td><td><span class="glyphicon glyphicon-minus bouton_moins_titre" title="supprimer"></span></td><td><span class="glyphicon glyphicon-plus bouton_plus_titre" title="ajouter"></span></td></tr>');
+                $(this).closest('tr').after('<tr class="ligne">\
+                    <td class="notitre"></td>\
+                    <td><input class="modifier_titre form-control" type="text" name="nomtitre"/></td>\
+                    <td><input class="modifier_duree form-control" type="text" name="dureetitre"  maxlength="5" /></td>\
+                    <td><img class=" bouton_moins_titre" src="pages/divers/images/boutons/bouton-moins.png" alt="supprimer titre" title="supprimer titre" width="15px"></td>\
+                    <td><img class=" bouton_plus_titre" src="pages/divers/images/boutons/bouton-plus.png" alt="ajouter titre" title="ajouter titre" width="15px"></td>\
+                    </tr>');
                 //numérotation des titres
                 $i=0;
                 var tableau = $(this).closest('.tableTitres');
