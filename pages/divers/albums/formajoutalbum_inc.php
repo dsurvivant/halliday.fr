@@ -228,16 +228,16 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div id="#blocboutons" class="col-lg-12 text-center">
-                    <button class="btn btn-primary" id="bouton_valider">Valider</button>
-                    <button class="btn btn-primary" id="bouton_annuler">Annuler</button>
-                </div>
-            </div>
     
         </div> <!-- container-fluid -->
         </form>
+    </div>
+
+    <div class="row">
+        <div id="#blocboutons" class="col-lg-12 text-center">
+            <button class="btn btn-primary" id="bouton_valider">Valider</button>
+            <button class="btn btn-primary" id="bouton_annuler">Annuler</button>
+        </div>
     </div>
 
 </div>

@@ -426,7 +426,7 @@ $(function()
     //**    CLAVIER
     //*****
 
-        //touche ENTREE dans le champ de saisi durée du titre
+        //touche ENTREE dans le champ de saisi durée du titre ==> ajout d'une ligne supplémentaire
         $('#bloctitres').on("keyup", ".modifier_duree",function(touche)
         {
             var appui = touche.which || touche.keyCode; //le code est compatible sur tous les navigateurs grâce à ces deux propriétés
