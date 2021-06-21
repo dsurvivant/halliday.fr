@@ -78,11 +78,11 @@ $texteTitre = $titre->getTexteTitre();
 					<h5>
 						Infos
 						<?php if($modifierinfostitres==1): ?>
-							<span id="modifierinfostitres" data-toggle="modal" data-backdrop="static" href="#infos">X</span>
+							<span class="float-right" id="modifierinfostitres" data-toggle="modal" data-backdrop="static" href="#infos"><img src="pages/divers/images/boutons/document2.png" alt="modifier" title="Modifier" style="height: 20px;width: 20px;"></span>
 						<?php endif; ?>
 					</h5>
 
-					<div >
+					<div class="p-2" >
 						<span>NO TITRE:</span> <span id='notitre'><?php echo $notitre; ?></span><br>
 				    	<span>PAROLES:</span> <span id="parolesTitre"><?= nl2br($parolesTitre); ?></span><br>
 				    	<span>MUSIQUE:</span> <span id="musiqueTitre" ><?= nl2br($musiqueTitre); ?></span><br>
