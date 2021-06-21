@@ -7,6 +7,8 @@
 //
 //
 
+
+$checkparolestitres= "all";
 /** appel de la feuille par une requête ajax **/
 if (isset($_POST['ajax']))
 {
@@ -17,7 +19,7 @@ if (isset($_POST['ajax']))
     $checkparolestitres = $_POST['checkparolestitres'];
 }
 
-if(!isset($checkparolestitres)){$checkparolestitres= false;}
+if (isset($_GET['paroles'])) { $checkparolestitres= $_GET['paroles']; }
 
 $titres = array();
 //connexion à la base de donnees
@@ -79,7 +81,7 @@ $nombreTitres = $manager->getnombreTitres();
 
                     foreach ($titres as $titre)
                     {
-                        if (($checkparolestitres==true and $titre->getTexteTitre()==null) or ($checkparolestitres == false))
+                        if ( ($checkparolestitres=="without" and $titre->getTexteTitre()==null) or ($checkparolestitres=="with" and $titre->getTexteTitre()!=null) or ( $checkparolestitres=="all" ))
                         {
                             $i++;
                             ?>

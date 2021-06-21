@@ -75,8 +75,10 @@ $(function()
 	/**
 	 * CHECKBOX SANS TEXTES
 	 */
-		$('#checkParolesTitres').change(function() 
+		$('.checkParolesTitres').change(function() 
 		{
+			action = "index.php?acces_membre&onglet=Titres&paroles=" + $(this).val();
+			$('#formfiltres').attr('action', action)
 			$('#formfiltres').submit();
 		});
 

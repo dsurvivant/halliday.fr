@@ -20,6 +20,9 @@
 if(isset($_SESSION['modifierparolestitre'])) { $droits_modifierparolestitre = $_SESSION['modifierparolestitre'];}
 else { $droits_modifierparolestitre = 0; }
 
+if (isset($_GET['paroles'])) {$paroles = $_GET['paroles']; }
+else { $paroles="all";}
+
 $bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
  
 //choix de l'onglet
@@ -77,9 +80,12 @@ else { $onglet = 'Albums'; }
                                         if($droits_modifierparolestitre==1): ?>
                                             <div id="filtre_liste_titres" class="col-lg12">
                                                 <form id="formfiltres" method="post" action="index.php?acces_membre&onglet=Titres">
-                                                    <label for="checkParolesTitres"> Afficher titres sans paroles</label>
-                                                    <input id="checkParolesTitres" type="checkbox" name="checkParolesTitres" <?php if($checkparolestitres==true) { echo "checked ";} ?> > 
-
+                                            
+                                                   <div style="padding:5px;">
+                                                    <input class="checkParolesTitres" type="radio" value="without" name="checkParolesTitres" <?php if($paroles=="without") { echo "checked";} ?> ><label for="">Sans paroles</label>
+                                                    <input class="checkParolesTitres" type="radio" value="with" name="checkParolesTitres" <?php if($paroles=="with") { echo "checked";} ?>><label for="">Avec paroles</label>
+                                                    <input class="checkParolesTitres" type="radio" value="all" name="checkParolesTitres" <?php if($paroles=="all") { echo "checked";} ?>><label for="">Tout</label>
+                                                    </div>
                                                 </form>
                                             </div>
                                         <?php endif; ?>
