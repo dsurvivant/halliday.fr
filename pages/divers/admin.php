@@ -41,15 +41,15 @@ else { $onglet = 'Albums'; }
                 </nav>
 
                 <!-- Actions des onglets bootstrap -->
-                <div class="tab-content row">
+                <div class="tab-content">
 
                     <!-------------->
                     <!-- PANNEAU 1 -->
                     <!-------------->
                         <div class="row tab-pane fade <?php if($onglet=="Albums"){ echo 'show active'; } ?> " id="albums">
-                            <div class="container mt-2">
-                                <div class="row">
-                                    <section id="section_gauche" class="col-6">
+                            <div class="container-fluid mt-2">
+                                <div class="row justify-content-center">
+                                    <section id="section_gauche" class="col-4">
                                         <!-- ** LISTE DES ALBUMS -->
                                         <?php include ('albums/listealbums_inc.php');?>
                                     </section> <!-- section_gauche -->
@@ -67,7 +67,7 @@ else { $onglet = 'Albums'; }
                     <!-- PANNEAU 2 -->
                     <!-------------->
                             <div class="row tab-pane fade <?php if($onglet=="Titres"){ echo 'show active'; } ?> " id="titres">
-                                <div class="container">
+                                <div class="container-fluid">
                                     <div class="row">
                                         <?php
                                         //état du checkbox
@@ -111,12 +111,11 @@ else { $onglet = 'Albums'; }
                             </div>
 
                 </div>
+            </div>
 
-                </div>
-
-                <div id="gestion_album" class="row">
+            <div class="container-fluid" id="gestion_album">
                     <!--cadre destiné à l'ajout ou suppression -->
-                </div>
+            </div>
         <?php
         }
     else
