@@ -131,7 +131,7 @@
 
     #fichetitre #albumstitre
     {
-        height: calc(100% - 130px);
+        height: calc(100% - 160px);
         border: 1px solid #494646;
         margin-bottom: 10px; 
         padding: 10px;

@@ -78,13 +78,13 @@ else { $onglet = 'Albums'; }
                                             else { $checkparolestitres =0;}
                                         //barre de filtres
                                         if($droits_modifierparolestitre==1): ?>
-                                            <div id="filtre_liste_titres" class="col-lg12">
+                                            <div class="pb-2" id="filtre_liste_titres" class="col-lg12">
                                                 <form id="formfiltres" method="post" action="index.php?acces_membre&onglet=Titres">
                                             
-                                                   <div style="padding:5px;">
-                                                    <input class="checkParolesTitres" type="radio" value="without" name="checkParolesTitres" <?php if($paroles=="without") { echo "checked";} ?> ><label for="">Sans paroles</label>
-                                                    <input class="checkParolesTitres" type="radio" value="with" name="checkParolesTitres" <?php if($paroles=="with") { echo "checked";} ?>><label for="">Avec paroles</label>
-                                                    <input class="checkParolesTitres" type="radio" value="all" name="checkParolesTitres" <?php if($paroles=="all") { echo "checked";} ?>><label for="">Tout</label>
+                                                   <div class="border ml-5 px-4 bg-dark text-white" style="padding:5px;">
+                                                        <input class="checkParolesTitres" type="radio" value="without" name="checkParolesTitres" <?php if($paroles=="without") { echo "checked";} ?> ><label class="ml-1">Sans paroles</label>
+                                                        <input class="checkParolesTitres ml-3" type="radio" value="with" name="checkParolesTitres" <?php if($paroles=="with") { echo "checked";} ?>><label  class="ml-1">Avec paroles</label>
+                                                        <input class="checkParolesTitres ml-3" type="radio" value="all" name="checkParolesTitres" <?php if($paroles=="all") { echo "checked";} ?>><label  class="ml-1">Tout</label>
                                                     </div>
                                                 </form>
                                             </div>

@@ -101,19 +101,23 @@
         /**
          * CRUD (create, read, update, delete) si autorisations
          */
+            ?>
+        <div class="float-right">
+            <?php
             //create
             if ($ajouteralbum == 1):?>
-                <span id="bouton_ajout_album" title="Ajouter un album" class="boutons_album pull-right" style="margin-right: 5px">-A-</span>
+                <span id="bouton_ajout_album" title="Ajouter un album" class="boutons_album pull-right" style="margin-right: 5px"><img src="pages/divers/images/boutons/bouton-plus-blanc.png" alt="ajouter" title="Ajouter un album" width="20px"></span>
             <?php endif; 
 
             // update
             if ($modifieralbum == 1):?>
-                <span id="bouton_modifier_album" title="Modifier un album" class="boutons_album pull-right" style="margin-right: 5px">-M-</span>
+                <span id="bouton_modifier_album" title="Modifier un album" class="boutons_album pull-right" style="margin-right: 5px"><img src="pages/divers/images/boutons/document2.png" alt="modifier" title="Modifier" width="20px"></span>
             <?php endif;
 
             if ($supprimeralbum == 1):?>
-                <span id="bouton_supprimer_album" title="Supprimer un album" class="boutons_album  pull-right" style="margin-right: 5px">-S-</span>
+                <span id="bouton_supprimer_album" title="Supprimer un album" class="boutons_album  pull-right" style="margin-right: 5px"><img src="pages/divers/images/boutons/poubelle2.png" alt="supprimer" title="Supprimer" width="20px"></span>
             <?php endif; ?>
+        </div>
 </div>
 
 <table id="tablelisteAlbums" class="table table-bordered table-striped table-condensed" style="margin:0;background-color: aliceblue";>

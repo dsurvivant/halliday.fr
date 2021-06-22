@@ -73,22 +73,29 @@ if(isset($_GET['noAlbum'])) {$noAlbum = $_GET['noAlbum'];}
         ?>
         <div id="fichealbum" class="container-fluid">
 
+            <!-- ENTETE DE FICHE -->
             <div class="row">
-                <?php
-                    //!!!! noalbum: ne pas supprimer, sert pour les autres pages !!!!              
-                    echo ("<span id='noAlbum'>No album : " . $noAlbum . "</span>");
-                    //!!!!!!
-                    echo("<div class='entete'>" . dateToFrench($datesortieAlbum,'Y') . "<br><span id='spannomAlbum'>" . $nomAlbum . " </span>(" . $typeAlbum . ")</div>" ); 
-                    //
-                    ?><div id="divers"><?php
-                    echo("<span>sorti le : " . dateToFrench($datesortieAlbum,'d F Y') . "</span><br>");
-                    echo("<span>" . $producteurAlbum . "-" . $referenceAlbum . "-" . $labelAlbum . "</span>");
-                    ?></div>
+                <!-- noalbum: ne pas supprimer, sert pour les autres pages -->           
+                <span id='noAlbum'>No album : <?= $noAlbum; ?> </span>
+                   
+                <div class='entete col-12'>
+                    <?= dateToFrench($datesortieAlbum,'Y'); ?>
+                    <br>
+                    <span id='spannomAlbum'> <?= $nomAlbum ?></span>
+                </div> 
+                    
+                <div class="col-12 text-center p-2" id="divers">
+                    <span><?= "Album " . $typeAlbum . "<br>"; ?></span>
+                    <span>sorti le : <?= dateToFrench($datesortieAlbum,'d F Y'); ?> </span><br>
+                    <span> <?= $producteurAlbum . "-" . $referenceAlbum . "-" . $labelAlbum ; ?></span>
+                    <hr>
+                </div>
             </div>
 
+            <!-- JAQUETTE ET TITRES DE LA FICHE -->
             <div class="row">
 
-                <div id="jaquettes" class="col-md-3">
+                <div id="jaquettes" class="col-3">
                     <!-- echo time est ici pour un probleme de cache des navigateurs qui reprennent l'ancienne image -->
                     <p><img src="<?php echo $sourceavant ?>?time=<?php echo time(); ?>" alt="pochette avant" title="pochette avant"/></p>
                     <?php
@@ -106,43 +113,82 @@ if(isset($_GET['noAlbum'])) {$noAlbum = $_GET['noAlbum'];}
                         ?>
                 </div> <!-- #jaquettes -->
 
-                <div id="detailAlbum" class="col-md-9">
+                <div id="detailAlbum" class="col-9">
                     <?php
                     //======AFFICHAGE DES TITRES
                     $managerliaison = new LiaisonAlbumsTitresManager($bdd);
                     $liaisontitres = $managerliaison->getTitres($album); ////recherche les titres associés à l'album dans la table de liaison
                     $managertitre = new TitresManager($bdd);
                     $memonodisque=0;
+                    
+                    //init
+                        $memonodisque = 1;
+                        $passage=0;
                     foreach ($liaisontitres as $liaisontitre ) 
                     {
-                        $passage=0;
-                        $notitre = $liaisontitre->getNoTitre();
-                        $dureetitre = $liaisontitre->getDureeTitre();
-                        $nodisque = $liaisontitre->getNoDisque();
-                        $nopiste = $liaisontitre->getNoPiste();
-                        //instanciation du titre
-                        $titre = new Titre(['noTitre' => $notitre]);
-                        $nomtitre = $managertitre->findNomTitre($titre);
 
-                        if ($nodisque!=$memonodisque) 
+                        //infos du titre
+                            $notitre = $liaisontitre->getNoTitre();
+                            $dureetitre = $liaisontitre->getDureeTitre();
+                            $nodisque = $liaisontitre->getNoDisque();
+                            $nopiste = $liaisontitre->getNoPiste();
+
+                            //instanciation du titre
+                            $titre = new Titre(['noTitre' => $notitre]);
+                            $nomtitre = $managertitre->findNomTitre($titre);
+                        //
+                        if ($passage == 0) 
+                            {?>
+                            <span class="px-2 py-1 border-bottom  lead"><?= $formatAlbum . " - no  " . $nodisque . "<br>"; ?> </span>
+                            <?php
+                        }
+                        
+                        if ($memonodisque == $nodisque ) 
                         {
-                            $passage++;
-                            $memonodisque=$nodisque;
-                              
-                            //premier passage on ferme pas le tableau
-                            if ($passage!=1) {echo("</tbody></table></div></div>");}
                             ?>
-                               <div id="tableauxtitres">
-                                <table id="tableTitres1" class="tableTitres table table-condensed">
-                                 <caption id="disque1"><?php echo ($formatAlbum . $nodisque); ?> </caption>
-                                    <tbody>
-                                    <?php //ligne du tableau
-                                    echo("<tr class=\"ligneTitre\"><td>" . $nopiste . "</td><td>" . $nomtitre . "</td><td> " . $dureetitre . "</td></tr>");
+                            <div class="ml-4 my-2">
+                                <?= $nopiste . " - "; ?>
+                                <?= $nomtitre . "<br>"; ?>
+                            </div>
+                            <?php
+                            $passage++;
                         }
                         else
                         {
-                            echo("<tr class=\"ligneTitre\"><td>" . $nopiste . "</td><td>" . $nomtitre . "</td><td>" . $dureetitre . "</td></tr>");
+                            ?>
+                            <span class="px-2 py-1 border-bottom lead"><?= $formatAlbum . " - no  " . $nodisque . "<br>"; ?> </span>
+                            <div class="ml-4 my-2">
+                                <?= $nopiste . " - "; ?>
+                                <?= $nomtitre . "<br>"; ?>
+                            </div>
+                            <?php
+                            $memonodisque = $nodisque;
                         }
+                        
+                        /*****************
+                            if ($nodisque!=$memonodisque) 
+                            {
+                                $passage++;
+                                $memonodisque=$nodisque;
+                                  
+                                //premier passage on ferme pas le tableau
+                                if ($passage!=1) {echo("</tbody></table></div></div>");}
+                                ?>
+                                    <span class="h6" id="disque1"><?= $formatAlbum . $nodisque; ?> </span>
+                                   <div id="tableauxtitres">
+                                    
+                                    <!--<table id="tableTitres1" class="tableTitres table table-striped">-->
+                                    <table class="tableTitres table table-striped">
+                                     
+                                        <tbody>
+                                        <?php //ligne du tableau
+                                        echo("<tr class=\"ligneTitre\"><td>" . $nopiste . "</td><td>" . $nomtitre . "</td><td> " . $dureetitre . "</td></tr>");
+                            }
+                            else
+                            {
+                                echo("<tr class=\"ligneTitre\"><td>" . $nopiste . "</td><td>" . $nomtitre . "</td><td>" . $dureetitre . "</td></tr>");
+                            }
+                        ************/
                     } //foreach
                     //fermeture du dernier tableau
                     ?>

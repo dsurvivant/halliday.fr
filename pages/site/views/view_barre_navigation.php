@@ -58,7 +58,7 @@
 		         </ul>
 
 		    <!-- FORMULAIRE DE RECHERCHE -->
-				<form class="form-inline">
+				<form class="form-inline d-none">
 			         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 			      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Recherche</button>       
 			    </form>
@@ -73,6 +73,7 @@
 		            		</a>
 
 		            		<div id="liste_decennie" class="dropdown-menu dropdown-menu-right">
+		            			<?php if(!isset($page)) {$page="accueil";} ?>
 		            			<!-- 1ere OPTION -->
 		            			<?php if ($page=="acces_membre"): ?>
 		            				<a class="dropdown-item" href="index.php?accueil">Retour au site</a>

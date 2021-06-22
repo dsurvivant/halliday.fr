@@ -72,7 +72,7 @@ $texteTitre = $titre->getTexteTitre();
 		<!------------------------------------->
 		<!-- PARTIE GAUCHE DE LA FICHE TITRE -->
 		<!------------------------------------->
-			<section id="section_detailsTitre" class="col-md-7">
+			<section id="section_detailsTitre" class="col-7">
 
 				<section id="infostitre">
 					<h5>
@@ -83,7 +83,7 @@ $texteTitre = $titre->getTexteTitre();
 					</h5>
 
 					<div class="p-2" >
-						<span>NO TITRE:</span> <span id='notitre'><?php echo $notitre; ?></span><br>
+						<span class="">NO TITRE:</span> <span id='notitre'><?php echo $notitre; ?></span><br>
 				    	<span>PAROLES:</span> <span id="parolesTitre"><?= nl2br($parolesTitre); ?></span><br>
 				    	<span>MUSIQUE:</span> <span id="musiqueTitre" ><?= nl2br($musiqueTitre); ?></span><br>
 			    	</div>
@@ -131,11 +131,11 @@ $texteTitre = $titre->getTexteTitre();
 		<!------------------------------------->
 		<!-- PARTIE DROITE DE LA FICHE TITRE -->
 		<!------------------------------------->
-			<section id="section_parolesTitre" class="col-md-5">
+			<section id="section_parolesTitre" class="col-5">
 				<h5>Paroles
 					
 					<?php if($modifierparolestitres==1): ?>
-						<span id="modifierparolestitres" data-toggle="modal" data-backdrop="static" href="#paroles" class="glyphicon glyphicon-pencil pull-right"></span>
+						<span class="float-right" id="modifierparolestitres" data-toggle="modal" data-backdrop="static" href="#paroles" ><img src="pages/divers/images/boutons/document2.png" alt="modifier" title="Modifier" style="height: 20px;width: 20px;"></span>
 					<?php endif; ?>
 				</h5>
 				<div id="contenutexteTitre"><?php echo nl2br($texteTitre); ?></div>
@@ -155,8 +155,8 @@ $texteTitre = $titre->getTexteTitre();
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" style="background-color: red; color:white; padding: 5px;">X</button>
 				<h3 class="modal-title"><?= $nomTitre ?></h3>
+				<button type="button" class="close" data-dismiss="modal" style="background-color: red; color:white; padding: 5px;">X</button>
 			</div>
 
 			<div class="modal-body">
@@ -186,8 +186,8 @@ $texteTitre = $titre->getTexteTitre();
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button id="fermeturemodal" type="button" class="close" data-dismiss="modal" style="background-color: red; color:white; padding: 5px;">X</button>
 				<h3 class="modal-title"><?= $nomTitre ?></h3>
+				<button id="fermeturemodal" type="button" class="close" data-dismiss="modal" style="background-color: red; color:white; padding: 5px;">X</button>
 			</div>
 
 			<div class="modal-body">
