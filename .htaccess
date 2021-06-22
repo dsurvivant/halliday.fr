@@ -1,8 +1,0 @@
-RewriteEngine On
-RewriteCond %{SERVER_PORT} !=443
-#
-# certificat ssl
-# RewriteRule ^(.*)$ https://halliday.fr/$1 [R=301,L]
-#
-# maintenance
-RewriteRule $ /maintenance.html [R=302,L]
