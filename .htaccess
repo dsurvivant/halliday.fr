@@ -5,4 +5,4 @@ RewriteCond %{SERVER_PORT} !=443
 # RewriteRule ^(.*)$ https://halliday.fr/$1 [R=301,L]
 #
 # maintenance
-RewriteRule $ /maintenance.php [R=302,L]
+RewriteRule $ /maintenance.html [R=302,L]
