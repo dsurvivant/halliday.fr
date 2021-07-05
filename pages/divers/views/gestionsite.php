@@ -7,7 +7,7 @@
 $i=0; //compteur ligne de tableau
 
 ?>
-<div class="container">
+<div class="container-fluid mb-2">
 	<div class="row">
 		<?php
 			if(isset($_SESSION['message'])):?>
@@ -18,8 +18,7 @@ $i=0; //compteur ligne de tableau
 	<div class="row">
 		
 		<!--	TABLE LISTE DES UTILISATEURS -->
-		<div class="col-lg-7" style="margin-top: 10px;">
-			<table id="tableutilisateurs" class="table table-bordered">
+		<table  class="col-6 mt-2"id="tableutilisateurs" class="table table-bordered">
 					<thead>
 						<tr class="bg-info">
 							<th>No</th>
@@ -27,7 +26,7 @@ $i=0; //compteur ligne de tableau
 							<th>Nom</th>
 							<th>Prenom</th>
 							<th>Email</th>
-							<th>Inscrit depuis</th>
+							<th>Inscription</th>
 						</tr>
 					</thead>
 
@@ -61,17 +60,17 @@ $i=0; //compteur ligne de tableau
 						<?php endforeach; ?>
 						
 					</tbody>
-			</table>
-		</div>
-
+		</table>
 		
-		<div class="col-lg-5" style="margin-top: 10px;">
+
+		<!-- ONGLETS PROFIL ET DROITS -->
+		<div class="col-5" style="margin-top: 10px;">
 
 			<!-- ONGLETS -->
-			<ul class="nav nav-pills nav-justified">
-                <li class="active"><a href="#profil" data-toggle="tab">Profil</a></li>
-                <li><a href="#droits" data-toggle="tab">Droits</a></li>
-            </ul>
+			<nav class="nav nav-tabs">
+                <a class="nav-item nav-link active" href="#profil" data-toggle="tab">Profil</a>
+                <a class="nav-item nav-link" href="#droits" data-toggle="tab">Droits</a>
+            </nav>
 
             <div class="tab-content">
 
@@ -93,20 +92,3 @@ $i=0; //compteur ligne de tableau
 		</div>
 	</div>
 </div>
-
-
-
-
-
-<!--
-					<div class="container">
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					  <label class="btn btn-info active">
-					    <input type="radio" checked >On
-					  </label>
-					  <label class="btn" style="border: 1px solid;">
-					    <input type="radio">Off
-					  </label>
-					</div>
-					</div>
-				-->

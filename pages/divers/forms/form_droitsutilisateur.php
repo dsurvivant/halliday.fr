@@ -3,53 +3,84 @@
 	 * JMT
 	 * FEVRIER 2021
 	 *	
-	 * lié au formulaire formutilisateur (form_utilisateur.php)
+	 * indépendant du formulaire formutilisateur (form_utilisateur.php)
+	 * Les changements de droits sont gérés en temps réel (ajax)
 	 */
 
 ?>
- <span class="titre" >Ajouter un album </span>
-	<input id="ajoutchoice1" type="radio" form="formutilisateur" name="ajouteralbum" value="1" <?php if($ajouteralbum){echo "checked";} ?>>
-	<label for="ajoutChoice1" >Autorisé</label>
+ 	
+ 	<div class="container-fluid">
+ 		
+ 		<div class="row">
+		 	<div class="col-5 bg-info text-white text-center mr-3 py-1 px-2" >Ajouter un album </div>
+		 	<div class="choix1 <?php if(!$ajouteralbum){ echo "pointeur"; } ?> rounded-left border py-1 px-3 <?php if($ajouteralbum){ echo "bg-success text-white" ;} ?>">
+				<div class="addalbum">Autorisé</div>
+			</div>
+			<div class="choix2 <?php if($ajouteralbum){ echo "pointeur"; } ?> rounded-right border py-1 px-3 <?php if(!$ajouteralbum){ echo "bg-success text-white" ;} ?>">
+				<div class="addalbum">Interdit</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+		 	<div class="col-5 bg-info text-white text-center mr-3 py-1 px-2" >Modifier un album </div>
+		 	<div class="choix1 <?php if(!$modifieralbum){ echo "pointeur" ;} ?> rounded-left border py-1 px-3 <?php if($modifieralbum){ echo "bg-success text-white" ;} ?>">
+				<div class="updatealbum" >Autorisé</div>
+			</div>
+			<div class="choix2 <?php if($modifieralbum){ echo "pointeur" ;} ?> rounded-right border py-1 px-3 <?php if(!$modifieralbum){ echo "bg-success text-white" ;} ?>">
+				<div class="updatealbum" >Interdit</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+		 	<div class="col-5 bg-info text-white text-center mr-3 py-1 px-2" >Supprimer un album </div>
+		 	<div class="choix1 <?php if(!$supprimeralbum) echo "pointeur" ?> rounded-left border py-1 px-3 <?php if($supprimeralbum){ echo "bg-success text-white" ;} ?>">
+				<div class="deletealbum" >Autorisé</div>
+			</div>
+			<div class="choix2 <?php if($supprimeralbum) echo "pointeur" ?> rounded-right border py-1 px-3 <?php if(!$supprimeralbum){ echo "bg-success text-white" ;} ?>">
+				<div class="deletealbum" >Interdit</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+		 	<div class="col-5 bg-info text-white text-center mr-3 py-1 px-2" >Modifier Infos Titre </div>
+		 	<div class="choix1 <?php if(!$modifierinfostitre){ echo "pointeur" ;} ?> rounded-left border py-1 px-3 <?php if($modifierinfostitre){ echo "bg-success text-white" ;} ?>">
+				<div class="updatetitres" >Autorisé</div>
+			</div>
+			<div class="choix2 <?php if($modifierinfostitre){ echo "pointeur" ;} ?> rounded-right border py-1 px-3 <?php if(!$modifierinfostitre){ echo "bg-success text-white" ;} ?>">
+				<div class="updatetitres" >Interdit</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+		 	<div class="col-5 bg-info text-white text-center mr-3 py-1 px-2" >Modifier Paroles titre </div>
+		 	<div class="choix1 <?php if(!$modifierparolestitre){ echo "pointeur" ;} ?> rounded-left border py-1 px-3 <?php if($modifierparolestitre){ echo "bg-success text-white" ;} ?>">
+				<div class="updateparoles" >Autorisé</div>
+			</div>
+			<div class="choix2 <?php if($modifierparolestitre){ echo "pointeur" ;} ?> rounded-right border py-1 px-3 <?php if(!$modifierparolestitre){ echo "bg-success text-white" ;} ?>">
+				<div class="updateparoles" >Interdit</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+		 	<div class="col-5 bg-info text-white text-center mr-3 py-1 px-2" >Actif </div>
+		 	<div class="choix1 <?php if(!$actif){ echo "pointeur" ;} ?> rounded-left border py-1 px-3 <?php if($actif){ echo "bg-success text-white" ;} ?>">
+				<div class="actif" >Oui</div>
+			</div>
+			<div class="choix2 <?php if($actif){ echo "pointeur" ;} ?> rounded-right border py-1 px-3 <?php if(!$actif){ echo "bg-success text-white" ;} ?>">
+				<div class="actif" >Non</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+		 	<div class="col-5 bg-info text-white text-center mr-3 py-1 px-2" >Administrateur </div>
+		 	<div class="choix1 <?php if(!$administrateur){ echo "pointeur" ;} ?> rounded-left border py-1 px-3 <?php if($administrateur){ echo "bg-success text-white" ;} ?>">
+				<div class="administrateur" >Oui</div>
+			</div>
+			<div class="choix2 <?php if($administrateur){ echo "pointeur" ;} ?> rounded-right border py-1 px-3 <?php if(!$administrateur){ echo "bg-success text-white" ;} ?>">
+				<div class="administrateur" >Non</div>
+			</div>
+		</div>
 
-	<input id="ajoutchoice2" type="radio" form="formutilisateur" name="ajouteralbum" value="0" <?php if(!$ajouteralbum){echo "checked";} ?>>
-	<label for="ajoutChoice2">Interdit</label>
-	<br><br>
+	</div> <!-- container fluid -->
 
-<span class="titre">Modifier un album</span>
-	<input id="modifierchoice1" type="radio" form="formutilisateur" name="modifieralbum" value="1" <?php if($modifieralbum){echo "checked";} ?>>
-	<label for="modifierchoice1">Autorisé</label>
 
-	<input id="modifierchoice2" type="radio" form="formutilisateur" name="modifieralbum" value="0" <?php if(!$modifieralbum){echo "checked";} ?>>
-	<label for="modifierchoice2">Interdit</label>
-	<br><br>
-
-<span class="titre">Supprimer un album</span>
-	<input id="supprimerchoice1" type="radio" form="formutilisateur" name="supprimeralbum" value="1" <?php if($supprimeralbum){echo "checked";} ?>>
-	<label for="supprimerChoice1">Autorisé</label>
-
-	<input id="supprimerchoice2" type="radio" form="formutilisateur" name="supprimeralbum" value="0" <?php if(!$supprimeralbum){echo "checked";} ?>>
-	<label for="supprimerChoice2">Interdit</label>
-	<br><br>
-
-<span class="titre">Modifier Infos Titre</span>
-	<input id="modiftitrechoice1" type="radio" form="formutilisateur" name="modifierinfostitre" value="1" <?php if($modifierinfostitre){echo "checked";} ?>>
-	<label for="modiftitreChoice1">Autorisé</label>
-
-	<input id="modiftitrechoice2" type="radio" form="formutilisateur" name="modifierinfostitre" value="0" <?php if(!$modifierinfostitre){echo "checked";} ?>>
-	<label for="modiftitreChoice2">Interdit</label>
-	<br><br>
-
-<span class="titre">Modifier Paroles titre</span>
-	<input id="modifparoleschoice1" type="radio" form="formutilisateur" name="modifierparolestitre" value="1" <?php if($modifierparolestitre){echo "checked";} ?>>
-	<label for="modifparolesChoice1">Autorisé</label>
-
-	<input id="modifparoleschoice2" type="radio" form="formutilisateur" name="modifierparolestitre" value="0" <?php if(!$modifierparolestitre){echo "checked";} ?>>
-	<label for="modifparolesChoice2">Interdit</label>
-	<br><br>
-
-<span class="titre">Actif</span>
-	<input id="actifchoice1" type="radio" form="formutilisateur" name="actif" value="1" <?php if($actif){echo "checked";} ?>>
-	<label for="actifChoice1">Oui</label>
-
-	<input id="actifchoice2" type="radio" form="formutilisateur" name="actif" value="0" <?php if(!$actif){echo "checked";} ?>>
-	<label for="actifChoice2">Non</label>

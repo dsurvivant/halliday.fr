@@ -2,8 +2,8 @@
 
 .selection {background-color: lightblue;}
 
-.titre 
+#droits .pointeur:hover
 {
-	font-size: 20px; 
-	text-decoration: underline;
+	cursor: pointer;
 }
+

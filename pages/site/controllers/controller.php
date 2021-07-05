@@ -96,12 +96,12 @@
 				$email = sanitizeString(trim($_POST['email']));
 				$password = sanitizeString(trim($_POST['password']));
 				$confirmpassword = sanitizeString(trim($_POST['confirmpassword']));
-				$ajouteralbum = sanitizeString(trim($_POST['ajouteralbum']));
-				$modifieralbum = sanitizeString(trim($_POST['modifieralbum']));
-				$supprimeralbum = sanitizeString(trim($_POST['supprimeralbum']));
-				$modifierinfostitre = sanitizeString(trim($_POST['modifierinfostitre']));
-				$modifierparolestitre = sanitizeString(trim($_POST['modifierparolestitre']));
-				$actif = sanitizeString(trim($_POST['actif']));
+				//$ajouteralbum = sanitizeString(trim($_POST['ajouteralbum']));
+				//$modifieralbum = sanitizeString(trim($_POST['modifieralbum']));
+				//$supprimeralbum = sanitizeString(trim($_POST['supprimeralbum']));
+				//$modifierinfostitre = sanitizeString(trim($_POST['modifierinfostitre']));
+				//$modifierparolestitre = sanitizeString(trim($_POST['modifierparolestitre']));
+				//$actif = sanitizeString(trim($_POST['actif']));
 
 				//vérification des champs
 				if ($pseudo=='' or $nom=='' or $prenom=='' or $email=='') {$_SESSION['message']="Tous les champs doivent être remplis. (sauf Les champs mots de passe, éventuellement)";}
@@ -113,7 +113,7 @@
 					if($password!='') { $password = cryptagemotdepasse($password); }
 					//enregistrement de l'utilisateur dans la bdd
 					modifierUtilisateur ($noutilisateur, $prenom, $nom, $pseudo, $password, $email, $actif);
-					modifierDroitsUtilisateur($noutilisateur, $ajouteralbum, $modifieralbum, $supprimeralbum, $modifierinfostitre, $modifierparolestitre);
+					//modifierDroitsUtilisateur($noutilisateur, $ajouteralbum, $modifieralbum, $supprimeralbum, $modifierinfostitre, $modifierparolestitre);
 
 					$_SESSION['message'] = "MIS A JOUR EFFECTUEE AVEC SUCCESS";
 				}
@@ -147,6 +147,7 @@
 				$supprimeralbum = $droits->getSupprimeralbum();
 				$modifierinfostitre = $droits->getModifierinfostitre();
 				$modifierparolestitre = $droits->getModifierparolestitre();
+				$administrateur = $droits->getAdministrateur();
 
 				require("pages/divers/views/gestionsite.php");
 			return ob_get_clean();

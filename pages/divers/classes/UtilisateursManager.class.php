@@ -186,6 +186,18 @@
         }
 
         //=====
+        //== Modification Activation d'un utilisateur à partir du numéro d'utilisateur
+        //== clé remise à null lors de l'activation afin de neutraliser le lien mail
+        //=====
+        function activerbynoutil(Utilisateur $util)
+        {
+            $q =  $this->_db->prepare("UPDATE utilisateurs SET actif=:actif, cle='***' WHERE noutil=:noutil ");
+            $q->bindValue(':noutil', $util->getNoutil());
+            $q->bindValue(':actif', $util->getActif());
+            $q->execute();
+        }
+
+        //=====
         //== RECHERCHE SI LE MAIL EXISTE ET INSTANCIE L UTILISATEUR
         //=====
         public function findEmailUtilisateur(Utilisateur $perso)

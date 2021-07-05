@@ -62,6 +62,89 @@ class DroitsManager
         }
 
         /**
+         * Mis à jour des droits sur l'ajout d'un album
+         * @param  [type] $droits [objet Droits]
+         */
+        public function updateajouteralbum($droits)
+        {
+            $q = $this->_db->prepare('UPDATE droits SET ajoutalbum=:ajoutalbum WHERE noutil=:noutil');
+                
+            $q->bindValue(':ajoutalbum', $droits->getAjoutalbum());
+            $q->bindValue(':noutil', $droits->getNoutil());
+
+            $q->execute();
+        }
+
+         /**
+         * Mis à jour des droits sur la modification d'un album
+         * @param  [type] $droits [objet Droits]
+         */
+        public function updatemodifalbum($droits)
+        {
+            $q = $this->_db->prepare('UPDATE droits SET modifieralbum=:modifieralbum WHERE noutil=:noutil');
+                
+            $q->bindValue(':modifieralbum', $droits->getModifieralbum());
+            $q->bindValue(':noutil', $droits->getNoutil());
+
+            $q->execute();
+        }
+
+         /**
+         * Mis à jour des droits sur la suppression d'un album
+         * @param  [type] $droits [objet Droits]
+         */
+        public function updatesupprimeralbum($droits)
+        {
+            $q = $this->_db->prepare('UPDATE droits SET supprimeralbum=:supprimeralbum WHERE noutil=:noutil');
+                
+            $q->bindValue(':supprimeralbum', $droits->getSupprimeralbum());
+            $q->bindValue(':noutil', $droits->getNoutil());
+
+            $q->execute();
+        }
+
+         /**
+         * Mis à jour des droits sur la modification des infos des titres
+         * @param  [type] $droits [objet Droits]
+         */
+        public function updatemodifierinfostitre($droits)
+        {
+            $q = $this->_db->prepare('UPDATE droits SET modifierinfostitre=:modifierinfostitre WHERE noutil=:noutil');
+                
+            $q->bindValue(':modifierinfostitre', $droits->getModifierinfostitre());
+            $q->bindValue(':noutil', $droits->getNoutil());
+
+            $q->execute();
+        }
+
+        /**
+         * Mis à jour des droits sur la modification des paroles titres
+         * @param  [type] $droits [objet Droits]
+         */
+        public function updatemodifierparolestitre($droits)
+        {
+            $q = $this->_db->prepare('UPDATE droits SET modifierparolestitre=:modifierparolestitre WHERE noutil=:noutil');
+                
+            $q->bindValue(':modifierparolestitre', $droits->getModifierparolestitre());
+            $q->bindValue(':noutil', $droits->getNoutil());
+
+            $q->execute();
+        }
+
+        /**
+         * Mis à jour des droits sur la fonction d'administrateur
+         * @param  [type] $droits [objet Droits]
+         */
+        public function updateadministrateur($droits)
+        {
+            $q = $this->_db->prepare('UPDATE droits SET administrateur=:administrateur WHERE noutil=:noutil');
+                
+            $q->bindValue(':administrateur', $droits->getAdministrateur());
+            $q->bindValue(':noutil', $droits->getNoutil());
+
+            $q->execute();
+        }
+        /**
          * [recherche les droits liés à un utilisateur description]
          * @param  Droits $droits [description]
          * @return [type]         [description]
