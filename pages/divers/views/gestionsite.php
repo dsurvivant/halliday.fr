@@ -18,7 +18,7 @@ $i=0; //compteur ligne de tableau
 	<div class="row">
 		
 		<!--	TABLE LISTE DES UTILISATEURS -->
-		<table  class="col-6 mt-2"id="tableutilisateurs" class="table table-bordered">
+		<table  class="col-6 mt-2 align-self-start"id="tableutilisateurs" class="table table-bordered">
 					<thead>
 						<tr class="bg-info">
 							<th>No</th>
@@ -88,7 +88,6 @@ $i=0; //compteur ligne de tableau
 					<?php include ("pages/divers/forms/form_droitsutilisateur.php"); ?>     
 	            </div>
 	        </div> <!-- tab-content -->
-				
 		</div>
 	</div>
 </div>

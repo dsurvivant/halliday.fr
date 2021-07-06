@@ -8,12 +8,6 @@
 <form id="formutilisateur" method="post" action="index.php?gestionsite&noutilisateur=<?= $noutilisateur ?>">
 
 	<div class="input-group mb-3">
-        <div class="input-group-prepend"><span class="input-group-text" id="url-base">https://pierre-giraud.com/cours/</span></div>
-        <input type="text" class="form-control" id="url" aria-describedby="url-base">
-    </div>
-    <span class="help-block" style="display: none;">Erreur</span>
-
-	<div class="input-group mb-3">
 		<div class="input-group-prepend"><span class="input-group-text">No</span></div>
 		<input type="text" id="noutilisateur" class="form-control" name="noutilisateur" value="<?= $noutilisateur ?>" readonly>
 	</div>
@@ -56,6 +50,6 @@
 
 	<div class="form-group text-right">
 		<button type="submit" class="btn btn-primary" name="btn_modifier" value="modifier">Modifier</button>
-		<button type="submit" class="btn btn-danger" name="btn_supprimer" value="supprimer">Supprimer</button>
+		<button id="btn_supprimer" type="submit" class="btn btn-danger" name="btn_supprimer" value="supprimer">Supprimer</button>
 	</div>
 </form>

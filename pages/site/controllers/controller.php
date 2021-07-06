@@ -3,6 +3,7 @@
 	require_once ('pages/site/model/modelUtilisateurs.php');
 	require_once ('pages/site/model/modelAlbums.php');
 	require_once ('pages/site/model/modelTitres.php');
+	require_once ('pages/divers/fonctions/fonctions.php');
 	
 	/**
 	 * initialisation des donnees retourne un tableau contenant
@@ -81,6 +82,8 @@
 
 	function afficherGestionsite()
 	{
+		global $bdd;
+
 		$_SESSION['message']='';
 		//accessible uniquement aux administrateurs
 		if ($_SESSION['administrateur']==1)
@@ -123,10 +126,19 @@
 				//modification
 			}
 			//cas d'une suppression
-			if(isset($_POST['btn_supprimer']))
+			if(isset($_POST['btn_supprimer']) or isset($_GET['supprimer']))
 			{
-				echo ("suppression");
-				exit;
+				if (isset($_GET['noutilisateur']))
+				{
+					$noutilisateur = $_GET['noutilisateur'];
+
+					$utilisateur = new Utilisateur([ 'noutil'=>$noutilisateur]);
+					$manager = new UtilisateursManager($bdd);
+					$manager->delete($utilisateur);
+
+					header("location:index.php?gestionsite");
+				}
+				
 			}
 			//affichage de la page
 			ob_start();
