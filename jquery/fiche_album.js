@@ -2,7 +2,8 @@ $(function()
 {
 //jquery ready
 
-/** Gestion des éléments dynamique de la fiche d'un album **/
+    $('.TexteTitre').hide();
+/** CHEVRONS DES PARTIES DE LA FICHE ALBUM **/
 
     //ici le conteneur est dé
     $('#page_principale').on('click','.chevron_bas',function()
@@ -22,7 +23,13 @@ $(function()
 
 
 /** popover (grosse info-bulle) **/
-$('.pop').popover({placement: 'bottom', trigger:'hover'});
+    $('.pop').popover({placement: 'bottom', trigger:'hover'});
+
+/** DEROULE LE TEXTE DES CHANSONS */
+    $('.deroulertexte').click(function() 
+    {
+        $(this).next('div').slideToggle(500);
+    });
 
 //fin jquery
 });

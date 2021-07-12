@@ -39,7 +39,7 @@ foreach ($_SESSION['albums'] as $album) {
 $mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "novembre", "Décembre"];
 ?>
 
-<div id="fiche_album" class="container" >
+<div id="fiche_album" class="container mb-2" >
 
 	<div class="row">
 		<h1 class="col-12 my-4 text-center text-secondary"><?= $nomalbum; ?></h1>
@@ -82,8 +82,21 @@ $mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aoû
 				<?php 
 			foreach ($detailsalbum as $key => $value) 
 			{
+				$texteTitre = trim($value['texteTitre']);
+
 				echo $key+1 . ". ";
-				echo "<span class='font-weight-bold'>" . $value['nomTitre'] . "</span> ( <span class='font-italic'>" . $value['musiqueTitre'] . "</span> /<span class='font-italic'> " . $value['parolesTitre'] . "</span> )<br>";
+				echo "<span class='font-weight-bold'>" . $value['nomTitre'] . "</span> ( <span class='font-italic'>" . $value['musiqueTitre'] . "</span> /<span class='font-italic'> " . $value['parolesTitre'] . "</span> )";
+				
+				//CADRE TEXTE DU TITRE
+				if ($texteTitre!=''){
+				?>
+					<img class="ml-1 deroulertexte" src="pages/divers/images/boutons/document2.png" alt="paroles" width="15px"> 
+					<div class="pl-3 pt-2 border bg-secondary text-white TexteTitre">
+						<?= nl2br($texteTitre) ?>
+					</div>
+				<?php
+				}; //endif
+				echo "<br>";
 			}
 			?>
 		</div>
@@ -95,7 +108,7 @@ $mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aoû
 	<!--			  -->
 		<h3 class="row" id="description">Description <img class="chevron_bas" alt="chevron_bas" src="pages/site/images/boutons/chevron_bas.png"><img class="chevron_droite" alt="chevron_droite" src="pages/site/images/boutons/chevron_droite.png"></h3>
 
-		<div class="row border m-2 p-2" style="background-color: #ecf0f1;">
+		<div class="row border m-2 p-2 contenu" style="background-color: #ecf0f1;">
 			<div class="col-12">
 				<?php if(trim($producteur)!='') { echo "Réalisation :" . $producteur . "<br>"; } ?>
 				<?php if(trim($pochette)!='') { echo "Pochette : " . $pochette . "<br>"; } ?>
@@ -111,11 +124,28 @@ $mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aoû
 	<!--- ENREGISTREMENTS -->
 	<!--			   	  -->
 	<!--				  -->
+		<?php if($enregistrement!=''): ?>
+			<h3 class="row" id="description">Enregistrements <img class="chevron_bas" alt="chevron_bas" src="pages/site/images/boutons/chevron_bas.png"><img class="chevron_droite" alt="chevron_droite" src="pages/site/images/boutons/chevron_droite.png"></h3>
+
+			<div class="row border m-2 p-2 contenu" style="background-color: #ecf0f1;">
+				<p class="col-12">
+					<?= "<br>" . nl2br($enregistrement) ?>
+				</p>
+			</div>
+		<?php endif; ?>
 
 	<!--			  -->
 	<!--- MUSICIENS -->
 	<!--			  -->
-		
+		<?php if($enregistrement!=''): ?>
+			<h3 class="row" id="description">Musiciens <img class="chevron_bas" alt="chevron_bas" src="pages/site/images/boutons/chevron_bas.png"><img class="chevron_droite" alt="chevron_droite" src="pages/site/images/boutons/chevron_droite.png"></h3>
+
+			<div class="row border m-2 p-2 contenu" style="background-color: #ecf0f1;">
+				<p class="col-12">
+					<?= "<br>" . nl2br($musiciens) ?>
+				</p>
+			</div>
+		<?php endif; ?>
 	<!--			  -->
 	<!--- SINGLES 	  -->
 	<!--			  -->

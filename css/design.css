@@ -181,3 +181,4 @@ html
  */
 #navigation_ancres .nav-link { color: white; }
 #navigation_ancres .nav-link:hover { color: lightgray; }
+.deroulertexte:hover { cursor: pointer; }
