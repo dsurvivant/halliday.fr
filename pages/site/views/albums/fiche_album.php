@@ -83,7 +83,7 @@ $mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aoû
 			foreach ($detailsalbum as $key => $value) 
 			{
 				echo $key+1 . ". ";
-				echo $value['nomTitre'] . " ( " . $value['musiqueTitre'] . " / " . $value['parolesTitre'] . " )<br>";
+				echo "<span class='font-weight-bold'>" . $value['nomTitre'] . "</span> ( <span class='font-italic'>" . $value['musiqueTitre'] . "</span> /<span class='font-italic'> " . $value['parolesTitre'] . "</span> )<br>";
 			}
 			?>
 		</div>
@@ -96,12 +96,14 @@ $mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aoû
 		<h3 class="row" id="description">Description <img class="chevron_bas" alt="chevron_bas" src="pages/site/images/boutons/chevron_bas.png"><img class="chevron_droite" alt="chevron_droite" src="pages/site/images/boutons/chevron_droite.png"></h3>
 
 		<div class="row border m-2 p-2" style="background-color: #ecf0f1;">
-			<?php if(trim($producteur)!='') { echo "Réalisation :" . $producteur . "<br>"; } ?>
-			<?php if(trim($pochette)!='') { echo "Pochette : " . $pochette . "<br>"; } ?>
-			<?php if(trim($certification)!='') { echo "Certifications : " . $certification . "<br><br>"; } ?>
+			<div class="col-12">
+				<?php if(trim($producteur)!='') { echo "Réalisation :" . $producteur . "<br>"; } ?>
+				<?php if(trim($pochette)!='') { echo "Pochette : " . $pochette . "<br>"; } ?>
+				<?php if(trim($certification)!='') { echo "Certifications : " . $certification . "<br><br>"; } ?>
+			</div>
 
-			<p class="contenu">
-				<?= $description ?>
+			<p class="col-12">
+				<?= "<br>" . nl2br($description) ?>
 			</p>
 		</div>
 
