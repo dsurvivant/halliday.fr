@@ -28,6 +28,15 @@ if (isset($_POST['ajax']))
 if (isset($_SESSION['notitre'])) {$notitre = $_SESSION['notitre'];}
 if (isset($_POST['notitre'])) {$notitre = $_POST['notitre'];}
 
+//aucun titre à afficher
+if ($notitre =='') 
+{
+	?>
+		<div class="bg-dark text-white text-center p-4 h3">Aucun titre trouvé</div>
+	<?php
+	exit;
+}
+
 //connexion à la base de donnees
 $bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
 //instanciation du titre

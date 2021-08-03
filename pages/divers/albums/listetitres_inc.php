@@ -16,7 +16,7 @@ if (isset($_POST['ajax']))
     require_once '../classes/Titre.class.php';
     require_once '../classes/TitresManager.class.php';
     require_once '../fonctions/fonctions.php';
-    $checkparolestitres = $_POST['checkparolestitres'];
+    $checkparolestitres = $_POST['checkparolestitres']; //with, without, ou all (avec paroles, sans paroles, tout)
 }
 
 if (isset($_GET['paroles'])) { $checkparolestitres= $_GET['paroles']; }
@@ -56,6 +56,18 @@ $nombreTitres = $manager->getnombreTitres();
             else
             {$titres = $manager->getListNoDesc();}
         }
+
+    /**
+     * CHAMP DE RECHERCHE TITRE (retour ajax listeTitre.js)
+     */
+    if (isset($_POST['recherchetitre'])) 
+    {
+        $term = trim($_POST['recherchetitre']);
+        $term = htmlentities($term);
+        include('liste_titres_autocomplete.php');
+
+    }
+
 //*****
 //***** AFFICHAGE DE LA LISTE DE TITRES ****
 //*****

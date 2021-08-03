@@ -46,9 +46,9 @@ else { $onglet = 'Albums'; }
                 <!-- Actions des onglets bootstrap -->
                 <div class="tab-content">
 
-                    <!-------------->
-                    <!-- PANNEAU 1 -->
-                    <!-------------->
+                    <!---------------------->
+                    <!-- PANNEAU 1 ALBUMS -->
+                    <!---------------------->
                         <div class="row tab-pane fade <?php if($onglet=="Albums"){ echo 'show active'; } ?> " id="albums">
                             <div class="container-fluid mt-2">
                                 <div class="row justify-content-center">
@@ -66,47 +66,51 @@ else { $onglet = 'Albums'; }
                             </div>
                         </div>
 
-                    <!-------------->
-                    <!-- PANNEAU 2 -->
-                    <!-------------->
+                    <!---------------------->
+                    <!-- PANNEAU 2 TITRES -->
+                    <!---------------------->
                             <div class="row tab-pane fade <?php if($onglet=="Titres"){ echo 'show active'; } ?> " id="titres">
                                 <div class="container-fluid">
-                                    <div class="row">
-                                        <?php
-                                        //état du checkbox
-                                        if (isset($_POST['checkParolesTitres'])) { $checkparolestitres = $_POST['checkParolesTitres']; }
-                                            else { $checkparolestitres =0;}
-                                        //barre de filtres
-                                        if($droits_modifierparolestitre==1): ?>
-                                            <div class="pb-2" id="filtre_liste_titres" class="col-lg12">
-                                                <form id="formfiltres" method="post" action="index.php?acces_membre&onglet=Titres">
-                                            
-                                                   <div class="border ml-5 px-4 bg-dark text-white" style="padding:5px;">
-                                                        <input class="checkParolesTitres" type="radio" value="without" name="checkParolesTitres" <?php if($paroles=="without") { echo "checked";} ?> ><label class="ml-1">Sans paroles</label>
-                                                        <input class="checkParolesTitres ml-3" type="radio" value="with" name="checkParolesTitres" <?php if($paroles=="with") { echo "checked";} ?>><label  class="ml-1">Avec paroles</label>
-                                                        <input class="checkParolesTitres ml-3" type="radio" value="all" name="checkParolesTitres" <?php if($paroles=="all") { echo "checked";} ?>><label  class="ml-1">Tout</label>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
+                                    <!-- BARRE DE FILTRES -->
+                                        <div class="row">
+                                            <?php
+                                            //état du checkbox
+                                            if (isset($_POST['checkParolesTitres'])) { $checkparolestitres = $_POST['checkParolesTitres']; }
+                                                else { $checkparolestitres =0;}
+                                            //barre de filtres
+                                            if($droits_modifierparolestitre==1): ?>
+                                                <div class="pb-2 pt-2 col-12" id="filtre_liste_titres">
+                                                    <form id="formfiltres" method="post" action="index.php?acces_membre&onglet=Titres">
+                                                
+                                                       <div class="border px-4 bg-dark text-white" style="padding:5px;">
+                                                            <input class="checkParolesTitres" type="radio" value="without" name="checkParolesTitres" <?php if($paroles=="without") { echo "checked";} ?> ><label class="ml-1">Sans paroles</label>
+                                                            <input class="checkParolesTitres ml-3" type="radio" value="with" name="checkParolesTitres" <?php if($paroles=="with") { echo "checked";} ?>><label  class="ml-1">Avec paroles</label>
+                                                            <input class="checkParolesTitres ml-3" type="radio" value="all" name="checkParolesTitres" <?php if($paroles=="all") { echo "checked";} ?>><label  class="ml-1">Tout</label>
+                                                            <input class="float-left mr-2" id="inputrecherchetitre" type="text" placeholder="Recherche Titre">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
 
-                                    <div class="row justify-content-center">
-                                        <section id="section_gauche_titres" class="col-4">
-                                            <!-- ** LISTE DES TITRES -->
-                                            <?php include ('albums/listetitres_inc.php');?>
-                                        </section> <!-- section_gauche -->
-                                
-                                        <section id="section_centrale_titres" class="col-8">
-                                            <?php require ('albums/fichetitre_inc.php'); ?>
-                                        </section> <!-- section_centrale -->
-                                    </div>
+                                    <!-- LISTE DES TITRES ET FICHE TITRE -->
+                                        <div class="row justify-content-center">
+                                            <!-- LISTE DES TITRES -->
+                                                <section id="section_gauche_titres" class="col-4">
+                                                    <?php include ('albums/listetitres_inc.php');?>
+                                                </section> <!-- section_gauche -->
+                                    
+                                            <!-- FICHE TITRE -->
+                                            <section id="section_centrale_titres" class="col-8">
+                                                <?php require ('albums/fichetitre_inc.php'); ?>
+                                            </section> <!-- section_centrale -->
+                                        </div>
                                 </div>
                             </div>
 
-                    <!-------------->
-                    <!-- PANNEAU 3 -->
-                    <!-------------->
+                    <!----------------------->
+                    <!-- PANNEAU 3 SINGLES -->
+                    <!----------------------->
 
                             <div class="row tab-pane fade <?php if($onglet=="Singles"){ echo 'show active'; } ?> " id="singles">
                                 <div class="container-fluid">

@@ -224,7 +224,7 @@
     {
         border: solid 0.1em #BBB6B6;
         /**border-radius: 10px;**/
-        height: calc(100vh - 300px);
+        max-height: calc(100vh - 380px);
         overflow: scroll;
     }
 

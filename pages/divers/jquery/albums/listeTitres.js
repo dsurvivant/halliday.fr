@@ -23,9 +23,15 @@ $(function()
 		    /** TRI PAR NOM DE TITRE **/
 			if ($(this).text()=="Titres")
 		    {
-			    //case à cocher modifierparolestitres
-			    if($('#checkParolesTitres').prop('checked')){ check_modifierparolestitres=1; }
-				else { check_modifierparolestitres=0; };
+			    //case à cocher modifierparolestitres, on récupére dans paroles
+			    //la valeur with, without, ou all (avec paroles, sans paroles, tout)
+			    $('.checkParolesTitres').each(function() 
+			    {
+			    	if($(this).attr('checked')=='checked')
+			    	{
+			    		paroles = ($(this).attr('value'));
+			    	}
+			    });
 
 			    //determination de l'ordre de l'album
 			    if (ordreTitre=="croissant") {ordreTitre="decroissant"}
@@ -39,7 +45,7 @@ $(function()
 				    data: {
 				        	ajax: "yes",
 				        	ordreTitre: ordreTitre,
-				        	checkparolestitres : $('#checkParolesTitres').prop('checked'),
+				        	checkparolestitres : paroles,
 				        	},
 				    success: function(data)
 				    {
@@ -49,7 +55,8 @@ $(function()
 				    complete: function()
 				    {
 				        //surlignement du 1er titre de la liste
-	    				$('#divlisteTitres .lignetitre:first').css('backgroundColor', '#e4970c');
+	    				//$('#divlisteTitres .lignetitre:first').css('backgroundColor', '#e4970c');
+	    				$('#divlisteTitres .lignetitre:first').addClass('surligne');
 	    				noTitre=$('#divlisteTitres .lignetitre:first').find('span:nth-child(1)').text();
 	    				fiche_titre(noTitre);
 				    },
@@ -82,6 +89,57 @@ $(function()
 			$('#formfiltres').submit();
 		});
 
+
+	/**
+	 * RECHERCHE TITRE
+	 */
+		$('#inputrecherchetitre').keyup(function()
+		{
+			//titre recherché
+			titre = $(this).val().trim();
+
+			//case à cocher modifierparolestitres, on récupére dans paroles
+			//la valeur with, without, ou all (avec paroles, sans paroles, tout)
+			$('.checkParolesTitres').each(function() 
+			{
+			    if($(this).attr('checked')=='checked')
+			    {
+			    	paroles = ($(this).attr('value'));
+			    }
+			});
+
+			//determination de l'ordre de l'album
+			if (ordreTitre=="croissant") {ordreTitre="decroissant"}
+			else {ordreTitre="croissant"}
+
+			$.ajax
+			({
+				type: 'POST',
+				url: 'pages/divers/albums/listetitres_inc.php',
+				dataType: 'html',
+				data: {
+				        ajax: "yes",
+				        ordreTitre: ordreTitre,
+				        checkparolestitres : paroles,
+				        recherchetitre: titre
+				        },
+			success: function(data)
+				{
+				    //
+				    $('#section_gauche_titres').html(data);
+				},
+			complete: function()
+				{
+				    //surlignement du 1er titre de la liste
+	    			//$('#divlisteTitres .lignetitre:first').css('backgroundColor', '#e4970c');
+	    			$('#divlisteTitres .lignetitre:first').addClass('surligne');
+	    			noTitre=$('#divlisteTitres .lignetitre:first').find('span:nth-child(1)').text();
+	    			fiche_titre(noTitre);
+				},
+			error: function(){alert("erreur ajax titre");}
+			});
+			
+		});
 
 	/**
 	 * FONCTIONS
