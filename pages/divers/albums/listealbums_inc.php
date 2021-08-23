@@ -123,8 +123,8 @@
 <table id="tablelisteAlbums" class="table table-bordered table-striped table-condensed" style="margin:0;background-color: aliceblue";>
     <thead>
         <tr>
-            <th width="37px">No</th>
-            <th width="36px">Type</th>
+            <th class="d-none" width="37px">No</th>
+            <th class="d-none" width="36px">Type</th>
             <th width="36px">Année</th>
             <th width="210px">Albums</th>
         </tr>
@@ -149,8 +149,8 @@
                     {
                         ?>
                         <tr class="surlignement">
-                            <td width="37px"><?php echo $noAlbum; ?></td>
-                            <td width="36px"><?php echo substr($libelletypeAlbum, 0, 1) ?></td>
+                            <td class="d-none" width="37px"><?php echo $noAlbum; ?></td>
+                            <td class="d-none" width="36px"><?php echo substr($libelletypeAlbum, 0, 1) ?></td>
                             <td width="36px"><?php echo substr($album->getdatesortieAlbum(),0,4); ?></td>
                             <td width="210px"><?php echo $album->getnomAlbum(); ?></td>
                         </tr>
@@ -160,8 +160,8 @@
                     {
                         ?>
                         <tr>
-                            <td width="37px"><?php echo $noAlbum; ?></td>
-                            <td width="36px"><?php echo substr($libelletypeAlbum, 0, 1) ?></td>
+                            <td class="d-none" width="37px"><?php echo $noAlbum; ?></td>
+                            <td class="d-none" width="36px"><?php echo substr($libelletypeAlbum, 0, 1) ?></td>
                             <td width="36px"><?php echo substr($album->getdatesortieAlbum(),0,4); ?></td>
                             <td width="210px"><?php echo $album->getnomAlbum(); ?></td>
                         </tr>

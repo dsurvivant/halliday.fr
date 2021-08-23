@@ -1,3 +1,4 @@
+
 <!-- JOHNNY HALLYDAY -->
 <!-- michemuche62 -->
 <?php
@@ -52,12 +53,12 @@ else { $onglet = 'Albums'; }
                         <div class="row tab-pane fade <?php if($onglet=="Albums"){ echo 'show active'; } ?> " id="albums">
                             <div class="container-fluid mt-2">
                                 <div class="row justify-content-center">
-                                    <section id="section_gauche" class="col-4">
+                                    <section id="section_gauche" class="col col-lg-4">
                                         <!-- ** LISTE DES ALBUMS -->
                                         <?php include ('albums/listealbums_inc.php');?>
                                     </section> <!-- section_gauche -->
                           
-                                    <section id="section_centrale" class="col-6">
+                                    <section id="section_centrale" class="col col-lg-6">
                                         <div id="boutons_fiche_album" class="text-right">
                                         </div> <!-- #boutons_fiche_album -->
                         
@@ -96,12 +97,12 @@ else { $onglet = 'Albums'; }
                                     <!-- LISTE DES TITRES ET FICHE TITRE -->
                                         <div class="row justify-content-center">
                                             <!-- LISTE DES TITRES -->
-                                                <section id="section_gauche_titres" class="col-4">
+                                                <section id="section_gauche_titres" class="col col-lg-4">
                                                     <?php include ('albums/listetitres_inc.php');?>
                                                 </section> <!-- section_gauche -->
                                     
                                             <!-- FICHE TITRE -->
-                                            <section id="section_centrale_titres" class="col-8">
+                                            <section id="section_centrale_titres" class="col col-lg-8">
                                                 <?php require ('albums/fichetitre_inc.php'); ?>
                                             </section> <!-- section_centrale -->
                                         </div>
