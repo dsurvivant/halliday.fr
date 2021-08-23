@@ -23,6 +23,9 @@ $(function()
 		    /** TRI PAR NOM DE TITRE **/
 			if ($(this).text()=="Titres")
 		    {
+			    //titre recherché
+				titre = $('#inputrecherchetitre').val().trim();
+
 			    //case à cocher modifierparolestitres, on récupére dans paroles
 			    //la valeur with, without, ou all (avec paroles, sans paroles, tout)
 			    $('.checkParolesTitres').each(function() 
@@ -46,6 +49,7 @@ $(function()
 				        	ajax: "yes",
 				        	ordreTitre: ordreTitre,
 				        	checkparolestitres : paroles,
+				        	recherchetitre: titre
 				        	},
 				    success: function(data)
 				    {

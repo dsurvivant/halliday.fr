@@ -38,7 +38,7 @@ else { $onglet = 'Albums'; }
             <div id="page_membre" class="container-fluid">
 
                 <!-- Onglets -->
-                <nav class="nav nav-pills">
+                <nav class="nav nav-pills mt-1">
                   <a class="nav-item nav-link <?php if($onglet=="Albums"){ echo 'active'; } ?> col text-center" href="#albums" data-toggle="tab">Albums</a>
                   <a class="nav-item nav-link <?php if($onglet=="Titres"){ echo 'active'; } ?> col text-center" href="#titres" data-toggle="tab">Titres</a>
                   <a class="nav-item nav-link <?php if($onglet=="Singles"){ echo 'active'; } ?> col text-center" href="#singles" data-toggle="tab">Singles</a>
@@ -53,12 +53,12 @@ else { $onglet = 'Albums'; }
                         <div class="row tab-pane fade <?php if($onglet=="Albums"){ echo 'show active'; } ?> " id="albums">
                             <div class="container-fluid mt-2">
                                 <div class="row justify-content-center">
-                                    <section id="section_gauche" class="col col-lg-4">
+                                    <section id="section_gauche" class="col-12 col-md-4">
                                         <!-- ** LISTE DES ALBUMS -->
                                         <?php include ('albums/listealbums_inc.php');?>
                                     </section> <!-- section_gauche -->
                           
-                                    <section id="section_centrale" class="col col-lg-6">
+                                    <section id="section_centrale" class="col-12 col-md-6">
                                         <div id="boutons_fiche_album" class="text-right">
                                         </div> <!-- #boutons_fiche_album -->
                         
@@ -82,12 +82,13 @@ else { $onglet = 'Albums'; }
                                             if($droits_modifierparolestitre==1): ?>
                                                 <div class="pb-2 pt-2 col-12" id="filtre_liste_titres">
                                                     <form id="formfiltres" method="post" action="index.php?acces_membre&onglet=Titres">
-                                                
+                                                        
                                                        <div class="border px-4 bg-dark text-white" style="padding:5px;">
-                                                            <input class="checkParolesTitres" type="radio" value="without" name="checkParolesTitres" <?php if($paroles=="without") { echo "checked";} ?> ><label class="ml-1">Sans paroles</label>
-                                                            <input class="checkParolesTitres ml-3" type="radio" value="with" name="checkParolesTitres" <?php if($paroles=="with") { echo "checked";} ?>><label  class="ml-1">Avec paroles</label>
-                                                            <input class="checkParolesTitres ml-3" type="radio" value="all" name="checkParolesTitres" <?php if($paroles=="all") { echo "checked";} ?>><label  class="ml-1">Tout</label>
-                                                            <input class="float-left mr-2" id="inputrecherchetitre" type="text" placeholder="Recherche Titre">
+                                                            <input id="inputrecherchetitre" type="text" placeholder="Recherche Titre">
+                                                            <input class="ml-2 checkParolesTitres" type="radio" value="without" name="checkParolesTitres" <?php if($paroles=="without") { echo "checked";} ?> ><label class="ml-1">Sans paroles</label>
+                                                            <input class=" checkParolesTitres ml-3" type="radio" value="with" name="checkParolesTitres" <?php if($paroles=="with") { echo "checked";} ?>><label  class="ml-1">Avec paroles</label>
+                                                            <input class=" checkParolesTitres ml-3" type="radio" value="all" name="checkParolesTitres" <?php if($paroles=="all") { echo "checked";} ?>><label  class="ml-1">Tout</label>
+                                                            
                                                         </div>
                                                     </form>
                                                 </div>
@@ -97,12 +98,12 @@ else { $onglet = 'Albums'; }
                                     <!-- LISTE DES TITRES ET FICHE TITRE -->
                                         <div class="row justify-content-center">
                                             <!-- LISTE DES TITRES -->
-                                                <section id="section_gauche_titres" class="col col-lg-4">
+                                                <section id="section_gauche_titres" class="col-12 col-md-4">
                                                     <?php include ('albums/listetitres_inc.php');?>
                                                 </section> <!-- section_gauche -->
                                     
                                             <!-- FICHE TITRE -->
-                                            <section id="section_centrale_titres" class="col col-lg-8">
+                                            <section id="section_centrale_titres" class="col-12 col-md-6">
                                                 <?php require ('albums/fichetitre_inc.php'); ?>
                                             </section> <!-- section_centrale -->
                                         </div>

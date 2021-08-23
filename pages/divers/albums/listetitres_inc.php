@@ -62,10 +62,20 @@ $nombreTitres = $manager->getnombreTitres();
      */
     if (isset($_POST['recherchetitre'])) 
     {
-        $term = trim($_POST['recherchetitre']);
-        $term = htmlentities($term);
-        include('liste_titres_autocomplete.php');
+        if($_POST['recherchetitre']!='')
+        {
+            $term = trim($_POST['recherchetitre']);
+            $term = htmlentities($term);
 
+            if (isset($_POST['ordreTitre'])) //classement par année
+            {
+                if ($_POST['ordreTitre']=="croissant")
+                    {$order = "croissant";}
+                else
+                    {$order = "decroissant";}
+            }
+            include('liste_titres_autocomplete.php');
+        }
     }
 
 //*****

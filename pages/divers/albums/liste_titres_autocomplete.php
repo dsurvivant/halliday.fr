@@ -17,6 +17,8 @@ require_once '../fonctions/fonctions.php'; //fonction de sécurité des saisies
 //tableau des titres
 $titres = [];
 
+if (!isset($order)) { $order = "croissant";} //vs decroissant
+
 //connexion à la base de donnees
 $bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
 
@@ -26,7 +28,12 @@ $bdd = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pw, array(PDO
 // appel par ligne de commande
 if (isset($_GET['term'])) { $term = htmlentities($_GET['term']); }
 // 
-$requete = $bdd->prepare('SELECT * FROM titres WHERE nomTitre LIKE :term'); // j'effectue ma requête SQL grâce au mot-clé LIKE
+if ($order=="croissant")
+{ $requete = $bdd->prepare('SELECT * FROM titres WHERE nomTitre LIKE :term ORDER BY nomTitre ASC'); }// j'effectue ma requête SQL grâce au mot-clé LIKE 
+
+if ($order=="decroissant")
+{ $requete = $bdd->prepare('SELECT * FROM titres WHERE nomTitre LIKE :term ORDER BY nomTitre DESC'); }// j'effectue ma requête SQL grâce au mot-clé LIKE 
+
 $requete->execute(array(':term' => $term.'%'));
 
 $array = array(); // on créé le tableau
