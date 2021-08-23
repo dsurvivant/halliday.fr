@@ -97,6 +97,18 @@ $nombreTitres = $manager->getnombreTitres();
         <!--------------------->
         <!-- CORPS DE LISTE  -->
         <!--------------------->
+            <?php $i=0; ?>
+            <div id="listeTitres" class="row mb-2" style="font-size: 16px;">
+                <select class="p-1 col-12" name="testselect" id="testselect" size="15">
+                    <?php foreach ($titres as $titre):?>
+                        <option value="testoption"><?= $titre->getNomTitre() ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+        <!--------------------->
+        <!-- CORPS DE LISTE  -->
+        <!--------------------->
             <div id="divlisteTitres" class="row" style="font-size: 16px;">
                 <?php
                     $i=0;
