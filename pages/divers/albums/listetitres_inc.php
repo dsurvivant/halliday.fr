@@ -98,40 +98,40 @@ $nombreTitres = $manager->getnombreTitres();
         <!-- CORPS DE LISTE  -->
         <!--------------------->
             <?php $i=0; ?>
+
             <div id="listeTitres" class="row mb-2" style="font-size: 16px;">
-                <select class="p-1 col-12" name="testselect" id="testselect" size="15">
-                    <?php foreach ($titres as $titre):?>
-                        <option value="testoption"><?= $titre->getNomTitre() ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-        <!--------------------->
-        <!-- CORPS DE LISTE  -->
-        <!--------------------->
-            <div id="divlisteTitres" class="row" style="font-size: 16px;">
-                <?php
-                    $i=0;
-
-                    foreach ($titres as $titre)
-                    {
+                
+                <!--- LISTE DES TITRES SUR PETIT ECRAN -->               
+                <select class="p-1 col-12 d-md-none" name="testselect" id="testselect" size=5>
+                       
+                    <?php foreach ($titres as $titre):
                         if ( ($checkparolestitres=="without" and $titre->getTexteTitre()==null) or ($checkparolestitres=="with" and $titre->getTexteTitre()!=null) or ( $checkparolestitres=="all" ))
                         {
                             $i++;
-                            ?>
-                            <div class="lignetitre col-12" style="border-bottom: 0.1em solid lightgrey;height: 30px;line-height: 30px;">
-                                <p>
-                                    <span style="border-right: solid lightgrey; display: none;"><?php echo($titre->getNoTitre()); ?></span>
-                                    <span title="Titre no <?php echo($titre->getNoTitre()); ?>"><?php echo($titre->getNomTitre()); ?></span>
-                                    <br>
-                                </p>
-                                <?php 
-                                    if($i==1) { $_SESSION['notitre'] = $titre->getNoTitre();}
-                                ?>
-                            </div>
+                    ?>
+                            <option class="lignetitre" name="<?= $titre->getNoTitre(); ?>" <?php if($i==1) { echo "selected"; } ?>><?= $titre->getNomTitre() ?></option>
+                    <?php
+                            if($i==1) { $_SESSION['notitre'] = $titre->getNoTitre();}
+                        } 
+                        endforeach; 
+                    ?>
+                </select>
 
-                <?php }
-                    }?>
+                <!--- LISTE DES TITRES SUR ECRAN MOYEN ET PLUS -->
+                <select class="p-1 col-12 d-none d-md-block" name="testselect" id="testselect" size=15>
+                       
+                    <?php foreach ($titres as $titre):
+                        if ( ($checkparolestitres=="without" and $titre->getTexteTitre()==null) or ($checkparolestitres=="with" and $titre->getTexteTitre()!=null) or ( $checkparolestitres=="all" ))
+                        {
+                            $i++;
+                    ?>
+                            <option class="lignetitre" name="<?= $titre->getNoTitre(); ?>" <?php if($i==1) { echo "selected"; } ?>><?= $titre->getNomTitre() ?></option>
+                    <?php
+                            if($i==1) { $_SESSION['notitre'] = $titre->getNoTitre();}
+                        } 
+                        endforeach; 
+                    ?>
+                </select>
             </div>
 
         <strong>total: <?php echo $i; ?></strong>

@@ -220,7 +220,7 @@
 
 
      /** cadre liste des albums, liste des titres**/
-    #section_gauche #divlisteAlbums, #section_gauche_titres #divlisteTitres
+    #section_gauche #divlisteAlbums
     {
         border: solid 0.1em #BBB6B6;
         /**border-radius: 10px;**/
@@ -228,7 +228,7 @@
         overflow: scroll;
     }
 
-    #section_gauche #tablelisteAlbums tr:hover, #section_gauche_titres #divlisteTitres span { cursor: pointer; }
+    #section_gauche #tablelisteAlbums tr:hover
 
     #section_gauche_titres .entetetitre:hover
     {
@@ -240,3 +240,8 @@
     #section_gauche_titres .surligne { background-color: #e4970c; }
 
     #section_gauche .boutons_album:hover { cursor: pointer; }
+
+    #section_gauche_titres #listeTitres option:checked
+    {
+        background-color: #e4970c;
+    }

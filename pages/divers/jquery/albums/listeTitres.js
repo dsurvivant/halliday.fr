@@ -75,12 +75,9 @@ $(function()
 	 */
 		$('#section_gauche_titres').on('click', '.lignetitre',function()
 	 	{
-	 		notitre = $(this).find('span:nth-child(1)').text();
-	 		$('.lignetitre').removeClass('surligne');
-		    $(this).addClass('surligne');
+	 		notitre = $(this).attr('name');
 		    //fiche de la ligne sélectionnée
-		    noTitre = $(this).find('span:nth-child(1)').text();
-		    fiche_titre(noTitre);
+		    fiche_titre(notitre);
 		});
 
 	/**
@@ -149,7 +146,7 @@ $(function()
 	 * FONCTIONS
 	 */
 
-	function fiche_titre(numero)
+	function fiche_titre(notitre)
 		{
 		    noutil = $('footer #noutil').text();
 		    $.ajax
@@ -160,7 +157,7 @@ $(function()
 		        data: 
 		        {
 		            ajax: "yes",
-		            notitre: numero,
+		            notitre: notitre,
 		            noutil: noutil,
 		        },
 		        success: function(data)
